@@ -1,0 +1,151 @@
+$width_user:350px;
+$height_user:550px;
+$width_user_table:400px;
+$height_user_table:300px;
+$toogle_dashboard:#0e9ca7;
+.user_info{
+    top:$height_user*0.25;
+    position: fixed;
+    left: 75%;
+    height: $height_user;
+    width: $width_user;
+    border-radius: 30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: all 0.2s;
+
+}
+.user_info:hover{
+    height: $height_user+10;
+    width: $width_user+10;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    .user_img{
+        height:($width_user*0.5)+50+10;
+        width: ($width_user)-40+10;
+        margin-left: 20px;
+        border-bottom-width: 0.1px;
+        border-bottom-style:solid;
+        border-bottom-color: rgb(219, 219, 219);
+    }
+    .correo-trabajador-div{
+    
+        width: ($width_user)-40+10;
+       
+    }
+    .user_img i{
+        font-size:180px;
+     
+    }
+    .user_img .option-edit-user i{
+        font-size:33px;
+        position: absolute;
+        top: 6px;
+        left: ($width_user)-47;
+        color: #066de2;
+        transition: all 0.2s;
+        ;
+        
+    }
+}
+.user_img{
+    height:($width_user*0.5)+50;
+    width: ($width_user)-40;
+    margin-left: 20px;
+    border-bottom-width: 0.1px;
+    border-bottom-style:solid;
+    border-bottom-color: rgb(219, 219, 219);
+    transition: all 0.2s;
+    text-align: center;
+}
+.user_img i{
+    font-size:170px;
+    margin-top: 20px;
+    transition: all 0.3s;
+    color: $toogle_dashboard;
+}
+.user_img .option-edit-user i{
+    font-size:30px;
+    position: absolute;
+    top: 5px;
+    left: ($width_user)-50;
+    color: #066de2;
+    transition: all 0.3s;
+    &:hover{
+        font-size:35px;
+    }
+    
+}
+.correo-trabajador-div{
+    
+    width: ($width_user)-40;
+    margin-left: 20px;
+    border-top-width: 0.1px;
+    border-top-style:solid;
+    border-top-color: rgb(219, 219, 219);
+    padding:10px 20px 20px 20px;
+    transition: all 0.2s;
+}
+.user_description{
+    padding: 10px;
+    width: auto;
+    text-align: center;
+    h5{
+        font-weight:bold;
+    }
+}
+.container-tables{
+    height: 100%;
+    width: 70%;
+    align-items: center;
+    justify-content: center;
+}
+.tables-user{
+    width: 98%;
+    left: 2%;
+    height: $height_user;
+    max-height: $height_user;
+    margin-top: 20px;
+    position: relative;
+    background-color: rgb(253, 250, 250);
+    border-top-left-radius:30px ;
+    border-bottom-right-radius: 30px;
+    padding: 30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: all 0.2s;
+ &:hover{
+  
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+ }
+
+}
+.scroll-tables-user{
+    width: 100%;
+    height: 90%;
+    overflow-y: auto;
+}
+.table{
+    tr{
+        td{
+           text-align: center;
+           
+        }
+    }
+}
+.title-tables-user{
+    padding: 0 150px 0 150px;
+    background-color: rgb(253, 250, 250);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px ;
+    transition: all 0.3s;
+    cursor: pointer;
+    
+    
+}
+.inf{
+    font-weight:bold;
+}
+
+.container-upload{
+background-color: aquamarine;
+position: relative;
+height: 500px;
+}
