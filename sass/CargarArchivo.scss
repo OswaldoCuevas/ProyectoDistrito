@@ -1,0 +1,76 @@
+$height_drag_area:550px;
+$width_drag_area:90%;
+.drop-area{
+    margin-left: 1%;
+    border: 5px dashed #ddd;
+    width:$width_drag_area;
+    height: $height_drag_area;
+    border-radius:5px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    &.active{
+        background-color: #b8d4fe;
+        color: black;
+        border: 2px dashed #618ac9;
+    }
+    .Mensaje_upload_archivo{
+        display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    h2{
+        font-size: 30px;
+        font-weight: 500;
+        color: #000;
+
+    }
+    span{
+        font-size: 25px;
+        color: #000;
+
+    }
+    button{
+        padding: 10px 25px;
+        font-size: 20px;
+        border: 0;
+        outline: none;
+        background-color: #5256ad;
+        color: white;
+        border-radius: 5px;
+        margin: 20px;
+    }
+}
+h2{
+    font-size: 30px;
+    font-weight: 500;
+    color: #000;
+
+}
+span{
+    font-size: 25px;
+    color: #000;
+
+}
+button{
+    padding: 10px 25px;
+    font-size: 20px;
+    border: 0;
+    outline: none;
+    background-color: #5256ad;
+    color: white;
+    border-radius: 5px;
+    margin: 20px;
+}
+}
+.file-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: solid 1px #ddd;
+    border-radius:15px ;
+    
+}
+

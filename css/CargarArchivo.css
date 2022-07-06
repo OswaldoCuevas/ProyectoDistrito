@@ -1,0 +1,71 @@
+.drop-area {
+  margin-left: 1%;
+  border: 5px dashed #ddd;
+  width: 90%;
+  height: 550px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.drop-area.active {
+  background-color: #b8d4fe;
+  color: black;
+  border: 2px dashed #618ac9;
+}
+.drop-area .Mensaje_upload_archivo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.drop-area .Mensaje_upload_archivo h2 {
+  font-size: 30px;
+  font-weight: 500;
+  color: #000;
+}
+.drop-area .Mensaje_upload_archivo span {
+  font-size: 25px;
+  color: #000;
+}
+.drop-area .Mensaje_upload_archivo button {
+  padding: 10px 25px;
+  font-size: 20px;
+  border: 0;
+  outline: none;
+  background-color: #5256ad;
+  color: white;
+  border-radius: 5px;
+  margin: 20px;
+}
+.drop-area h2 {
+  font-size: 30px;
+  font-weight: 500;
+  color: #000;
+}
+.drop-area span {
+  font-size: 25px;
+  color: #000;
+}
+.drop-area button {
+  padding: 10px 25px;
+  font-size: 20px;
+  border: 0;
+  outline: none;
+  background-color: #5256ad;
+  color: white;
+  border-radius: 5px;
+  margin: 20px;
+}
+
+.file-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: solid 1px #ddd;
+  border-radius: 15px;
+}
+
+/*# sourceMappingURL=CargarArchivo.css.map */
