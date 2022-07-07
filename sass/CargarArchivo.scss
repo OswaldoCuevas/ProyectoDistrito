@@ -1,5 +1,6 @@
 $height_drag_area:550px;
 $width_drag_area:90%;
+$toogle_dashboard:#0e9ca7;
 .drop-area{
     margin-left: 1%;
     border: 5px dashed #ddd;
@@ -13,7 +14,7 @@ $width_drag_area:90%;
     &.active{
         background-color: #b8d4fe;
         color: black;
-        border: 2px dashed #618ac9;
+        border: 2px dashed $toogle_dashboard;
     }
     .Mensaje_upload_archivo{
         display: flex;
@@ -31,16 +32,7 @@ $width_drag_area:90%;
         color: #000;
 
     }
-    button{
-        padding: 10px 25px;
-        font-size: 20px;
-        border: 0;
-        outline: none;
-        background-color: #5256ad;
-        color: white;
-        border-radius: 5px;
-        margin: 20px;
-    }
+   
 }
 h2{
     font-size: 30px;
@@ -53,24 +45,68 @@ span{
     color: #000;
 
 }
-button{
+.cargar_archivo{
+    background-color: $toogle_dashboard;
+}
+button, .btn-primary{
     padding: 10px 25px;
     font-size: 20px;
     border: 0;
     outline: none;
-    background-color: #5256ad;
     color: white;
+    background-color: $toogle_dashboard;
     border-radius: 5px;
     margin: 20px;
+   &:hover{
+    color: white;
+   }
 }
 }
 .file-container{
-    display: flex;
-    align-items: center;
-    gap: 10px;
     padding: 10px;
-    border: solid 1px #ddd;
-    border-radius:15px ;
-    
+
+   
 }
+button, .btn-primary{
+    padding: 10px 25px;
+    font-size: 20px;
+    border: 0;
+    outline: none;
+    color: white;
+    background-color: $toogle_dashboard;
+    border-radius: 5px;
+    margin: 20px;
+  
+}
+.status{
+
+    progress{
+
+        width: 93%;
+    }
+    .fa-circle-xmark{
+        position:relative;
+        width: 5%;
+        padding-left: 5px;
+        font-size:30px;
+        top: -14px;
+        cursor:pointer;
+        color: rgb(235, 231, 231);
+        &:hover{
+            color: #e93535;
+        }
+    }
+    #porcentaje_progreso{
+        position: relative;
+        font-size: 20px;
+        text-align: center;
+        left: 180px;
+        top:-73px;
+        color: white;
+    }
+}
+progress{
+height: 50px;
+}
+
 

@@ -12,7 +12,7 @@
 .drop-area.active {
   background-color: #b8d4fe;
   color: black;
-  border: 2px dashed #618ac9;
+  border: 2px dashed #0e9ca7;
 }
 .drop-area .Mensaje_upload_archivo {
   display: flex;
@@ -29,16 +29,6 @@
   font-size: 25px;
   color: #000;
 }
-.drop-area .Mensaje_upload_archivo button {
-  padding: 10px 25px;
-  font-size: 20px;
-  border: 0;
-  outline: none;
-  background-color: #5256ad;
-  color: white;
-  border-radius: 5px;
-  margin: 20px;
-}
 .drop-area h2 {
   font-size: 30px;
   font-weight: 500;
@@ -48,24 +38,64 @@
   font-size: 25px;
   color: #000;
 }
-.drop-area button {
+.drop-area .cargar_archivo {
+  background-color: #0e9ca7;
+}
+.drop-area button, .drop-area .btn-primary {
   padding: 10px 25px;
   font-size: 20px;
   border: 0;
   outline: none;
-  background-color: #5256ad;
   color: white;
+  background-color: #0e9ca7;
+  border-radius: 5px;
+  margin: 20px;
+}
+.drop-area button:hover, .drop-area .btn-primary:hover {
+  color: white;
+}
+
+.file-container {
+  padding: 10px;
+}
+
+button, .btn-primary {
+  padding: 10px 25px;
+  font-size: 20px;
+  border: 0;
+  outline: none;
+  color: white;
+  background-color: #0e9ca7;
   border-radius: 5px;
   margin: 20px;
 }
 
-.file-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-  border: solid 1px #ddd;
-  border-radius: 15px;
+.status progress {
+  width: 93%;
+}
+.status .fa-circle-xmark {
+  position: relative;
+  width: 5%;
+  padding-left: 5px;
+  font-size: 30px;
+  top: -14px;
+  cursor: pointer;
+  color: rgb(235, 231, 231);
+}
+.status .fa-circle-xmark:hover {
+  color: #e93535;
+}
+.status #porcentaje_progreso {
+  position: relative;
+  font-size: 20px;
+  text-align: center;
+  left: 180px;
+  top: -73px;
+  color: white;
+}
+
+progress {
+  height: 50px;
 }
 
 /*# sourceMappingURL=CargarArchivo.css.map */
