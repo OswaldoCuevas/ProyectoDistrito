@@ -65,8 +65,8 @@ button, .btn-primary{
 }
 }
 .upload_error{
-    background-color: rgba(231, 31, 31, 0.13);
-    border: 5px dashed #e93535;
+    background-color: rgba(231, 31, 31, 0.037);
+    border: 5px dashed rgba(231, 31, 31, 0.589);
     margin-left: 1%;
 width:$width_drag_area;
 height: $height_drag_area;
@@ -76,7 +76,12 @@ align-items: center;
 justify-content: center;
 flex-direction: column;
 }
-.alert-danger{
+.progress{
+    position: relative;
+    height: 30px;
+    width: 95%;
+}
+#error_upload_alert{
     width: 100%;
     top: 10%;
 }
@@ -84,6 +89,11 @@ flex-direction: column;
     padding: 10px;
 
    
+}
+.progress-bar{
+    width: 0%;
+    transition: all 0.4s;
+    
 }
 button, .btn-primary{
     padding: 10px 25px;
@@ -103,11 +113,12 @@ button, .btn-primary{
         width: 93%;
     }
     .fa-circle-xmark{
-        position:relative;
+        position: relative;
         width: 5%;
         padding-left: 5px;
         font-size:30px;
-        top: -14px;
+        top:-30px;
+        left: 48%;
         cursor:pointer;
         color: rgb(235, 231, 231);
         &:hover{

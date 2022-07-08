@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/padronUsuarios.css">
 <div class="user_info">
     <div class="user_img">
         <i class="fa-solid fa-user"></i>

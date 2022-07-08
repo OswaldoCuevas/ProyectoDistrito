@@ -56,8 +56,8 @@
 }
 
 .upload_error {
-  background-color: rgba(231, 31, 31, 0.13);
-  border: 5px dashed #e93535;
+  background-color: rgba(231, 31, 31, 0.037);
+  border: 5px dashed rgba(231, 31, 31, 0.589);
   margin-left: 1%;
   width: 90%;
   height: 550px;
@@ -68,13 +68,24 @@
   flex-direction: column;
 }
 
-.alert-danger {
+.progress {
+  position: relative;
+  height: 30px;
+  width: 95%;
+}
+
+#error_upload_alert {
   width: 100%;
   top: 10%;
 }
 
 .file-container {
   padding: 10px;
+}
+
+.progress-bar {
+  width: 0%;
+  transition: all 0.4s;
 }
 
 button, .btn-primary {
@@ -96,7 +107,8 @@ button, .btn-primary {
   width: 5%;
   padding-left: 5px;
   font-size: 30px;
-  top: -14px;
+  top: -30px;
+  left: 48%;
   cursor: pointer;
   color: rgb(235, 231, 231);
 }

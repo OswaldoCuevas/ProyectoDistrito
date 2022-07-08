@@ -1,21 +1,27 @@
 <?php
 include("conexion.php");
 $count=1;
+$id_nuevo="";
+$archivo = $_FILES["file"]["tmp_name"]; 
+$tamanio = $_FILES["file"]["size"];
+$tipo    = $_FILES["file"]["type"];
+$nombre  = $_FILES["file"]["name"];
+$nombre =utf8_encode($nombre);
 error_reporting( E_PARSE);
 function miGestorDeErrores($errno, $errstr, $errfile, $errline)
 {
    global $count;
-   echo "<b>Error en la fila número $count del archivo $nombre</b>";
+   global $id_nuevo;
+   global $sistema;
+   echo "<b>Error en la fila número $count del archivo $nombre</b>$id_nuevo";
 
+   mysqli_query($sistema,"DELETE FROM informaciondocumento WHERE (id_documento = '$id_nuevo');");
+   mysqli_query($sistema,"DELETE FROM documento WHERE (id_documento = '$id_nuevo');");
 }
 set_error_handler("miGestorDeErrores");
 
 
- $archivo = $_FILES["file"]["tmp_name"]; 
- $tamanio = $_FILES["file"]["size"];
- $tipo    = $_FILES["file"]["type"];
- $nombre  = $_FILES["file"]["name"];
- $nombre =utf8_encode($nombre);
+
  if ( $archivo != "none" )
  {
     $fp = fopen($archivo, "rb");
@@ -23,6 +29,7 @@ set_error_handler("miGestorDeErrores");
     $contenido = addslashes($contenido);
     fclose($fp); 
     $sentenciaSqlInsertarDocumento="INSERT INTO documento(nombredocumento) VALUES ('$nombre');";
+  
     mysqli_query($sistema,  $sentenciaSqlInsertarDocumento)or die(mysqli_error($sistema,  $sentenciaSqlInsertarDocumento)); 
          $id2=mysqli_query($sistema,"SELECT LAST_INSERT_ID();");
                 $id_2=mysqli_fetch_assoc($id2);
