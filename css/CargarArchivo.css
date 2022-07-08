@@ -55,6 +55,24 @@
   color: white;
 }
 
+.upload_error {
+  background-color: rgba(231, 31, 31, 0.13);
+  border: 5px dashed #e93535;
+  margin-left: 1%;
+  width: 90%;
+  height: 550px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.alert-danger {
+  width: 100%;
+  top: 10%;
+}
+
 .file-container {
   padding: 10px;
 }
@@ -84,6 +102,15 @@ button, .btn-primary {
 }
 .status .fa-circle-xmark:hover {
   color: #e93535;
+}
+.status .fa-circle-check {
+  position: relative;
+  width: 5%;
+  padding-left: 5px;
+  font-size: 30px;
+  top: -14px;
+  cursor: pointer;
+  color: #0e9ca7;
 }
 .status #porcentaje_progreso {
   position: relative;

@@ -1,12 +1,21 @@
 <?php
 include("conexion.php");
-error_reporting(E_ERROR | E_PARSE);
+$count=1;
+error_reporting( E_PARSE);
+function miGestorDeErrores($errno, $errstr, $errfile, $errline)
+{
+   global $count;
+   echo "<b>Error en la fila número $count del archivo $nombre</b>";
+
+}
+set_error_handler("miGestorDeErrores");
+
 
  $archivo = $_FILES["file"]["tmp_name"]; 
  $tamanio = $_FILES["file"]["size"];
  $tipo    = $_FILES["file"]["type"];
  $nombre  = $_FILES["file"]["name"];
-
+ $nombre =utf8_encode($nombre);
  if ( $archivo != "none" )
  {
     $fp = fopen($archivo, "rb");
@@ -23,7 +32,7 @@ error_reporting(E_ERROR | E_PARSE);
 $openfile = fopen($archivo, "r");
 $cont = fread($openfile, filesize($archivo));
 $csv = file( $archivo);
-$count=1;
+
 
 
 
