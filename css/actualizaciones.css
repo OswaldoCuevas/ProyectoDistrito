@@ -1,0 +1,108 @@
+.archivos_actualizacion {
+  width: 90%;
+  height: 500px;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.archivos_actualizacion h1 {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: rgba(20, 205, 230, 0.856);
+}
+.archivos_actualizacion .titulo_archivos_actualizacion {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0e9ca7;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.archivos_actualizacion .titulo_archivos_actualizacion h3 {
+  color: white;
+}
+.archivos_actualizacion .contenido_actualizacion {
+  width: 100%;
+  height: 500px;
+  text-align: center;
+}
+.archivos_actualizacion .contenido_actualizacion div {
+  float: left;
+  align-items: center;
+  width: 33.3%;
+  max-height: 89%;
+  text-align: center;
+}
+.archivos_actualizacion .contenido_actualizacion div h3 {
+  width: 90%;
+  margin-left: 5%;
+  border-bottom: 1px solid rgba(20, 205, 230, 0.856);
+  text-align: center;
+}
+.archivos_actualizacion .contenido_actualizacion div .contenido_scroll_excel {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+.archivos_actualizacion .contenido_actualizacion div .contenido_scroll_excel .file-container {
+  width: 90%;
+  margin-left: 5%;
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(250, 250, 250);
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  margin-bottom: 1px;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+.archivos_actualizacion .contenido_actualizacion div .contenido_scroll_excel .file-container:hover {
+  background-color: #0e9ca7;
+}
+.archivos_actualizacion .contenido_actualizacion div .contenido_scroll_excel .file-container:hover .cont_excel span {
+  color: white;
+}
+.archivos_actualizacion .contenido_actualizacion div .contenido_scroll_excel .file-container .img_excel {
+  padding: 15px;
+  width: 30%;
+  height: 90px;
+}
+.archivos_actualizacion .contenido_actualizacion div .contenido_scroll_excel .file-container .cont_excel {
+  width: 70%;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+}
+.archivos_actualizacion .contenido_actualizacion div .contenido_scroll_excel .file-container .cont_excel .cont_excel_header {
+  width: 100%;
+  height: 30%;
+  text-align: right;
+  padding-right: 20px;
+}
+.archivos_actualizacion .contenido_actualizacion div .contenido_scroll_excel .file-container .cont_excel .cont_excel_body {
+  width: 100%;
+  height: 40%;
+  text-align: left;
+  padding-left: 10px;
+}
+.archivos_actualizacion .contenido_actualizacion div .contenido_scroll_excel .file-container .cont_excel .cont_excel_footer {
+  width: 100%;
+  height: 30%;
+  padding-right: 20px;
+  text-align: right;
+}
+.archivos_actualizacion .contenido_actualizacion .archivos_usuarios {
+  border-left: 1px dashed #0e9ca7;
+  border-right: 1px dashed #0e9ca7;
+  height: 100%;
+}
+.archivos_actualizacion .contenido_actualizacion .archivos_inversiones {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  height: 100%;
+}
+.archivos_actualizacion .contenido_actualizacion .archivos_titulos {
+  border-bottom-right-radius: 10px;
+  height: 100%;
+}
+
+/*# sourceMappingURL=actualizaciones.css.map */

@@ -1,0 +1,141 @@
+$toogle_dashboard:#0e9ca7;
+$height_div_principal:500px;
+$heigth_document:90px;
+@mixin bordes() {
+
+    border-radius:10px;
+  
+  }
+  @mixin bordes_left() {
+      border-top-left-radius:10px;
+    
+    }
+    @mixin bordes_right() {
+      border-top-right-radius:10px;
+    
+    }
+    @mixin bordes_right_bottom() {
+      border-bottom-right-radius:10px;
+    
+    }
+    @mixin bordes_left_bottom() {
+        border-bottom-left-radius:10px;
+      
+      }
+.archivos_actualizacion{
+    width: 90%;
+    height: $height_div_principal;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    h1{
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+         color:rgba(20, 205, 230, 0.856)
+    }
+    .titulo_archivos_actualizacion{
+        width: 100%;
+        height: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $toogle_dashboard;
+
+        @include bordes_left();
+        @include bordes_right();
+        h3{
+            color: white;
+        }
+    }
+    .contenido_actualizacion{
+    width: 100%;
+    height: $height_div_principal;
+    text-align: center;
+    div{
+        float: left;
+        align-items: center;
+        width: 33.3%;
+        max-height: 89%;
+        text-align: center;
+        
+        h3{
+            width: 90%;
+            margin-left: 5%;
+            border-bottom: 1px solid rgba(20, 205, 230, 0.856);
+            text-align: center;
+        }
+        .contenido_scroll_excel{
+          width: 100%;
+            height: 100%;
+            overflow-y: auto;
+          .file-container{
+            width: 90%;
+            margin-left: 5%;
+            display: flex;
+            flex-direction: row;
+            background-color: rgb(250, 250, 250);
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            margin-bottom: 1px;
+          cursor: pointer;
+          transition: all 0.1s;
+         
+          &:hover{
+            background-color: $toogle_dashboard;
+            .cont_excel{
+              span{
+                color: white;
+              }
+            }
+          }
+          
+  
+           
+           .img_excel{
+            padding: 15px;
+            width: 30%;
+            height: $heigth_document;
+           } 
+           .cont_excel{
+            width: 70%;
+            height: $heigth_document;
+            display: flex;
+            flex-direction: column;
+           .cont_excel_header{
+            width: 100%;
+            height: 30%;
+            text-align: right;
+            padding-right:20px ;
+           }
+           .cont_excel_body{
+            width: 100%;
+            height: 40%;
+            text-align: left;
+            padding-left:10px ;
+           }
+           .cont_excel_footer{
+            width: 100%;
+            height: 30%;
+           padding-right:20px ;
+            text-align: right;
+           }
+           }
+          }
+        }
+        
+        
+    }
+    .archivos_usuarios{
+      border-left: 1px dashed $toogle_dashboard; 
+      border-right: 1px dashed $toogle_dashboard; 
+      height: 100%;
+    }
+   .archivos_inversiones{
+    border-bottom-right-radius:10px ;
+    @include bordes_left_bottom();
+    height: 100%;
+   }
+   .archivos_titulos{
+    @include bordes_right_bottom();
+    height: 100%;
+   }
+      
+    }
+}
