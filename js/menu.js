@@ -18,6 +18,7 @@ $(".menu-toggle").click(function () {
         $(".status_sesion").toggleClass("mobile-status-sesion-show");
     } else {
         $(".dashboard").toggleClass("dashboard-compact");
+        var a=2;
     }
 });
 
