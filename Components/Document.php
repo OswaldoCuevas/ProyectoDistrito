@@ -5,9 +5,13 @@ $id=$_POST['id'];
 $Document = new Document();
 $Document_Specific = $Document -> getDocument($id);
 $Type = $Document_Specific[0]['Document_Type'];
-
+switch ($Type) {
+    case "Títulos":?><script class="Script_Document_Type" src='js/DocumentTitle.js' type='module'></script><?php break;
+    case "Padrón de usuarios":?><script class="Script_Document_Type" src='js/DocumentUsers.js' type='module'></script><?php break;
+    case "Inversiones":?><script class="Script_Document_Type" src='js/DocumentInvestments.js' type='module'></script><?php break;
+}
 ?>
-<script class="Script_Document_Type" src='js/DocumentTitle.js' type='module'></script>
+
 
 <link rel="stylesheet" href="css/titulos.css">
 <input type="hidden" id="id_documento" value="<?php echo $id ?>">

@@ -223,6 +223,16 @@ create view view_titles_update as select            titles.Title_Id,
                                                         where titles.Title_Id = location_title.Title_Id
                                                         AND   titles.User_Id = users.Control_Num
                                                         AND location_title.Active = 1;
-
+Create view view_investments as  SELECT 
+                                                    users.Control_Num,
+                                                    investments.Investments_Id,
+                                                    users.Full_Name, 
+                                                    investments.Plot,
+                                                    investments.Cologne,
+                                                    investments.System_,
+                                                    investments.Hectare,
+                                                    investments.Investments_Date 
+                                                   from investments,users
+                                                    where investments.User_Id = users.Control_Num;  
 
 

@@ -48,12 +48,16 @@
         $consulta ="SELECT * FROM document_type_titles where Info_Id=$Info_Id;";
         return  json_encode($this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC));
       }
+      public function getUserSpecific($Info_Id){
+        $consulta ="SELECT * FROM document_users where Info_Id=$Info_Id;";
+        return  json_encode($this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC));
+      }
 
       public function getTitlesEspcific($search){
         return $this -> sistema -> query("SELECT * FROM document_info where Program = '$search';") -> fetch_all(MYSQLI_ASSOC);
       }
 
-      public function ShowUpdates($Document_Id,$User,$Cologne,$Plot,$Title_Number,$Initial_Date,$Water_Supply,$Longitude,$Latitude,$Validity,$Extend){
+      public function ShowUpdatesTitle($Document_Id,$User,$Cologne,$Plot,$Title_Number,$Initial_Date,$Water_Supply,$Longitude,$Latitude,$Validity,$Extend){
               
            $User            =        $User          != "" ? "LIKE '%$User%'":"IS NULL";
            $Cologne         =        $Cologne       != "" ? "LIKE '%$Cologne%'":"IS NULL";
@@ -83,21 +87,76 @@
                return  $this -> sistema -> query($cons) -> fetch_all(MYSQLI_ASSOC);
       
       }
+      public function ShowUpdatesInvestments($User,$Cologne,$Plot,$Hectare,$Investments_Date,$System_  ){
+              
+        $User                         =        $User                      != "" ? "LIKE '%$User%'":"IS NULL";
+        $Cologne                      =        $Cologne                   != "" ? "LIKE '%$Cologne%'":"IS NULL";
+        $Plot                         =        $Plot                      != "" ? "LIKE '%$Plot%'":"IS NULL";
+        $System_                      =        $System_                   != "" ? "LIKE '%$System_%'":"IS NULL";
+        $Hectare                      =         $Hectare                  != "" ? "LIKE '%$Hectare%'":"IS NULL";
+        $Investments_Date             =        $Investments_Date          != "" ? "LIKE '%$Investments_Date%'":"IS NULL";
+    
 
+         $cons =  "SELECT * FROM  view_investments where 
+             
+             Full_Name            $User
+         AND Cologne              $Cologne
+         AND Plot                 $Plot
+         AND System_              $System_
+         AND Hectare              $Hectare
+         AND Investments_Date     $Investments_Date
+   ;";
+   
+            return  $this -> sistema -> query($cons) -> fetch_all(MYSQLI_ASSOC);
+   
+   }
+      public function ShowUpdatesUser($Document_Id,$Full_Name,$Phone_Number,$Email,$RFC,$CURP){
+              
+        $User               =        $Full_Name     != "" ? "LIKE '%$Full_Name%'":"IS NULL";
+        $Phone_Number       =        $Phone_Number  != "" ? "LIKE '%$Phone_Number%'":"IS NULL";
+        $Email              =        $Email         != "" ? "LIKE '%$Email%'":"IS NULL";
+        $RFC                =        $RFC           != "" ? "LIKE '%$RFC%'":"IS NULL";
+        $CURP               =        $CURP          != "" ? "LIKE '%$CURP%'":"IS NULL";
+ 
+
+         $cons =  "SELECT * FROM  users where 
+             
+             Full_Name     $User
+         AND Phone_Number  $Phone_Number
+         AND Email         $Email
+         AND RFC           $RFC
+         AND CURP          $CURP
+         ;
+   ;";
+
+            return  $this -> sistema -> query($cons) -> fetch_all(MYSQLI_ASSOC);
+   
+   }
       public function setUsers(){
 
       }
 
-      public function getUsers(){
-
+      public function getUsers($id){
+        $consulta ="SELECT * FROM document_users where Document_Id='$id';";
+        return $this -> sistema -> query($consulta) -> num_rows < 1 ? 0 : $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
       }
-
+      public function searchUsers($id,$buscar){
+        $consulta ="SELECT * FROM document_users 
+        WHERE Document_Id='$id'
+        AND
+        (user 
+        LIKE '%$buscar%'
+        );";
+      return $this -> sistema -> query($consulta) -> num_rows < 1 ? 0 : $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
+    }
       public function serInvestments(){
-
+        
       }
 
-      public function getInvestments(){
-
+      public function getInvestments($id){
+        $consulta ="SELECT * FROM document_type_investments where Document_Id='$id';";
+        return $this -> sistema -> query($consulta) -> num_rows < 1 ? 0 : $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
+    
       }
 
       public function setDocument($name, $type, $year ){

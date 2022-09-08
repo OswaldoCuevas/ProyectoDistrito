@@ -7,7 +7,7 @@
     $(".index").hide();
     busqueda("");//se onsulta la información sin parametros
     var indexCarousel=0;
-    var ArrayListTitles = new _ArrayList.TypeTitle();
+    var ArrayListTitles = new _ArrayList.listDocument();
     var classTitle = new _Title.title();
     // ------------------- seccion de funciones ---------------------------
     function cambiarCaracter(CadenaAntigua,carcaterDeseado,caraterRemplazar){
@@ -84,7 +84,7 @@
             
     }
     function selected_elements_array(){
-       const array = ArrayListTitles.getArrayTitles_Number();
+       const array = ArrayListTitles.getArrayElements();
        for(const element of array){
             $(`#${element.getId_Info()}`).removeClass('selected').addClass('selected');
        }
@@ -554,7 +554,7 @@
                             
                             ElementsAddUpdate(id,$(`#${format_id(id,5)}`).val());
                          
-                          
+                            ElementsShowUpdate();
 
                             ;
     }
@@ -587,7 +587,7 @@
                     if( ElementExist (Id_Info) ){
                         dropTitle(Id_Info);
                     }else{
-                        ArrayListTitles.setArrayTitles_Number(Id_Info,Title);
+                        ArrayListTitles.setArrayElements(Id_Info,Title);
                       
 
                     }
@@ -599,15 +599,15 @@
                 }
                 const ElementsShowUpdate = () => { // muestra los elementos del arraylist
                     
-                    ArrayListTitles.getArrayTitles_Number().forEach(title => {
-                    console.log(`id: ${title.Id_Info} numero: ${title.Title_Number} posicion: ${ArrayListTitles.searchTitle(title.Id_Info)}`);
+                    ArrayListTitles.getArrayElements().forEach(title => {
+                    console.log(`id: ${title.Id_Info} numero: ${title.Elements} posicion: ${ArrayListTitles.searchTitle(title.Id_Info)}`);
                     
                 });
                 }
                 const ElementExist = Id_Info =>{
                     
                     var Existe=false;
-                   ArrayListTitles.getArrayTitles_Number().forEach(title => {
+                   ArrayListTitles.getArrayElements().forEach(title => {
                     if(title.Id_Info == Id_Info){
                         Existe=true;
                     }   
@@ -617,7 +617,7 @@
                 }
    
     const elementCarousel = (array,index)=> { // se crea el elemento de carousel y se meuestra 
-      const title=array[index].getTitle_Number();
+      const title=array[index].getElements();
       const id=array[index].getId_Info();
         var html = `
            <div class="container_update" id="${format_id(index,6)}">
@@ -748,7 +748,7 @@
                 if(carouselvalidity(array,indexCarousel,"izquierdo")){
                     indexCarousel--;
                     numCarousel(numCarousel)
-                    elementCarousel(ArrayListTitles.getArrayTitles_Number(),indexCarousel)
+                    elementCarousel(ArrayListTitles.getArrayElements(),indexCarousel)
                     $(`#${format_id(indexCarousel+1,6)}`).removeClass("").addClass("salida_por_derecha");
                     $(`#${format_id(indexCarousel,6)}`).removeClass("").addClass("entrada_por_izquierda");
                     $(".actualizar_body_next").prop("disabled",true);
@@ -766,7 +766,7 @@
                 if(carouselvalidity(array,indexCarousel,"derecho")){
                     indexCarousel++;
                     numCarousel(numCarousel)
-                    elementCarousel(ArrayListTitles.getArrayTitles_Number(),indexCarousel)
+                    elementCarousel(ArrayListTitles.getArrayElements(),indexCarousel)
                     $(`#${format_id(indexCarousel-1,6)}`).removeClass("").addClass("salida_por_izquierda");
                     $(`#${format_id(indexCarousel,6)}`).removeClass("").addClass("entrada_por_derecha");
                     $(".actualizar_body_next").prop("disabled",true);
@@ -784,7 +784,7 @@
         }
 
         function numCarousel()  {
-            $("#num_total").html(`${indexCarousel+1} de ${ArrayListTitles.getArrayTitles_Number().length}`);   
+            $("#num_total").html(`${indexCarousel+1} de ${ArrayListTitles.getArrayElements().length}`);   
         }
     }
     const title_update_document = data => {// toma los valores que se encontraron en documentos y los muestra en el carousel
@@ -1042,7 +1042,7 @@
                                
                     if (result.isConfirmed) {
                         if($("#input_search_user").val()!=""){
-                            const array_document_info = ArrayListTitles.getArrayTitles_Number();
+                            const array_document_info = ArrayListTitles.getArrayElements();
                             const Id_Info = array_document_info[indexCarousel].Id_Info;
                             const Value = $("#input_search_user").val();
 
@@ -1075,7 +1075,7 @@
     $(".seleccionar_todo").click(function(){
         $(`.seleccionar_todo`).removeClass("runing_animation").addClass("runing_animation_reves");
             var ids = [...document.querySelectorAll('.reg_sin_actualizar')].map(e => e.id);
-            ArrayListTitles.Titles_Number=[]
+            ArrayListTitles.Elements=[]
             var newElement=""
             for(var id of ids) 
                 {
@@ -1105,22 +1105,22 @@
         
         setTimeout(() => { $(`.selected`).removeClass("selected");},1000);
         setTimeout(() => { $(`.title_seleccionado`).removeClass("title_seleccionado").addClass("deseleccionar");},500);
-        setTimeout(() => {  ArrayListTitles.Titles_Number=[];$(`.seleccionar_todo`).removeClass("runing_animation_reves").addClass("runing_animation");},1300);
+        setTimeout(() => {  ArrayListTitles.Elements=[];$(`.seleccionar_todo`).removeClass("runing_animation_reves").addClass("runing_animation");},1300);
        
     }); 
         $(".actualizar_body_previous").click(function(){
-          carousel(ArrayListTitles.getArrayTitles_Number(),"izquierdo")
+          carousel(ArrayListTitles.getArrayElements(),"izquierdo")
         });
          
         $(".actualizar_body_next").click(function(){
           
-          carousel(ArrayListTitles.getArrayTitles_Number(),"derecho")
+          carousel(ArrayListTitles.getArrayElements(),"derecho")
         });
         $("#actualizar_show").click(function(){
-            if(ArrayListTitles.getArrayTitles_Number().length > 0){
-                elementCarousel(ArrayListTitles.getArrayTitles_Number(),indexCarousel)
+            if(ArrayListTitles.getArrayElements().length > 0){
+                elementCarousel(ArrayListTitles.getArrayElements(),indexCarousel)
                 $(".Actualizaciones").removeClass("salida_actualizar").addClass("entrada_actualizar");
-                $("#num_total").html(`${indexCarousel+1} de ${ArrayListTitles.getArrayTitles_Number().length}`);    
+                $("#num_total").html(`${indexCarousel+1} de ${ArrayListTitles.getArrayElements().length}`);    
             }
         
         });

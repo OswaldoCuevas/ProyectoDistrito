@@ -1,26 +1,27 @@
 import * as Document from "./Document.js";
 
-class TypeTitle {
-    Titles_Number = [];
+class listDocument{
+    Elements = [];
   
-    setArrayTitles_Number = (Id_Info,Title_Number) => {
-        this.Titles_Number.push(new Document.TypeTitle(Id_Info,Title_Number));
+    setArrayElements = (Id_Info,Elements) => {
+        this.Elements.push(new Document.Element(Id_Info,Elements));
     }
-    getArrayTitles_Number () {
-         return this.Titles_Number;   
+    getArrayElements () {
+         return this.Elements;   
     }
     
     dropTitle(id){
         
-        this.Titles_Number = this.Titles_Number.filter(word => word.Id_Info != id);
+        this.Elements = this.Elements.filter(word => word.Id_Info != id);
     }
     searchTitle(id) {
-        for(var i=0 ;i<this.Titles_Number.length;i++){
-            if(this.Titles_Number[i].Id_Info==id){
+        for(var i=0 ;i<this.Elements.length;i++){
+            if(this.Elements[i].Id_Info==id){
                 return i+1;
             }
         }
     }
 }
-export {TypeTitle};
+
+export {listDocument};
 

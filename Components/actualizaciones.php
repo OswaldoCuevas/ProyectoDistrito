@@ -47,13 +47,41 @@ import * as link from "./Modules/links.js";
         <div class="archivos_usuarios">
             <h3>Usuarios</h3>
             <div class="contenido_scroll_excel">
-               
+            <?php foreach($Document -> getDocumentUsers() as $filas){
+                    $Document_Id=$filas['Document_Id'];
+                    $Document_Name=$filas['Document_Name'];
+                    $Document_Year=$filas['Document_Year'];
+                ?>
+                    <div id="<?php echo $Document_Id?>" class="file-container">
+                        <div class="img_excel"> <img src="img/excel_alert.png" alt="<?php echo $Document_Name?>" width="60px" height="60px"> </div>
+                        <div class="cont_excel">
+                            
+                            <div class="cont_excel_header"><span><i class="fa-solid fa-xmark"></i></span></div>
+                            <div class="cont_excel_body"><span><?php echo $Document_Name?></span></div>
+                            <div class="cont_excel_footer"><span> Año: <?php echo  $Document_Year?></span></div>
+                        </div>	
+                    </div>  
+                <?php }?>
             </div>
         </div>
         <div class="archivos_inversiones">
             <h3>Inversiones</h3>
             <div class="contenido_scroll_excel">
-                
+            <?php foreach($Document -> getDocumentInvestments() as $filas){
+                    $Document_Id=$filas['Document_Id'];
+                    $Document_Name=$filas['Document_Name'];
+                    $Document_Year=$filas['Document_Year'];
+                ?>
+                    <div id="<?php echo $Document_Id?>" class="file-container">
+                        <div class="img_excel"> <img src="img/excel_alert.png" alt="<?php echo $Document_Name?>" width="60px" height="60px"> </div>
+                        <div class="cont_excel">
+                            
+                            <div class="cont_excel_header"><span><i class="fa-solid fa-xmark"></i></span></div>
+                            <div class="cont_excel_body"><span><?php echo $Document_Name?></span></div>
+                            <div class="cont_excel_footer"><span> Año: <?php echo  $Document_Year?></span></div>
+                        </div>	
+                    </div>  
+                <?php }?>
             </div>
         </div>
     </div>

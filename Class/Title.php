@@ -4,15 +4,15 @@
         public function __construct(){
             parent::Conexion();
         }
-       public function getTitleSpecific($Title_Number){
-        $consulta ="SELECT * FROM view_titles_update where Title_Number='$Title_Number';";
-        return  mysqli_num_rows(mysqli_query($this -> sistema,$consulta)) <= 0 ? 0 : json_encode($this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC));
-        
-       }
-       public function updateTitle($Title_Id, $Encabezado, $Value){
-        $Value = $Value == "Sin registrar" ? "NULL" : "'$Value'";
-        $this -> sistema -> query("UPDATE titles SET $Encabezado = $Value WHERE (Title_Id = '$Title_Id');");
-       }
+      public function getTitleSpecific($Title_Number){
+      $consulta ="SELECT * FROM view_titles_update where Title_Number='$Title_Number';";
+      return  mysqli_num_rows(mysqli_query($this -> sistema,$consulta)) <= 0 ? 0 : json_encode($this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC));
+      
+      }
+      public function updateTitle($Title_Id, $Encabezado, $Value){
+      $Value = $Value == "Sin registrar" ? "NULL" : "'$Value'";
+      $this -> sistema -> query("UPDATE titles SET $Encabezado = $Value WHERE (Title_Id = '$Title_Id');");
+      }
       public function existe($title){
         $consulta = "SELECT * FROM view_titles_update where Title_Number like '%$title%';";
         $fetch = $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
