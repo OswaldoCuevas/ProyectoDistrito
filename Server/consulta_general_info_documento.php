@@ -68,10 +68,10 @@
 			}	 
 			}
 		}else{
-			$array = $Document->searchUsers($id, $buscar);
+			$array = $Document->searchInvestments($id, $buscar);
 			if($array != 0){
 				foreach($array as $registro){
-					user($registro,$Document);
+					inversion($registro,$Document);
 				}
 			}
 			

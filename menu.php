@@ -1,5 +1,11 @@
 <?php
-$section = $_GET['section'];
+$section = isset($_GET['section'])?$_GET['section']:"home";
+session_start();
+if (!isset($_SESSION['Control_Num'])) {
+    header('location: index.html');
+}else{
+    $Name = $_SESSION['Full_Name'];
+}
 
 ?>
 <!DOCTYPE html>
@@ -23,26 +29,26 @@ $section = $_GET['section'];
 
         <header>
             <a class="menu-toggle" id="desplegar" style="color:white; cursor:pointer"> <i class="fas fa-bars"></i></a>
-            <a href="#"class="brand-logo"><i class="fa-solid fa-droplet"> </i> <span>Distrito 066</span></a>
-      
+            <a href="#"class="brand-logo"> <span><i class="fa-solid fa-droplet"> </i> Distrito 066</span></a>
+            
         </header>
         
             <nav class="dashboard-nav-list">
-            <a href="menu.php?section=home" class="dashboard-nav-item " id="home"><i class="fas fa-home"></i> Inicio</a>
-            <a href="menu.php?section=titulos" class="dashboard-nav-item " id="titulos"><i class="fa-solid fa-scroll"> </i> Títulos</a>
-            <a href="menu.php?section=colonias" class="dashboard-nav-item " id="colonias"><i class="fa-solid fa-layer-group"> </i>Colonias </a>
-            <a href="menu.php?section=inversiones" class="dashboard-nav-item " id="inversiones"><i class="fa-solid fa-handshake-simple"> </i>Inversiones </a>
-            <a href="menu.php?section=actualizaciones" class="dashboard-nav-item " id="actualizaciones"><i class="fa-solid fa-arrow-down"> </i> Actualizaciones  </a>
-            <a href="menu.php?section=cargarArchivo" class="dashboard-nav-item " id="cargarArchivo"><i class="fa-solid fa-arrow-up-from-bracket"> </i> Cargar archivo </a>
+            <a href="menu.php" class="dashboard-nav-item " id="home"><span><i class="fas fa-home"></i> Inicio</span></a>
+            <a href="menu.php?section=titulos" class="dashboard-nav-item " id="titulos"><span><i class="fa-solid fa-scroll"> </i> Títulos </a>
+            <a href="menu.php?section=inversiones" class="dashboard-nav-item " id="inversiones"><span><i class="fa-solid fa-handshake-simple"> </i> Inversiones </span> </a>
+            <a href="menu.php?section=actualizaciones" class="dashboard-nav-item " id="actualizaciones"><span><i class="fa-solid fa-arrow-down"> </i> Actualizaciones </span> </a>
+            <a href="menu.php?section=cargarArchivo" class="dashboard-nav-item " id="cargarArchivo"><span><i class="fa-solid fa-arrow-up-from-bracket"> </i> Cargar archivo</span> </a>
+            <a href="menu.php?section=exportarDatos" class="dashboard-nav-item " id="exportarDatos"><span><i class="fa-solid fa-arrow-up-from-bracket"> </i> Exportar Datos</span> </a>
             <div class='dashboard-nav-dropdown' >
-                <a href="#!" id="transferencias" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-photo-video"> </i> Transferencias </a>
+                <a href="#!" id="transferencias" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><span><i class="fas fa-photo-video"> </i> Transferencias </span></a>
                 <div class='dashboard-nav-dropdown-menu' >
                     <a href="menu.php?section=option5" class="dashboard-nav-dropdown-item" id="option5">Titulos</a>
                     <a href="menu.php?section=option6" class="dashboard-nav-dropdown-item" id="option6">Temporales</a>
                 </div>
             </div>
             <div class='dashboard-nav-dropdown' >
-                <a href="#" id="usuarios" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-users"> </i>  Usuarios </a>
+                <a href="#" id="usuarios" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><span><i class="fas fa-users"> </i>  Usuarios </span></a>
                 <div class='dashboard-nav-dropdown-menu' >
                     <a href="menu.php?section=option7" class="dashboard-nav-dropdown-item" id="option7">Administradores</a>
                     <a href="menu.php?section=padronUsuarios" class="dashboard-nav-dropdown-item" id="padronUsuarios">Padrón de usuarios</a>
@@ -52,17 +58,20 @@ $section = $_GET['section'];
             <div class="nav-item-divider">
 
             </div>
-          <a href="#" class="dashboard-nav-item" id="option21"><i class="fas fa-sign-out-alt"> </i> Cerrar sesión </a>
+          <a href="Server/Cerrar_Sesion.php" class="dashboard-nav-item" id="option21"><span><i class="fas fa-sign-out-alt"> </i> Cerrar sesión</span> </a>
         </nav>
     </div>
     <div class='dashboard-app'>
         <header class='dashboard-toolbar'>
-            <a href="#" class="menu-toggle"> <i class="fas fa-bars"></i></a>
+            <a href="#" class="menu-toggle " id="toglee"> <i class="fas fa-bars"></i></a>
             
+            <div class="section">
+               
+            </div>
         </header>
         <div class="status_sesion">
-            <a href="#" class="info-sesion"> <span>Administrador</span> </a>
-            <a href="#" class ="info-sesion2"> <i class=" fa-solid fa-circle-user fa-2x"></i></a>
+            <a href="#" class="info-sesion"> <span><?php echo $Name ?></span> </a>
+            <a href="#" class ="info-sesion2"> <span> <i class=" fa-solid fa-circle-user fa-2x"></i></span></a>
         </div>
             
       

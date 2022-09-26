@@ -146,6 +146,31 @@ h1, .h1 {
   flex-grow: 2;
   padding: 25px;
 }
+.menu-previous:hover, .menu-previous:active, .menu-previous:focus {
+  text-decoration: none;
+  color: #0e9ca7;
+}
+.section{
+  margin-left: 30px;
+  margin-top: -10px;
+  display : flex;
+}
+.menu-previous {
+  font-size: 20px;
+  color: #0e9ca7;
+  margin-right: 22px;
+  margin-top: 10px;
+  height: min-content;
+
+}
+.text_section{
+  color: #0e9ca7;
+  font-size: 20px;
+  margin-top: 10px;
+  height: min-content;
+
+
+}
 
 .dashboard-nav {
   min-width: 238px;
@@ -244,7 +269,7 @@ h1, .h1 {
 }
 
 .dashboard-nav-item {
-  min-height: 56px;
+  min-height: 46px;
   padding: 8px 20px 8px 70px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -263,6 +288,7 @@ h1, .h1 {
   font-size: 19px;
   margin-left: -40px;
   transition: all 500ms ease;
+ 
 }
 
 .dashboard-nav-item:hover {

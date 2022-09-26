@@ -44,7 +44,7 @@ function busqueda(buscar){
                 $('.container-tab').hide(); 
             },
             success: data => {
-                alert(data);
+           
                 if(data.length!=0){
                     html+= data + "</tbody>";
                     $('.table').html(html);
@@ -129,102 +129,129 @@ function selected_elements_array(){
  }
  function comparaciones(){
 
-    const input_telefono_update             = $("#input_telefono_update")        .val();
-    const  input_RFC_update                 = $("#input_RFC_update")             .val();
-    const  input_Correo_update              = $("#input_correo_update")          .val();
-    const  input_CURP_update                = $("#input_CURP_update")            .val();
+    const input_nombre_update               = $("#input_nombre_update")          .val();
+    const  input_colonia_update              = $("#input_colonia_update")         .val();
+    const  input_lote_update                = $("#input_lote_update")            .val();
+    const  input_sistema_update             = $("#input_sistema_update")         .val();
+    const  input_hectarea_update            = $("#input_hectarea_update")        .val();
+    const  input_año_update                 = $("#input_año_update")             .val();
 
-
-    const input_telefono                    = $("#input_telefono")               .val();
-    const  input_RFC                        = $("#input_RFC")                    .val();
-    const  input_Correo                     = $("#input_correo")                 .val();
-    const  input_CURP                       = $("#input_CURP")                   .val();
+    const input_nombre                      = $("#input_nombre") .val();
+    const  input_colonia                     = $("#input_colonia")                .val();
+    const  input_lote                       = $("#input_lote")                   .val();
+    const  input_sistema                    = $("#input_sistema")                .val();
+    const  input_hectarea                   = $("#input_hectarea")               .val();
+    const  input_año                        = $("#input_año")                    .val();
 
      // transfersTitle()
-     const Iguales_Telefono          = input_telefono_update     == input_telefono      ? true:false;
-     const Iguales_RFC               = input_RFC_update          == input_RFC           ? true:false;
-     const Iguales_Correo            = input_Correo_update       ==input_Correo         ? true:false;
-     const Iguales_CURP              = input_CURP_update         ==input_CURP           ? true:false;
-
-     var html=``;
-Iguales_CURP
    
-     if(!Iguales_Telefono){
+     const Iguales_Colonia = input_colonia_update == input_colonia ? true:false;
+     const Iguales_Lote = input_lote_update == input_lote ? true:false;
+     const Iguales_Sistema = input_sistema_update == input_sistema ? true:false;
+     const Iguales_Hectarea = input_hectarea_update ==  input_hectarea ? true:false;
+     const Iguales_Año = input_año_update == input_año ? true:false;
+     const Iguales_Nombres =  input_nombre_update == input_nombre ? true:false;
+     var html=``;
+     if(!Iguales_Nombres){
+        html += `<table class="table" style="margin-top:10px">
+            <thead class="thead-dark">
+                <tr>
+                <th colspan="2">Usuario</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="color:blue">${input_nombre_update}</td>
+                </tr>
+            </tbody>
+        </table> `;
+    }
+    if(!Iguales_Colonia || !Iguales_Lote ){
+        html += `<table class="table" style="margin-top:10px" >
+            <thead class="thead-dark">
+                <tr>
+                <th colspan="3">Agregar ubicación</th>
+                </tr>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Ubicación anterior</th>
+                    <th scope="col">Ubicación nueva</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Colonia</th>
+                    <td>${input_colonia}</td>
+                    <td style="color:blue">${input_colonia_update}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Lote</th>
+                    <td>${input_lote}</td>
+                    <td style="color:blue">${input_lote_update}</td>
+                </tr>
+                
+                
+            </tbody>
+        </table> `;
+    }
+     if(!Iguales_Sistema){
          html += `<table class="table" style="margin-top:10px">
              <thead class="thead-dark">
                  <tr>
-                 <th colspan="2">Nuevo teléfono</th>
+                 <th colspan="2">Nuevo sistema</th>
                  </tr>
                  <tr>
-                     <th scope="col">teléfono previo</th>
-                     <th scope="col">teléfono nuevo</th>
+                     <th scope="col">sistema previo</th>
+                     <th scope="col">sistema nuevo</th>
                  </tr>
              </thead>
              <tbody>
                  <tr>
-                     <td>${input_telefono}</td>
-                     <td style="color:blue">${input_telefono_update}</td>
+                     <td>${input_sistema}</td>
+                     <td style="color:blue">${input_sistema_update}</td>
                  </tr>
              </tbody>
          </table> `;
      }
-     if(!Iguales_RFC){
+     if(!Iguales_Hectarea){
+        html += `<table class="table" style="margin-top:10px">
+            <thead class="thead-dark">
+                <tr>
+                <th colspan="2">Nuevas hectareas</th>
+                </tr>
+                <tr>
+                    <th scope="col">Hectareas previas</th>
+                    <th scope="col">Hectareas nuevas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>${input_hectarea}</td>
+                    <td style="color:blue">${input_hectarea_update}</td>
+                </tr>
+            </tbody>
+        </table> `;
+     }
+     if(!Iguales_Año){
          html += `<table class="table" style="margin-top:10px">
              <thead class="thead-dark">
                  <tr>
-                 <th colspan="2">Nuevo RFC</th>
+                 <th colspan="2">Nuevo año</th>
                  </tr>
                  <tr>
-                     <th scope="col">Antiguo RFC</th>
-                     <th scope="col">Nuevo RFC</th>
+                     <th scope="col">Antiguo año</th>
+                     <th scope="col">Nuevo año</th>
                  </tr>
              </thead>
              <tbody>
                  <tr>
-                     <td>${input_RFC}</td>
-                     <td style="color:blue">${input_RFC_update}</td>
+                     <td>${input_año}</td>
+                     <td style="color:blue">${input_año_update}</td>
                  </tr>
              </tbody>
          </table> `;
      }
-     if(!Iguales_Correo){
-         html += `<table class="table" style="margin-top:10px">
-             <thead class="thead-dark">
-                 <tr>
-                 <th colspan="2">Nuevo correo</th>
-                 </tr>
-                 <tr>
-                     <th scope="col">Antiguo correo</th>
-                     <th scope="col">Nuevo correo</th>
-                 </tr>
-             </thead>
-             <tbody>
-                 <tr>
-                     <td>${input_Correo}</td>
-                     <td style="color:blue">${input_Correo_update}</td>
-                 </tr>
-             </tbody>
-         </table> `;
-     }
-     if(!Iguales_CURP){
-         html += `<table class="table" style="margin-top:10px">
-             <thead class="thead-dark">
-                 <tr>
-                 <th colspan="2">Cambio de Dotación</th>
-                 </tr>
-                 <tr>
-                     <th scope="col">Antigua</th>
-                     <th scope="col">Nueva</th>
-                 </tr>
-             </thead>
-             <tbody>
-                 <tr>
-                     <td>${input_CURP}</td>
-                     <td style="color:blue">${input_CURP_update}</td>
-                 </tr>
-             </tbody>
-         </table> `;
-     }
+ 
 
      Swal.fire({
                  title: `Actualizaciones para usuario <b>${ $("#input_nombre_update").val() } </b>`,
@@ -237,25 +264,11 @@ Iguales_CURP
       
     
   
-     if(!Iguales_Telefono){
+     
    
-     $("#input_telefono").val($("#input_telefono_update").val());
-         UpdateInfoUser('Phone_Number',input_telefono_update )
-     }
-     if(!Iguales_RFC){
-      $("#input_RFC").val($("#input_RFC_update").val());
-         UpdateInfoUser('RFC',input_RFC_update)
-     }
-     if(!Iguales_Correo){
-  
-      $("#input_correo").val( $("#input_correo_update").val());
-         UpdateInfoUser('Email',input_Correo_update)
-     }
-     if(!Iguales_CURP){
-      
-         $("#input_CURP").val($("#input_CURP_update").val());
-         UpdateInfoUser('CURP',input_CURP_update)
-     }  
+         UpdateInfoUser( )
+    
+     
                      
                  }
              });
@@ -289,22 +302,39 @@ Iguales_CURP
          success: data => {lottiesSuccessActives ();}
      });
  }
- const UpdateInfoUser = (Encabezado,value) =>{
+ const UpdateInfoUser = () =>{
     
 
-     
-     const data = {  'User_Id'      :       classTitle.getUser_Id(),
-                     'Encabezado'    :       Encabezado,
-                     'Value'         :       value }; 
+    const  Cologne              = $("#input_colonia_update")         .val();
+    const  Plot               = $("#input_lote_update")            .val();
+    const  System_             = $("#input_sistema_update")         .val();
+    const  Hectare            = $("#input_hectarea_update")        .val();
+    const  Investments_Date                 = $("#input_año_update")             .val();
+     const data = {  'User_Id'      :        classTitle.getUser_Id(),
+                    'Cologne'             :   Cologne             ,
+                    'Plot'                :   Plot                ,
+                    'System_'             :   System_             ,
+                    'Hectare'             :   Hectare             ,
+                    'Investments_Date'    :   Investments_Date    ,
+                }; 
      $.ajax({
-         url : `${link.Server}updateInfoUser.php`,
+         url : `${link.Server}updateInfoInvestments.php`,
          data : data,
          type : 'POST',
-         success: data => {lottiesSuccessActives ();}
+         success: data => {
+            $("#input_nombre")       .val($("#input_nombre_update")       .val());
+            $("#input_colonia")     .val(Cologne);
+            $("#input_lote")          .val(Plot);
+            $("#input_hectarea")       .val(Hectare);
+            $("#input_sistema")         .val(System_);
+            $("#input_año")         .val(Investments_Date);
+            lottiesSuccessActives();
+           }
      });
      
      
  }
+
  const addNewTitle = (user_id, title_number, water_supply, initial_date, validity, extend, cologne, plot, longitude, latitude,tenant) => {
      const data = { 
                      'user_id'       :   user_id        ,       'title_number'  :   title_number     ,
@@ -520,17 +550,20 @@ Iguales_CURP
                              <div class="titulos_update"><label for="input_nombre">Nombre de Usuario</label></div>
                              <div class="content_input_update"><input id="input_nombre"        name="input_nombre"         type="text"     class="input_user_update" value="Sin registrar" disabled></div>
 
-                             <div class="titulos_update"><label for="input_RFC">RFC</label></div>
-                             <div class="content_input_update"><input id="input_RFC"           name="input_RFC"            type="text"     class="input_user_update" value="Sin registrar" disabled></div>
+                             <div class="titulos_update"><label for="input_lote">Lote</label></div>
+                             <div class="content_input_update"><input id="input_lote"           name="input_lote"            type="text"     class="input_user_update" value="Sin registrar" disabled></div>
 
-                             <div class="titulos_update"><label for="input_CURP">CURP</label></div>
-                             <div class="content_input_update"><input id="input_CURP"  name="input_CURP"   type="text"     class="input_user_update" value="Sin registrar" disabled></div>
+                             <div class="titulos_update"><label for="input_colonia">Colonia</label></div>
+                             <div class="content_input_update"><input id="input_colonia"  name="input_colonia"   type="text"     class="input_user_update" value="Sin registrar" disabled></div>
 
-                             <div class="titulos_update"><label for="input_telefono">Teléfono</label></div>
-                             <div class="content_input_update"><input id="input_telefono"        name="input_telefono"         type="text"     class="input_user_update" value="Sin registrar" disabled></div>
+                             <div class="titulos_update"><label for="input_sistema">Sistema</label></div>
+                             <div class="content_input_update"><input id="input_sistema"        name="input_sistema"         type="text"     class="input_user_update" value="Sin registrar" disabled></div>
 
-                             <div class="titulos_update"><label for="input_correo">Correo</label></div>
-                             <div class="content_input_update"><input id="input_correo"       name="input_correo"        type="text"     class="input_user_update" value="Sin registrar" disabled></div>
+                             <div class="titulos_update"><label for="input_hectarea">Hectarea</label></div>
+                             <div class="content_input_update"><input id="input_hectarea"       name="input_hectarea"        type="text"     class="input_user_update" value="Sin registrar" disabled></div>
+
+                             <div class="titulos_update"><label for="input_año">Año</label></div>
+                             <div class="content_input_update"><input id="input_año"       name="input_año"        type="text"     class="input_user_update" value="Sin registrar" disabled></div>
 
                              </div>
                      </div>
@@ -548,29 +581,32 @@ Iguales_CURP
                          </div>
                          <div  class="class_info_user">
                      
-                        
                          <div class="titulos_update"><label for="input_nombre_update">Nombre de Usuario</label></div>
                          <div class="content_input_update"><input id="input_nombre_update"        name="input_nombre_update"         type="text"     class="input_user_update" value="Sin registrar" disabled></div>
 
-                         <div class="titulos_update"><label for="input_RFC_update">RFC</label></div>
-                         <div class="content_input_update"><input id="input_RFC_update"           name="input_RFC_update"            type="text"     class="input_user_update" value="Sin registrar" disabled></div>
+                         <div class="titulos_update"><label for="input_lote_update">Lote</label></div>
+                         <div class="content_input_update"><input id="input_lote_update"           name="input_lote_update"            type="text"     class="input_user_update" value="Sin registrar" disabled></div>
 
-                         <div class="titulos_update"><label for="input_CURP_update">CURP</label></div>
-                         <div class="content_input_update"><input id="input_CURP_update"  name="input_CURP_update"   type="text"     class="input_user_update" value="Sin registrar" disabled></div>
+                         <div class="titulos_update"><label for="input_colonia_update">Colonia</label></div>
+                         <div class="content_input_update"><input id="input_colonia_update"  name="input_colonia_update"   type="text"     class="input_user_update" value="Sin registrar" disabled></div>
 
-                         <div class="titulos_update"><label for="input_telefono_update">Teléfono</label></div>
-                         <div class="content_input_update"><input id="input_telefono_update"        name="input_telefono_update"         type="text"     class="input_user_update" value="Sin registrar" disabled></div>
+                         <div class="titulos_update"><label for="input_sistema_update">Sistema</label></div>
+                         <div class="content_input_update"><input id="input_sistema_update"        name="input_sistema_update"         type="text"     class="input_user_update" value="Sin registrar" disabled></div>
 
-                         <div class="titulos_update"><label for="input_correo_update">Correo</label></div>
-                         <div class="content_input_update"><input id="input_correo_update"       name="input_correo_update"        type="text"     class="input_user_update" value="Sin registrar" disabled></div>
-</div>
-                     </div>
+                         <div class="titulos_update"><label for="input_hectarea_update">Hectarea</label></div>
+                         <div class="content_input_update"><input id="input_hectarea_update"       name="input_hectarea_update"        type="text"     class="input_user_update" value="Sin registrar" disabled></div>
+
+                         <div class="titulos_update"><label for="input_año_update">Año</label></div>
+                         <div class="content_input_update"><input id="input_año_update"       name="input_año_update"        type="text"     class="input_user_update" value="Sin registrar" disabled></div>
+
+                         </div>
                  </div>
+             </div>
         `; 
      
         $(".actualizar_body_actual").append(html);
         setTimeout(() => {title_update_document  ({'Id_Info':id});
-                          title_update           ({'User':title});
+                          
                           $(".class_info_user").scroll(function() {
                             const valor = $(".class_info_user").scrollTop();
                              $(".class_info_user").scrollTop(valor);
@@ -638,7 +674,7 @@ Iguales_CURP
  const title_update_document = data => {// toma los valores que se encontraron en documentos y los muestra en el carousel
       $.ajax({
          
-         url : `${link.Server}consult_update_user.php`,
+         url : `${link.Server}consult_update_investments.php`,
          data : data,
          type : 'POST',
          beforeSend: function () {
@@ -648,18 +684,22 @@ Iguales_CURP
       
              var json = JSON.parse(data)
              
-             const Phone_Number             =    json[0].Phone_Number      == null ? "Sin registrar":json[0].Phone_Number;
+            
              const User                     =    json[0].User              == null ? "Sin registrar":json[0].User;
-             const RFC                      =    json[0].RFC               == null ? "Sin registrar":json[0].RFC;
-             const Email                    =    json[0].Email             == null ? "Sin registrar":json[0].Email;
-             const CURP                     =    json[0].CURP              == null ? "Sin registrar":json[0].CURP;
+             const Cologne                    =    json[0].Cologne               == null ? "Sin registrar":json[0].Cologne;
+             const Plot                     = json[0].Plot == null ? "Sin registrar":json[0].Plot;
+             const System_ = json[0].System_ == null ? "Sin registrar":json[0].System_;
+             const Hectare                      =    json[0].Hectare               == null ? "Sin registrar":json[0].Hectare;
+             const Investments_Date                      =    json[0].Investments_Date               == null ? "Sin registrar":json[0].Investments_Date;
 
 
              $("#input_nombre_update")       .val(User);
-             $("#input_telefono_update")     .val(Phone_Number);
-             $("#input_RFC_update")          .val(RFC);
-             $("#input_correo_update")       .val(Email);
-             $("#input_CURP_update")         .val(CURP);
+             $("#input_colonia_update")     .val(Cologne);
+             $("#input_lote_update")          .val(Plot);
+             $("#input_hectarea_update")       .val(Hectare);
+             $("#input_sistema_update")         .val(System_);
+             $("#input_año_update")         .val(Investments_Date);
+             title_update           ({'User':User,'Cologne':Cologne,'Plot':Plot,"Investments_Date":Investments_Date});
          },   
          error : function(jqXHR, status, error) {
              alert('Disculpe, existió un problema');
@@ -669,29 +709,32 @@ Iguales_CURP
  const title_update = data => {// toma los valores que se encontraron en la base de datos y los muestra en el carousel
      $.ajax({
          
-         url : `${link.Server}consult_update_user.php`,
+         url : `${link.Server}consult_update_investments.php`,
          data : data,
          type : 'POST',
          beforeSend: function () {
              
          },
          success: data => {
+            
              if(data!=0){
                 var json = JSON.parse(data)
              
-                const Phone_Number             =    json[0].Phone_Number      == null ? "Sin registrar":json[0].Phone_Number;
+             
                 const Full_Name                =    json[0].Full_Name              == null ? "Sin registrar":json[0].Full_Name;
-                const RFC                      =    json[0].RFC               == null ? "Sin registrar":json[0].RFC;
-                const Email                    =    json[0].Email             == null ? "Sin registrar":json[0].Email;
-                const CURP                     =    json[0].CURP              == null ? "Sin registrar":json[0].CURP;
+                const Cologne                      =    json[0].Cologne               == null ? "Sin registrar":json[0].Cologne;
+                const Plot = json[0].Plot == null ? "Sin registrar":json[0].Plot;
+                const System_ =    json[0].System_               == null ? "Sin registrar":json[0].System_;
+                const Hectare                      = json[0].Hectare               == null ? "Sin registrar":json[0].Hectare;
+                const Investments_Date                      =    json[0].Investments_Date               == null ? "Sin registrar":json[0].Investments_Date;
    
-   
+               
                 $("#input_nombre")       .val(Full_Name);
-                $("#input_telefono")     .val(Phone_Number);
-                $("#input_RFC")          .val(RFC);
-                $("#input_correo")       .val(Email);
-                $("#input_CURP")         .val(CURP);
-   
+                $("#input_colonia")     .val(Cologne);
+                $("#input_lote")          .val(Plot);
+                $("#input_hectarea")       .val(Hectare);
+                $("#input_sistema")         .val(System_);
+                $("#input_año")         .val(Investments_Date);
              }else{
                
            
@@ -708,16 +751,18 @@ Iguales_CURP
  function lottiesSuccessActives ( )  {
               //Muestra si el usuario ya está actualizado con loties
      const input_nombre_update               = $("#input_nombre_update")          .val();
-     const input_telefono_update             = $("#input_telefono_update")        .val();
-     const  input_RFC_update                 = $("#input_RFC_update")             .val();
-     const  input_Correo_update              = $("#input_correo_update")          .val();
-     const  input_CURP_update                = $("#input_CURP_update")            .val();
+     const input_colonia_update              = $("#input_colonia_update")         .val();
+     const  input_lote_update                = $("#input_lote_update")            .val();
+     const  input_sistema_update             = $("#input_sistema_update")         .val();
+     const  input_hectarea_update            = $("#input_hectarea_update")        .val();
+     const  input_año_update                 = $("#input_año_update")             .val();;
 
      const input_nombre                      = $("#input_nombre")                 .val();
-     const input_telefono                    = $("#input_telefono")               .val();
-     const  input_RFC                        = $("#input_RFC")                    .val();
-     const  input_Correo                     = $("#input_correo")                 .val();
-     const  input_CURP                       = $("#input_CURP")                   .val();
+     const input_colonia                     = $("#input_colonia")                .val();
+     const  input_lote                       = $("#input_lote")                   .val();
+     const  input_sistema                    = $("#input_sistema")                .val();
+     const  input_hectarea                   = $("#input_hectarea")               .val();
+     const  input_año                        = $("#input_año")                    .val();
 
     
      $(".lottie-player-success").remove();
@@ -725,12 +770,12 @@ Iguales_CURP
      const lottieUpdate = `<lottie-player  src="animations/update_user.json"  background="transparent"  speed="0.25"   autoplay></lottie-player>`;
      var update = true;
      
-     if(input_nombre    ==  input_nombre_update)                    {       $("#input_nombre")      .after(lottie);     }else{update = false;}
-     if(input_telefono  ==  input_telefono_update)                  {       $("#input_telefono")    .after(lottie);     }else{update = false;}
-     if(input_CURP      ==  input_CURP_update)                      {       $("#input_CURP")        .after(lottie);     }else{update = false;}
-     if(input_RFC       ==  input_RFC_update)                       {       $("#input_RFC")         .after(lottie);     }else{update = false;}
-     if(input_Correo    ==  input_Correo_update)                    {       $("#input_correo")      .after(lottie);     }else{update = false;}                      
-                                             
+     if(input_nombre    ==  input_nombre_update)                   {       $("#input_nombre")      .after(lottie);     }else{update = false;}
+     if(input_colonia  ==  input_colonia_update)                   {       $("#input_colonia")    .after(lottie);     }else{update = false;}
+     if(input_lote      ==  input_lote_update)                     {       $("#input_lote")        .after(lottie);     }else{update = false;}
+     if(input_sistema       ==  input_sistema_update)              {       $("#input_sistema")         .after(lottie);     }else{update = false;}
+     if(input_hectarea    ==  input_hectarea_update)               {       $("#input_hectarea")      .after(lottie);     }else{update = false;}                      
+     if(input_año       == input_año_update)                       {       $("#input_año")         .after(lottie);     }else{update = false;}                                        
      if(update == true){
          $(".player_lottie").html(lottieUpdate);
          $(".status_update").html("Actualizado");

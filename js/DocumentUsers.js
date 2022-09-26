@@ -336,22 +336,6 @@ Iguales_CURP
          });
      
  }
- const noFoundTitle = title =>{
-     const $msg=`
-
-     `;
-     Swal.fire({
-                 title: `Título <b>${title}</b> no encontrado ¿Desea registrarlo?`,
-                 icon: 'question',
-                 showDenyButton: true,
-                 confirmButtonText: 'Confirmar',
-                 denyButtonText: `Cancelar`,
-             }).then((result) => {
-                 if(result.isConfirmed){
-                     switRegisterTitle(title)
-                 }
-             });
- }
  const switRegisterTitle = title =>{
      
      const $msg=`

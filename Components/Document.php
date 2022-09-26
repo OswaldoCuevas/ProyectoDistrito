@@ -12,7 +12,10 @@ switch ($Type) {
 }
 ?>
 
-
+<script type="module">
+      import * as link from "./Modules/links.js";
+    link.section("actualizaciones","");
+</script>
 <link rel="stylesheet" href="css/titulos.css">
 <input type="hidden" id="id_documento" value="<?php echo $id ?>">
 <div class="container-tables-titulos">

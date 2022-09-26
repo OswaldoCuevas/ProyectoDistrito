@@ -222,7 +222,8 @@ create view view_titles_update as select            titles.Title_Id,
                                                     from titles,users,location_title 
                                                         where titles.Title_Id = location_title.Title_Id
                                                         AND   titles.User_Id = users.Control_Num
-                                                        AND location_title.Active = 1;
+                                                        AND location_title.Active = 1
+                                                        AND users.Activo = 1;
 Create view view_investments as  SELECT 
                                                     users.Control_Num,
                                                     investments.Investments_Id,
@@ -235,4 +236,5 @@ Create view view_investments as  SELECT
                                                    from investments,users
                                                     where investments.User_Id = users.Control_Num;  
 
-
+Create view Padron_de_Usuarios as SELECT * FROM users WHERE Activo = 1 AND Type_User != 'Admin' AND Type_User != 'Privileged_Admin';
+Create view Administradores as SELECT * FROM users WHERE Activo = 1 AND Type_User == 'Admin' or Type_User == 'Privileged_Admin';

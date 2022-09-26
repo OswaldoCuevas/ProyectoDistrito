@@ -12,7 +12,7 @@ $(document).ready(function () {
 	var button_upload;
 	let files;
 	let $Subir_Archivo;
-	alert("hola")
+	
 	$('#error_upload_alert').hide();
 // ----------------------------------------------  eventos globales -----------------------------------------------------------------
 	button.addEventListener("click", (e) => {
@@ -304,7 +304,7 @@ $("#cancelar").click(function() {
 }
 function tipos_de_archivos(TipoUpload,files=""){
 	var years=`
-	<select class="form-select documentYear" aria-label="Default select example">
+	<select class="select-swit documentYear" aria-label="Default select example">
 		<option selected="${año}">${año}</option>
 		`;
 		for(var i=2000; i<2100; i++) {
@@ -315,7 +315,7 @@ function tipos_de_archivos(TipoUpload,files=""){
 		years+="</select>";
 	var tipos=["Títulos","Padrón de usuarios","Inversiones"];
 	var tipo_arch=`
- 		<select class="form-select documentType " aria-label="Default select example">
+ 		<select class="select-swit documentType " aria-label="Default select example">
 		`;
 	for(i=0; i<tipos.length; i++)
 	{

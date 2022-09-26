@@ -52,6 +52,10 @@
         $consulta ="SELECT * FROM document_users where Info_Id=$Info_Id;";
         return  json_encode($this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC));
       }
+      public function getInvestmentSpecific($Info_Id){
+        $consulta ="SELECT * FROM  document_type_investments where Info_Id=$Info_Id;";
+        return  json_encode($this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC));
+      }
 
       public function getTitlesEspcific($search){
         return $this -> sistema -> query("SELECT * FROM document_info where Program = '$search';") -> fetch_all(MYSQLI_ASSOC);
@@ -149,6 +153,15 @@
         );";
       return $this -> sistema -> query($consulta) -> num_rows < 1 ? 0 : $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
     }
+    public function searchInvestments($id,$buscar){
+      $consulta ="SELECT * FROM document_type_investments 
+      WHERE Document_Id='$id'
+      AND
+      (user 
+      LIKE '%$buscar%'
+      );";
+    return $this -> sistema -> query($consulta) -> num_rows < 1 ? 0 : $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
+  }
       public function serInvestments(){
         
       }

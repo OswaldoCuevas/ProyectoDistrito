@@ -6,6 +6,20 @@ class user{
     _RFC;
     _CURP;
     _Type_User;
+    _Phone_Number;
+   
+    constructor(Control_Num,Full_Name,Email,Password_User,RFC,CURP,Type_User,Phone_Number){
+        this.setControl_Num(Control_Num);
+        this.setFull_Name(Full_Name);
+        this.setEmail(Email);
+        this.setPassword_User(Password_User);
+        this.setRFC(RFC);
+        this.setCURP(CURP);
+        this.setType_User(Type_User);
+        this.setPhone_Number(Phone_Number);
+        
+        
+    }
     getControl_Num() {
         return this._Control_Num;
     }
@@ -54,5 +68,12 @@ class user{
     setType_User(value) {
         this._Type_User = value;
     }
+    getPhone_Number() {
+        return this._Phone_Number;
+    }
+    setPhone_Number(value) {
+        this._Phone_Number = value;
+    }
+
 }
 export {user}

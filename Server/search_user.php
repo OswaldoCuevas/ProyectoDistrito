@@ -12,7 +12,7 @@ if(is_array($registros)){
                     <table class="table table_swat2">
                     <thead>
                         <tr>
-                        <th scope="col">Numero de control</th>
+                        <th scope="col">Número de control</th>
                         <th scope="col">Nombre del Usuario</th>
                         </tr>
                     </thead>
