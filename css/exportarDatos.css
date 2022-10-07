@@ -56,7 +56,7 @@
 }
 .container-principal .principal_body .buttons button:hover {
   background-color: rgba(14, 157, 167, 0.9058823529);
-  padding: 13px 10px;
+  font-size: 18px;
   width: 85%;
 }
 

@@ -1,11 +1,11 @@
 /*Nombre de tabla*/ 
 Create table Users(                 Control_Num         INT             PRIMARY KEY AUTO_INCREMENT      NOT NULL,
                                     Full_Name           VARCHAR(400)                                        NULL,
-                                    Phone_Number        VARCHAR(13)                                         NULL,
+                                    Phone_Number        VARCHAR(200)                                         NULL,
                                     Email               VARCHAR(200)                                        NULL,
                                     Password_User       VARCHAR(50)                                         NULL,
-                                    RFC                 VARCHAR(13)                                         NULL,
-                                    CURP                VARCHAR(18)                                         NULL,
+                                    RFC                 VARCHAR(200)                                         NULL,
+                                    CURP                VARCHAR(200)                                         NULL,
                                     Type_User           VARCHAR(30)                                         NULL,
                                     INE                 VARCHAR(15)                                         NULL,
                                     INDEX                               Index_user_name(Full_Name)
@@ -137,11 +137,11 @@ Create table Document_Info(         Info_Id             INT             PRIMARY 
                                     System_             VARCHAR(100)                                        NULL,
                                     Hectare             INT                                                 NULL,
                                     Investments_Date    INT                                                 NULL,
-                                    RFC                 VARCHAR(13)                                         NULL,
-                                    CURP                VARCHAR(18)                                         NULL,
+                                    RFC                 VARCHAR(200)                                         NULL,
+                                    CURP                VARCHAR(200)                                         NULL,
                                     Extend              TEXT                                                NULL,
                                     INE                 VARCHAR(15)                                         NULL,
-                                    Phone_Number        VARCHAR(13)                                         NULL,
+                                    Phone_Number        VARCHAR(200)                                         NULL,
                                     Tenant              VARCHAR(400)                                        NULL,
                                     Email               VARCHAR(200)                                        NULL,  
                                     INDEX                               Index_User(User),
@@ -173,7 +173,8 @@ Create VIEW  Document_type_Titles AS  SELECT        documents.Document_Id,
                                                     from documents,document_info where 
                                                     documents.document_id=document_info.document_id
                                                     AND 
-                                                    documents.document_type="Títulos";
+                                                    documents.document_type="Títulos"
+                                                    AND documents.Active = 1;
 
 Create VIEW Document_Users AS  SELECT               documents.Document_Id,
                                                     document_info.Info_Id,
@@ -187,7 +188,8 @@ Create VIEW Document_Users AS  SELECT               documents.Document_Id,
                                                     from documents,document_info where
                                                     documents.document_id=document_info.document_id                                                 
                                                     AND 
-                                                    documents.document_type="Padrón de usuarios";    
+                                                    documents.document_type="Padrón de usuarios"
+                                                    AND documents.Active = 1;    
 
 
 Create VIEW Document_type_Investments AS  SELECT    documents.Document_Id,
@@ -202,7 +204,8 @@ Create VIEW Document_type_Investments AS  SELECT    documents.Document_Id,
                                                     from documents,document_info where 
                                                     documents.document_id=document_info.document_id                                                 
                                                     AND 
-                                                    documents.document_type="Inversiones";      
+                                                    documents.document_type="Inversiones"
+                                                    AND documents.Active = 1;      
 
 create view view_titles_update as select            titles.Title_Id,
                                                     location_title.Location_Id,
@@ -222,8 +225,9 @@ create view view_titles_update as select            titles.Title_Id,
                                                     from titles,users,location_title 
                                                         where titles.Title_Id = location_title.Title_Id
                                                         AND   titles.User_Id = users.Control_Num
+                                                        AND titles.Activo = 1
                                                         AND location_title.Active = 1
-                                                        AND users.Activo = 1;
+                                                        AND users.Active = 1;
 Create view view_investments as  SELECT 
                                                     users.Control_Num,
                                                     investments.Investments_Id,
@@ -236,5 +240,16 @@ Create view view_investments as  SELECT
                                                    from investments,users
                                                     where investments.User_Id = users.Control_Num;  
 
-Create view Padron_de_Usuarios as SELECT * FROM users WHERE Activo = 1 AND Type_User != 'Admin' AND Type_User != 'Privileged_Admin';
+Create view Padron_de_Usuarios as SELECT * FROM users WHERE Activo = 1 AND (Type_User IS NULL or Type_User = "Privado" or Type_User ="Social");
 Create view Administradores as SELECT * FROM users WHERE Activo = 1 AND Type_User == 'Admin' or Type_User == 'Privileged_Admin';
+Create VIEW consult_Padron as SELECT users.Control_Num, users.Type_User, users.Full_Name ,location_title.Cologne,location_title.Plot,users.RFC,users.CURP FROM users,titles,location_title
+WHERE users.Control_Num = User_Id
+AND titles.Title_Id = location_title.Title_Id
+AND location_title.active=1
+AND users.activo =1
+AND titles.active=1;
+;
+create view inversiones as SELECT * FROM investments,users 
+                            where  investments.User_Id = users.Control_Num 
+                            AND investments.Active = 1
+                            AND users.Activo = 1;

@@ -16,7 +16,7 @@ switch ($Type) {
       import * as link from "./Modules/links.js";
     link.section("actualizaciones","");
 </script>
-<link rel="stylesheet" href="css/titulos.css">
+<link rel="stylesheet" href="css/Document.css">
 <input type="hidden" id="id_documento" value="<?php echo $id ?>">
 <div class="container-tables-titulos">
     <div class="filtros-titulos" >

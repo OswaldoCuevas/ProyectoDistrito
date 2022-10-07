@@ -139,8 +139,8 @@
 		<td>$User</td>
 		<td>$RFC</td>
 		<td>$CURP</td>
-		<td>$Email</td>
 		<td>$Phone_Number</td>
+		<td>$Email</td>
 		<input type='hidden' class='value_input_number' id='name_$Info_Id' value='$User'>	
 			
 			

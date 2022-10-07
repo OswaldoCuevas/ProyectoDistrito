@@ -1,4 +1,13 @@
 <link rel="stylesheet" href="css/exportarDatos.css">
+<script type="module">
+$(".getDocument").click(function(){
+const Document = $(this).attr("id");
+  $('<form action="Server/GenerarExcel.php" method="post"><input type="hidden" name="Document" value="'+Document+'" /></form>')
+    .appendTo('body').submit();
+
+
+});
+</script>
 <div class="container-principal">
     <div class="principal_header">
        <div class="text">
@@ -9,12 +18,12 @@
     </div>
     <div class="principal_body">
      <div class="buttons">
-        <button> <b>Padrón de usuarios</b> </button>
-        <button> <b>Usuarios Privados</b></button>
-        <button> <b>Usuarios Sociales</b></button>
-        <button> <b>Titulos de concesión</b></button>
-        <button> <b>Inversiones</b></button>
-        <button> <b>Usuarios</b></button>
+        <button class="getDocument" id="Padron de usuarios"> <b>Padrón de usuarios</b> </button>
+        <button class="getDocument" id="Usuarios privados"> <b>Usuarios Privados</b></button>
+        <button class="getDocument" id="Usuarios sociales"> <b>Usuarios Sociales</b></button>
+        <button class="getDocument" id="Titulos"> <b>Titulos de concesión</b></button>
+        <button class="getDocument" id="Inversiones"> <b>Inversiones</b></button>
+        <button class="getDocument" id="Usuarios"> <b>Usuarios</b></button>
 
      </div>
         

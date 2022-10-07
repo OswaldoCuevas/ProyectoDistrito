@@ -90,6 +90,11 @@
         $change = "INSERT INTO change_location ( Title_Id, Previous_Location, New_Location,Change_Date) VALUES ('$Title_Id', '$Location_Id', '$new_location_ID',' $Transfer_Date');";
         $this -> sistema -> query($change);
     } 
+    public function getTitles(){
+      $consulta ="SELECT * FROM view_titles_update;";
+      return  $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
+
+  }
     }
     
    

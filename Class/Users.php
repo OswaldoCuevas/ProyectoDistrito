@@ -15,6 +15,19 @@ class Users extends Conexion{
         $user = $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
         return  $user[0];
     }
+    public function getUsers(){
+        $consulta ="SELECT * FROM Padron_de_Usuarios;";
+        return  $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
+    }
+    public function getUsersPrivados(){
+        $consulta ="SELECT * FROM Padron_de_Usuarios WHERE Type_User='Privado';";
+        return  $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
+    }
+    
+    public function getUsersSociales(){
+        $consulta ="SELECT * FROM Padron_de_Usuarios WHERE Type_User='Social';";
+        return  $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
+    }
     public function getTitlesUser($User_Id){
       return $this -> sistema -> query("SELECT * from view_titles_update WHERE User_Id = '$User_Id';") -> fetch_all(MYSQLI_ASSOC);  
     }
@@ -131,6 +144,11 @@ class Users extends Conexion{
                 return "2";
             }
         
+    }
+    public function getPadronDeUsuarios(){
+        $consulta ="SELECT * FROM consult_Padron;";
+        return  $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
+
     }
 }
 ?>

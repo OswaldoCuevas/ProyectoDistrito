@@ -21,7 +21,7 @@ if(is_array($registros)){
         $user = $registro['Full_Name'];
         $Control_Num = $registro['Control_Num'];
         $imprimir .='  <tr class="selected_user" id="user_'.$Control_Num.'">
-                            <th scope="row">2022001</th>
+                            <th scope="row">'.$Control_Num.'</th>
                             <th scope="row">'.$user.'</th>
                         </tr>
                         <input type="hidden" id="value_input_search_user_'.$Control_Num.'" value="'.$user.'">

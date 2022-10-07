@@ -97,6 +97,7 @@ function selected_elements_array(){
          success: data => {
             $("#input_nombre").val($("#input_nombre_update").val())   
             lottiesSuccessActives ();
+            
         },
      });                               
  }
@@ -171,7 +172,7 @@ Iguales_CURP
          html += `<table class="table" style="margin-top:10px">
              <thead class="thead-dark">
                  <tr>
-                 <th colspan="2">Nuevo RFC</th>
+                 <th colspan="2">Cambio RFC</th>
                  </tr>
                  <tr>
                      <th scope="col">Antiguo RFC</th>
@@ -209,7 +210,7 @@ Iguales_CURP
          html += `<table class="table" style="margin-top:10px">
              <thead class="thead-dark">
                  <tr>
-                 <th colspan="2">Cambio de Dotación</th>
+                 <th colspan="2">Cambio de CURP</th>
                  </tr>
                  <tr>
                      <th scope="col">Antigua</th>

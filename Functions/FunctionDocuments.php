@@ -12,10 +12,10 @@
         case 'Longitude':     return   20;  break;                                        
         case'Latitude':       return   20;  break;                                          
         case'System_':        return  100;  break;                                                                  
-        case'RFC' :           return   13;  break;                                
-        case'CURP' :          return   18;  break;                                                             
+        case'RFC' :           return  200;  break;                                
+        case'CURP' :          return  200;  break;                                                             
         case'INE'  :          return   15;  break;                                     
-        case'Phone_Number' :  return   13;  break;                                  
+        case'Phone_Number' :  return  200;  break;                                  
         case'Tenant' :        return  400;  break;  
         case'Email' :         return  200;  break; 
         case'Initial_Date' :  return  200;  break; 

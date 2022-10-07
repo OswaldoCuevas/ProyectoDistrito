@@ -187,13 +187,13 @@
       }
 
       public function getDocumentTitles(){
-        return $this -> sistema -> query("SELECT * FROM documents where Document_Type = 'Títulos'") -> fetch_all(MYSQLI_ASSOC);
+        return $this -> sistema -> query("SELECT * FROM documents where Document_Type = 'Títulos' AND Active=1") -> fetch_all(MYSQLI_ASSOC);
       }
       public function getDocumentUsers(){
-        return $this -> sistema -> query("SELECT * FROM documents where Document_Type = 'Padrón de usuarios'") -> fetch_all(MYSQLI_ASSOC);
+        return $this -> sistema -> query("SELECT * FROM documents where Document_Type = 'Padrón de usuarios' AND Active=1") -> fetch_all(MYSQLI_ASSOC);
       }
       public function getDocumentInvestments(){
-        return $this -> sistema -> query("SELECT * FROM documents where Document_Type = 'Inversiones'") -> fetch_all(MYSQLI_ASSOC);
+        return $this -> sistema -> query("SELECT * FROM documents where Document_Type = 'Inversiones' AND Active=1") -> fetch_all(MYSQLI_ASSOC);
       }
 
       public function insertInfo($id,$info,$column){
@@ -266,7 +266,9 @@
           );";
         return $this -> sistema -> query($consulta) -> num_rows < 1 ? 0 : $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
       }
-      
+      public function dropDocument($Document_Id){
+        $this -> sistema -> query("UPDATE documents SET Active = '0' WHERE (Document_Id = '$Document_Id');");
+      }
   }   
 
 ?>

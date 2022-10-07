@@ -25,4 +25,10 @@ class Investment extends Conexion{
         return $id['LAST_INSERT_ID()']; 
     }
     
+    
+    public function getInversiones(){
+        $consulta ="SELECT * FROM inversiones;";
+        return  $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
+
+    }
 }

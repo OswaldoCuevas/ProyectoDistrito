@@ -147,11 +147,11 @@ function limit(val,id){
     var num=0;
     switch(id){
         case "Full_Name"        :num=400;break
-        case "Phone_Number"     :num=13;break
+        case "Phone_Number"     :num=200;break
         case "Email"            :num=200;break
         case "Password_User"    :num=50;break;
-        case "RFC"              :num=13;break;
-        case "CURP"             :num=18;break;
+        case "RFC"              :num=200;break;
+        case "CURP"             :num=200;break;
     }
     expresion.length = maxLetters(expresion,num) ? expresion.length:num; $(this).val(expresion.join(""));
     $(`#Num_${id}`).html(`${expresion.length} / ${num}`);
@@ -165,11 +165,11 @@ $(document).on('keydown','.inputs_user',function(){
         var num=0;
         switch(id){
             case "Full_Name"        :num=400;break
-            case "Phone_Number"     :num=13;break
+            case "Phone_Number"     :num=200;break
             case "Email"            :num=200;break
             case "Password_User"    :num=50;break;
-            case "RFC"              :num=13;break;
-            case "CURP"             :num=18;break;
+            case "RFC"              :num=200;break;
+            case "CURP"             :num=200;break;
         }
         expresion.length = maxLetters(expresion,num) ? expresion.length:num; $(this).val(expresion.join(""));
         $(`#Num_${id}`).html(`${expresion.length} / ${num}`);
