@@ -1,0 +1,39 @@
+.container-divs {
+  width: 90%;
+  height: 100%;
+  display: flex;
+}
+.container-divs .section-divs {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.container-divs .section-divs .option {
+  display: flex;
+  width: 80%;
+  height: 30%;
+  border: 1px solid;
+  align-self: center;
+  margin-bottom: 3.3%;
+}
+.container-divs .section-divs .option .container-option {
+  display: flex;
+  width: 90%;
+  height: 90%;
+  margin-left: 5%;
+  align-self: center;
+  border: 1px solid;
+}
+.container-divs .section-divs .option .container-option .icon {
+  width: 30%;
+  height: 100%;
+  background-color: aquamarine;
+}
+.container-divs .section-divs .option .container-option .info {
+  width: 70%;
+  height: 100%;
+  background-color: red;
+}
+
+/*# sourceMappingURL=menuSection.css.map */

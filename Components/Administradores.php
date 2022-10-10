@@ -1,3 +1,12 @@
+<?php
+include '../Server/conexion.php';
+include '../Class/Users.php';
+$Users = new Users();
+session_start();
+if($Users -> getNumRowsAdmin($_SESSION['Control_Num'])==0){
+    header('location: menu.php');
+}
+?>
 <link rel="stylesheet" href="css/padronUsuarios.css">
 <script type="module">
   import * as passwordGenerate from "./Modules/passwordGenerate.js"
@@ -74,7 +83,7 @@ function cleanInputs(){
 function buscar(data){
     $.ajax({
     
-        url : `Server/jsonUsers.php`,
+        url : `Server/jsonAdmins.php`,
         data : data,
         type : 'POST',
         beforeSend: function () {
@@ -102,15 +111,25 @@ function buscar(data){
                html+=`
                <tr class="users-tr" id='element_${Control_Num}'>
                         <td class="td_activo"><div class="center">${activo}</div></td>
+                        <td>${Control_Num}</td>
                         <td>${Full_Name}</td>
-                        <td>${Phone_Number}</td>
-                        <td>${Email}</td>
-                        <td><button id="${Control_Num}" class="btn btn-sm btn-primary button_show"><i class="fa-solid fa-eye"></i></button></td>
+                        <td>${Email}</td>`;
+            if(Type_User == 'Privileged_Admin'){
+                html+=`
+                        <td><button id="${Control_Num}" class="btn btn-sm btn-warning button_show_update " style="color: #fff"><i class="fa-solid fa-pencil"></i></button></td>
+                        <td><button id="${Control_Num}" disabled  class="btn btn-sm btn-danger button_delete"><i class="fa-solid fa-trash"></i></button></td>
+                  
+                    </tr>
+               `;
+            }else{
+                html+=`
                         <td><button id="${Control_Num}" class="btn btn-sm btn-warning button_show_update " style="color: #fff"><i class="fa-solid fa-pencil"></i></button></td>
                         <td><button id="${Control_Num}" class="btn btn-sm btn-danger button_delete"><i class="fa-solid fa-trash"></i></button></td>
                   
                     </tr>
                `;
+            }
+                        
             }
             $(".load_users").html(html);
             $(".button_show").click(function() {
@@ -210,7 +229,7 @@ function CRUDUser(data){
   
     $.ajax({
     
-        url : `Server/CRUDUser.php`,
+        url : `Server/CRUDAdmin.php`,
         data : data,
         type : 'POST',
         success: function (response) {
@@ -223,7 +242,7 @@ function CRUDUser(data){
                 buscar({"Full_Name":$(".input_search").val()  == null ?"":$(".input_search").val()})
             }else if(response == "1"){
                 Swal.fire({
-                    title: `Error al registrar usuario`,
+                    title: `Error al registrar administrador`,
                     icon: "error",
                     text: `${data.Full_Name} ya se encuentra registrado`,
                 });
@@ -255,22 +274,6 @@ function alertRegister(){
       <td>${user.Full_Name  == null ?"Sin registrar":user.Full_Name }</td>
     </tr>
     <tr>
-      <th scope="row">Sector</th>
-      <td>${user.Type_User == null ?"Sin registrar":user.Type_User}</td>
-    </tr>
-    <tr>
-    <tr>
-      <th scope="row">Phone_Number</th>
-      <td>${user.Phone_Number == null ?"Sin registrar":user.Phone_Number}</td>
-    </tr>
-      <th scope="row">RFC</th>
-      <td>${user.RFC == null ?"Sin registrar":user.RFC } </td>
-    </tr>
-    <tr>
-      <th scope="row">Curp</th>
-      <td>${user.CURP == null ?"Sin registrar":user.CURP}</td>
-    </tr>
-    <tr>
       <th scope="row">Correo</th>
       <td>${user.Email == null ?"Sin registrar":user.Email}</td>
     </tr>
@@ -283,7 +286,7 @@ function alertRegister(){
 </table>
     `;
     Swal.fire({
-                    title: `Registrando Nuevo usuario:`,
+                    title: `Registrando Nuevo administrador:`,
                     html: $msg,
                     showDenyButton: true,
                     confirmButtonText: 'Confirmar',
@@ -305,22 +308,6 @@ function alertUpdate(){
       <td>${user.Full_Name  == null ?"Sin registrar":user.Full_Name }</td>
     </tr>
     <tr>
-      <th scope="row">Sector</th>
-      <td>${user.Type_User == null ?"Sin registrar":user.Type_User}</td>
-    </tr>
-    <tr>
-    <tr>
-      <th scope="row">Phone_Number</th>
-      <td>${user.Phone_Number == null ?"Sin registrar":user.Phone_Number}</td>
-    </tr>
-      <th scope="row">RFC</th>
-      <td>${user.RFC == null ?"Sin registrar":user.RFC } </td>
-    </tr>
-    <tr>
-      <th scope="row">Curp</th>
-      <td>${user.CURP == null ?"Sin registrar":user.CURP}</td>
-    </tr>
-    <tr>
       <th scope="row">Correo</th>
       <td>${user.Email == null ?"Sin registrar":user.Email}</td>
     </tr>
@@ -333,7 +320,7 @@ function alertUpdate(){
     </table>
     `;
     Swal.fire({
-                    title: `Actualizando Usuario <b>${Full_Name}</b>`,
+                    title: `Actualizando Administrador <b>${Full_Name}</b>`,
                     html: $msg,
                     showDenyButton: true,
                     confirmButtonText: 'Confirmar',
@@ -353,23 +340,7 @@ function alertDrop(user){
       <th scope="row">Nombre</th>
       <td>${user.getFull_Name()  == null ?"Sin registrar":user.getFull_Name() }</td>
     </tr>
-    <tr>
-      <th scope="row">Sector</th>
-      <td>${user.getType_User() == null ?"Sin registrar":user.getType_User()}</td>
-    </tr>
-    <tr>
-    <tr>
-      <th scope="row">Phone_Number</th>
-      <td>${user.getPhone_Number() == null ?"Sin registrar":user.getPhone_Number()}</td>
-    </tr>
-      <th scope="row">RFC</th>
-      <td>${user.getRFC() == null ?"Sin registrar":user.getRFC() } </td>
-    </tr>
-    <tr>
-      <th scope="row">Curp</th>
-      <td>${user.getCURP() == null ?"Sin registrar":user.getCURP()}</td>
-    </tr>
-    <tr>
+  
       <th scope="row">Correo</th>
       <td>${user.getEmail() == null ?"Sin registrar":user.getEmail()}</td>
     </tr>
@@ -382,7 +353,7 @@ function alertDrop(user){
     </table>
     `;
     Swal.fire({
-                    title: `Eliminando Usuario <b>${user.getFull_Name()}</b>`,
+                    title: `Eliminando Administrador <b>${user.getFull_Name()}</b>`,
                     html: $msg,
                     showDenyButton: true,
                     confirmButtonText: 'Confirmar',
@@ -404,13 +375,12 @@ function alertDrop(user){
             <table class="table table-hover " style=" margin-top: 10px;">
                 <thead class="thead-dark">
                     <tr>
-                      <th scope="col"> Activo</th>
-                      <th scope="col"> Usuario            </th>
-                      <th scope="col"> Teléfono           </th>
-                      <th scope="col"> Correo             </th>
-                      <th scope="col"> Ver                </th>
-                      <th scope="col"> Editar                </th>
-                      <th scope="col"> Eliminar               </th>
+                      <th scope="col"> Activo           </th>
+                      <th scope="col"> No. Control    </th>
+                      <th scope="col"> Administrador        </th>
+                      <th scope="col"> Correo           </th>
+                      <th scope="col"> Editar           </th>
+                      <th scope="col"> Eliminar         </th>
                     </tr>
                 </thead>
                 <tbody class="load_users">
@@ -445,28 +415,10 @@ function alertDrop(user){
             <input id="Email" name="Email" type="text" class="inputs_user" placeholder="Introduce el Correo electrónico" required>
             <span class="message_num" id="Num_Email">0 / 200</span>
 
-            <label for="Phone_Number" class="label_input">Teléfono</label>
-            <input id="Phone_Number" name="Phone_Number" type="text" class="inputs_user" placeholder="Introduce el teléfono" required>
-            <span class="message_num" id="Num_Phone_Number">0 / 200</span>
-
-            <label for="Type_User" class="label_input"> Sector </label>
-            <select id="Type_User"name="select" class="inputs_user">
-              <option value="Privado" >Privado</option>
-              <option value="Social" >Social</option>
-            </select>
-            <label for="RFC" class="label_input">RFC</label>
-            <input id="RFC" name="RFC" type="text" class="inputs_user" placeholder="Introduce el RFC" required>
-            <span class="message_num" id="Num_RFC">0 / 200</span>
- 
-            <label for="CURP" class="label_input">CURP</label>
-            <input id="CURP" name="CURP" type="text" class="inputs_user" placeholder="Introduce el CURP" required>
-            <span class="message_num" id="Num_CURP">0 / 200</span>
-
             <label for="Password_User" class="label_input">Contraseña</label>
               <div class="password">
                   <input id="Password_User" name="Password_User" type="text" class="inputs_user" placeholder="Introduce la contraseña" required>
                   <button id="generar_password"><i class="fa-solid fa-key"></i></button>
-                 
               </div>
               <span class="message_num" id="Num_Password_User">0 / 50</span>
    

@@ -10,7 +10,7 @@ $Titles = $_User -> getTitlesUser($user_id);
 $numTitles = count($Titles);
 
 ?>
-<link rel="stylesheet" href="css/UserSpecific.css">
+<link rel="stylesheet" href="css/Usuario.css">
 <script type="module" >
    import * as link from "./Modules/links.js";
     link.section("padronUsuarios","");

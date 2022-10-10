@@ -62,8 +62,12 @@ class Users extends Conexion{
             $Value = $Value == "Sin registrar" ? "NULL" : "'$Value'";
             $this -> sistema -> query("UPDATE users SET $Encabezado = $Value WHERE (Control_Num = '$User_Id');");
             }
+        
         public function jsonUsers($busqueda){
             return  json_encode($this -> sistema -> query("SELECT * FROM Padron_de_Usuarios where Full_Name like '%$busqueda%';") -> fetch_all(MYSQLI_ASSOC));
+        }
+        public function jsonAdmins($busqueda){
+            return  json_encode($this -> sistema -> query("SELECT * FROM Administradores where Full_Name like '%$busqueda%';") -> fetch_all(MYSQLI_ASSOC));
         }
 
         public function insertUser($Full_Name, $Email, $Password_User,$Phone_Number,$Type_User,$CURP,$RFC){
@@ -123,6 +127,50 @@ class Users extends Conexion{
         $this -> sistema -> query("UPDATE users SET Activo = '0' WHERE (Control_Num = '$Control_Num');");
         echo "3";
     }
+    public function getNumRowsAdmin($Control_Num){
+      return  mysqli_num_rows(mysqli_query($this -> sistema,"SELECT * FROM administradores Where Control_Num ='$Control_Num' AND Type_User= 'Privileged_Admin'"));
+    }
+    public function insertAdmin($Full_Name, $Email, $Password_User){
+        $Encabezado  = "(Full_Name";
+        $Encabezado .= $Email           == null ?   "":",Email";
+        $Encabezado .= $Password_User   == null ?   "":",Password_User";
+        $Encabezado .= ",Type_User)"; 
+    
+        $Values = "('$Full_Name'";
+        $Values.= $Email           == null ?   "":",'$Email'";
+        $Values.= $Password_User   == null ?   "":",SHA('$Password_User')";
+        $Values.= ",'Admin')";
+
+       
+         if(mysqli_num_rows(mysqli_query($this -> sistema,"SELECT * FROM administradores Where Full_Name ='$Full_Name'")) > 0){
+           
+            echo "1";
+         }else{
+            echo "0";
+            $this -> sistema -> query("INSERT INTO Users $Encabezado VALUES $Values;");
+         }
+       
+    }
+
+    public function AlterAdmin($Control_Num, $Full_Name, $Email, $Password_User){
+     
+        $Full_Name      = $Full_Name        == null ? "null":"'$Full_Name'";
+        $Email          = $Email            == null ? "null":"'$Email'";
+        $Password_User  = $Password_User    == null ? "null":"SHA('$Password_User')";
+
+        $update="UPDATE users SET 
+                        Full_Name       = $Full_Name,
+                        Email           = $Email, 
+                        Password_User   = $Password_User 
+                        WHERE (Control_Num = '$Control_Num');";
+        $this -> sistema -> query($update);
+        echo "2";
+
+}
+public function dropAdmin($Control_Num){
+    $this -> sistema -> query("UPDATE users SET Activo = '0' WHERE (Control_Num = '$Control_Num');");
+    echo "3";
+}
     public function loginAdmin($id,$password){
         
 
@@ -132,8 +180,12 @@ class Users extends Conexion{
             if(mysqli_num_rows(mysqli_query($this -> sistema,$consulta)) > 0){
           
                 $consulta="SELECT * FROM Administradores 
-                           WHERE (Password_User = SHA('$password') 
-                           AND    Password_User IS NOT NULL) ;";
+                           WHERE Password_User = SHA('$password') 
+                           AND    Password_User IS NOT NULL
+                           AND (Email = '$id' or Control_Num = '$id')
+                        
+                          
+                            ;";
                if(mysqli_num_rows(mysqli_query($this -> sistema,$consulta)) > 0){
                return $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
                } else{

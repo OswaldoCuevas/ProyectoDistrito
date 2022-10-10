@@ -38,7 +38,7 @@ Create table Transfers_Thousands(   Transfers_Id        INT             PRIMARY 
                                 );
 Create Table Titles(                Title_Id            INT             PRIMARY KEY AUTO_INCREMENT      NOT NULL,
                                     User_Id             INT                                             NOT NULL,
-                                    Title_Number        VARCHAR(20)                                         NULL,
+                                    Title_Number        VARCHAR(40)                                         NULL,
                                     Water_Supply        INT                                                 NULL,
                                     Initial_Date        DATE                                                NULL,
                                     Validity            INT                                                 NULL,
@@ -237,7 +237,7 @@ Create view view_investments as  SELECT
                                                     investments.System_,
                                                     investments.Hectare,
                                                     investments.Investments_Date 
-                                                   from investments,users
+                                                    from investments,users
                                                     where investments.User_Id = users.Control_Num;  
 
 Create view Padron_de_Usuarios as SELECT * FROM users WHERE Activo = 1 AND (Type_User IS NULL or Type_User = "Privado" or Type_User ="Social");

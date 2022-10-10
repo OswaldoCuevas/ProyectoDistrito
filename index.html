@@ -111,7 +111,7 @@
 		}
 
 		function caraterSpecial(expersion){
-			let expresionNew = expersion.replace(/[^a-zA-Z0-9$+=?@_ ]/i, "")
+			let expresionNew = expersion.replace(/[^a-zA-Z0-9$+=?@_. ]/i, "")
 			return expresionNew == expersion ? expresionNew:caraterSpecial(expresionNew);	
 		}
 

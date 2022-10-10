@@ -31,4 +31,11 @@ class Investment extends Conexion{
         return  $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
 
     }
+    public function jsonInvestments($busqueda){
+        $consulta ="SELECT * FROM view_investments 
+                    where Cologne       like '%$busqueda%'
+                    or    Plot          like '%$busqueda%'
+                    or    Full_Name     like '%$busqueda%';";
+        return  json_encode($this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC));
+      }
 }

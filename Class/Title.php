@@ -95,6 +95,14 @@
       return  $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
 
   }
+  public function jsonTitles($busqueda){
+    $consulta ="SELECT * FROM view_titles_update 
+                where Title_Number  like '%$busqueda%'
+                or    Cologne       like '%$busqueda%'
+                or    Plot          like '%$busqueda%'
+                or    Full_Name     like '%$busqueda%';";
+    return  json_encode($this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC));
+  }
     }
     
    

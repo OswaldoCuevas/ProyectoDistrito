@@ -1,6 +1,7 @@
 import * as Document from "./Document.js";
 import * as _User from "./User.js";
-
+import * as _Title from "./Title.js";
+import * as _Investment from "./Investment.js";
 class listDocument{
     Elements = [];
   
@@ -57,5 +58,45 @@ class User{
    }
 }
 
-export {listDocument,User};
+class Title{
+    Titles = [];
+    setTitles(Title_Id,User_Id,Location_Id,Full_Name,Tenant,Title_Number,Water_Supply,Initial_Date,Validity,Extend,Cologne,Plot,Longitude,Latitude){
+        this.Titles.push(new _Title.title(Title_Id,User_Id,Location_Id,Full_Name,Tenant,Title_Number,Water_Supply,Initial_Date,Validity,Extend,Cologne,Plot,Longitude,Latitude));     
+    }
+    getTitleSpecific(id){
+        for(const Title of this.Titles){
+            if(Title.getTitle_Id() == id){
+                return Title;
+            }
+        }
+        return 0;
+    }
+    showTitles(){
+        for(const Title of this.Titles){
+           console.log(Title.getTitle_Number());
+        }
+    }
+}
+class Investment{
+    Investments = [];  
+    setInvestment(_Control_Num, _Investments_Id, _Full_Name, _Plot, _Cologne, _System_, _Hectare, _Investments_Date){
+        this.Investments.push(new _Investment.investment(_Control_Num, _Investments_Id, _Full_Name, _Plot, _Cologne, _System_, _Hectare, _Investments_Date));    
+    }
+    getInvestmentSpecific(id){
+        for(const Investment of this.Investments){
+            if(Investment.getInvestment_Id() == id){
+                return Investment;
+            }
+        }
+        return 0;
+    }
+    showInvestments(){
+        for(const Investment of this.Investments){
+           console.log(Investment.getFull_Name());
+        }
+    }
+}
+
+export {listDocument,User,Title,Investment};
+
 

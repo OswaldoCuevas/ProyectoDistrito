@@ -1,5 +1,5 @@
 <?php
-$section = isset($_GET['section'])?$_GET['section']:"home";
+$section = isset($_GET['section'])?$_GET['section']:"menuSection";
 session_start();
 if (!isset($_SESSION['Control_Num'])) {
     header('location: index.html');
@@ -40,17 +40,11 @@ if (!isset($_SESSION['Control_Num'])) {
             <a href="menu.php?section=actualizaciones" class="dashboard-nav-item " id="actualizaciones"><span><i class="fa-solid fa-arrow-down"> </i> Actualizaciones </span> </a>
             <a href="menu.php?section=cargarArchivo" class="dashboard-nav-item " id="cargarArchivo"><span><i class="fa-solid fa-arrow-up-from-bracket"> </i> Cargar archivo</span> </a>
             <a href="menu.php?section=exportarDatos" class="dashboard-nav-item " id="exportarDatos"><span><i class="fa-solid fa-arrow-up-from-bracket"> </i> Exportar Datos</span> </a>
-            <div class='dashboard-nav-dropdown' >
-                <a href="#!" id="transferencias" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><span><i class="fas fa-photo-video"> </i> Transferencias </span></a>
-                <div class='dashboard-nav-dropdown-menu' >
-                    <a href="menu.php?section=option5" class="dashboard-nav-dropdown-item" id="option5">Titulos</a>
-                    <a href="menu.php?section=option6" class="dashboard-nav-dropdown-item" id="option6">Temporales</a>
-                </div>
-            </div>
+        
             <div class='dashboard-nav-dropdown' >
                 <a href="#" id="usuarios" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><span><i class="fas fa-users"> </i>  Usuarios </span></a>
                 <div class='dashboard-nav-dropdown-menu' >
-                    <a href="menu.php?section=option7" class="dashboard-nav-dropdown-item" id="option7">Administradores</a>
+                    <a href="menu.php?section=Administradores" class="dashboard-nav-dropdown-item" id="option7">Administradores</a>
                     <a href="menu.php?section=padronUsuarios" class="dashboard-nav-dropdown-item" id="padronUsuarios">Padrón de usuarios</a>
                 </div>
             </div>
