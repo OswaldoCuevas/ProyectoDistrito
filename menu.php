@@ -24,7 +24,7 @@ if (!isset($_SESSION['Control_Num'])) {
 <link rel="stylesheet" href=".\node_modules\bootstrap\dist\css\bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="./node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>	
 <body>
-<div class='dashboard'>
+<div class='dashboard dashboard-compact'>
     <div class="dashboard-nav">
 
         <header>

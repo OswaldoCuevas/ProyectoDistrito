@@ -299,4 +299,13 @@
   border-radius: 100%;
 }
 
+.selected {
+  background-color: rgba(14, 157, 167, 0.231372549);
+  color: rgb(7, 4, 189);
+}
+
+.table_swat2 tbody tr th {
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=Titulos.css.map */

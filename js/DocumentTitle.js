@@ -47,6 +47,7 @@
                 url : `${link.Server}consulta_general_info_documento.php`,
                 data : {'buscar' : buscar,'type': 'Títulos','id': $("#id_documento").val()},
                 type : 'POST',
+                async: true,
                 beforeSend: function () {
                     $('.cargando').show();
                     $('.vacio').hide();

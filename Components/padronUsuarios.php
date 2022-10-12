@@ -77,6 +77,7 @@ function buscar(data){
         url : `Server/jsonUsers.php`,
         data : data,
         type : 'POST',
+        async: true,
         beforeSend: function () {
             $('.cargando').show();
             $(".load_users").hide();

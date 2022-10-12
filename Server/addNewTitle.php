@@ -12,6 +12,7 @@ if(isset($_POST['user_id'])         && isset($_POST['title_number']) &&
    isset($_POST['tenant'])
    )
 {
+ 
     $user_id        = $_POST['user_id'];
     $title_number   = $_POST['title_number'];
     $water_supply   = $_POST['water_supply'];
@@ -44,6 +45,7 @@ if(isset($_POST['user_id'])         && isset($_POST['title_number']) &&
 
     $values .=")";
     $addtitle= " $encabezado VALUES $values ";
+    echo($addtitle);
     $Title -> addNewTitle($addtitle,$cologne,$plot,$longitude,$latitude);
 
     

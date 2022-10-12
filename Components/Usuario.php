@@ -36,7 +36,7 @@ $numTitles = count($Titles);
                         ?>
                         <tr>
                         <td><?php echo $title['Title_Number']; ?></td>
-                        <td><?php echo FormatToFecha($title['Initial_Date']) ?></td>
+                        <td><?php echo isset($title['Initial_Date']) ? FormatToFecha($title['Initial_Date']):"";?></td>
                         <td><?php echo $title['Cologne']; ?></td>
                         <td><?php echo $title['Plot']; ?></td>
                         <td><a href="#" class="btn btn-sm btn-primary"><i class="fa-solid fa-eye"></i></a></td>

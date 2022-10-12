@@ -333,3 +333,16 @@ $toogle_dashboard:#0e9ca7;
    }
 }
 
+.selected{
+    background-color:#0e9da73b ;
+    color: rgb(7, 4, 189);
+}
+.table_swat2{
+    tbody{
+        tr{
+            th{
+                cursor:pointer;
+            }
+        }
+    }
+}
