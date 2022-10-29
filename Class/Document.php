@@ -263,6 +263,8 @@
           LIKE '%$buscar%'
           or Cologne
           LIKE '%$buscar%'
+          or Type_User
+          LIKE '%$buscar%'
           );";
         return $this -> sistema -> query($consulta) -> num_rows < 1 ? 0 : $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
       }

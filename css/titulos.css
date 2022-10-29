@@ -43,7 +43,6 @@
   outline: none;
   border-radius: 5px;
   border-bottom: 2px solid rgba(52, 58, 64, 0.3137254902);
-  transition: all 0.2s;
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -132,7 +131,6 @@
   position: absolute;
   left: 93%;
   color: #066de2;
-  transition: all 0.2s;
 }
 
 .user_img {
@@ -142,7 +140,6 @@
   border-bottom-width: 0.1px;
   border-bottom-style: solid;
   border-bottom-color: rgb(219, 219, 219);
-  transition: all 0.2s;
   text-align: center;
 }
 
@@ -185,7 +182,7 @@
 
 .container-tables {
   height: 100%;
-  width: 70%;
+  width: 80%;
   align-items: center;
 }
 
@@ -197,7 +194,6 @@
   border-bottom-right-radius: 30px;
   padding: 30px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  transition: all 0.2s;
 }
 .tables-user:hover {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -306,6 +302,37 @@
 
 .table_swat2 tbody tr th {
   cursor: pointer;
+}
+
+.salida_por_derecha {
+  animation: salidaDerechaCarousel 1.5s linear;
+  animation-play-state: running;
+  animation-fill-mode: forwards;
+}
+
+.entrada_por_derecha {
+  animation: entradaDerechaCarousel 10.5s linear;
+  animation-play-state: running;
+  animation-fill-mode: forwards;
+}
+
+@keyframes salidaDerechaCarousel {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(2700px);
+    position: absolute;
+  }
+}
+@keyframes entradaDerechaCarousel {
+  from {
+    transform: translate(1700px);
+    display: block;
+  }
+  to {
+    transform: translate(0);
+  }
 }
 
 /*# sourceMappingURL=Titulos.css.map */

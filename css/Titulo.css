@@ -1,7 +1,8 @@
 .container-primary {
-  width: 90%;
+  width: 100%;
   height: 100%;
   display: flexbox;
+  overflow-y: auto;
 }
 .container-primary .container_header {
   width: 100%;
@@ -404,32 +405,34 @@
   align-items: center;
   flex-direction: row;
   overflow-y: auto;
+  overflow-x: hidden;
 }
-.container-primary .container_body .transferencias-millares .container-section .container-titulo .text .container-transfers {
+.container-primary .container_body .transferencias-millares .container-section .container-titulo .text .container-transfers-thousand {
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding: 20px 0;
 }
-.container-primary .container_body .transferencias-millares .container-section .container-titulo .text .container-transfers .transfer {
+.container-primary .container_body .transferencias-millares .container-section .container-titulo .text .container-transfers-thousand .transfer {
   display: flex;
   padding: 5px 10px;
   margin-bottom: 10px;
-  width: 100%;
-  border: 1px solid rgb(231, 231, 231);
+  width: 130%;
+  border: 3px solid rgba(15, 76, 241, 0.822);
   flex-direction: row;
   align-items: flex-start;
   background-color: rgb(253, 253, 253);
   border-radius: 10px;
   transition: all 0.2s;
 }
-.container-primary .container_body .transferencias-millares .container-section .container-titulo .text .container-transfers .transfer .info {
+.container-primary .container_body .transferencias-millares .container-section .container-titulo .text .container-transfers-thousand .transfer .info {
   width: 93%;
-  font-size: 12px;
+  font-size: 11px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-.container-primary .container_body .transferencias-millares .container-section .container-titulo .text .container-transfers .transfer .desplegar {
+.container-primary .container_body .transferencias-millares .container-section .container-titulo .text .container-transfers-thousand .transfer .desplegar {
   width: 7%;
 }
 .container-primary .container_body .transferencias-millares .container-section .container-titulo .sector {
@@ -439,7 +442,7 @@
   align-self: flex-end;
   color: rgb(116, 116, 116);
 }
-.container-primary .container_body .transferencias-millares #button_plus {
+.container-primary .container_body .transferencias-millares .button_plus {
   margin-left: 5px;
   background-color: rgba(15, 76, 241, 0.822);
   color: white;
@@ -447,11 +450,11 @@
   outline: none;
   border-radius: 100%;
   padding: 10px 15px;
-  position: absolute;
+  position: relative;
   margin-left: 8%;
-  margin-top: 20%;
+  margin-top: 90%;
 }
-.container-primary .container_body .transferencias-millares #button_plus:hover {
+.container-primary .container_body .transferencias-millares .button_plus:hover {
   background-color: rgba(15, 76, 241, 0.822);
   font-size: 17px;
 }
@@ -521,23 +524,26 @@
   display: flex;
   padding: 5px 10px;
   margin-bottom: 10px;
-  width: 100%;
-  border: 1px solid rgb(231, 231, 231);
+  width: 140%;
+  border: 3px solid rgb(12, 141, 150);
   flex-direction: row;
   align-items: flex-start;
-  background-color: rgb(253, 253, 253);
+  background-color: rgb(255, 255, 255);
   border-radius: 10px;
   transition: all 0.2s;
 }
 .container-primary .container_body .transferencias-titulos .container-section .container-titulo .text .container-transfers .transfer .info {
   width: 93%;
-  font-size: 12px;
+  font-size: 11px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 .container-primary .container_body .transferencias-titulos .container-section .container-titulo .text .container-transfers .transfer .desplegar {
   width: 7%;
+}
+.container-primary .container_body .transferencias-titulos .container-section .container-titulo .text .container-transfers .transfer .desplegar .drop-transfer-title {
+  margin-top: 90%;
 }
 .container-primary .container_body .transferencias-titulos .container-section .container-titulo .sector {
   font-family: "Lato", Arial, sans-serif;
@@ -546,7 +552,7 @@
   align-self: flex-end;
   color: rgb(116, 116, 116);
 }
-.container-primary .container_body .transferencias-titulos #button_plus {
+.container-primary .container_body .transferencias-titulos .button_plus {
   margin-left: 5px;
   background-color: rgb(12, 141, 150);
   color: white;
@@ -554,17 +560,134 @@
   outline: none;
   border-radius: 100%;
   padding: 10px 15px;
-  position: absolute;
+  position: relative;
   margin-left: 8%;
-  margin-top: 20%;
+  margin-top: 90%;
 }
-.container-primary .container_body .transferencias-titulos #button_plus:hover {
+.container-primary .container_body .transferencias-titulos .button_plus:hover {
   background-color: rgb(12, 141, 150);
+  font-size: 17px;
+}
+.container-primary .container_body .change-location {
+  width: 30%;
+  height: 90%;
+  border-radius: 10px;
+  background: rgb(248, 248, 248);
+  background: -moz-linear-gradient(-45deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100%);
+  background: -webkit-gradient(left top, right bottom, color-stop(0%, rgb(248, 248, 248)));
+  background: -webkit-linear-gradient(-45deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100%);
+  background: -o-linear-gradient(-45deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100%);
+  background: -ms-linear-gradient(-45deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100%);
+  background: linear-gradient(135deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#f75959", endColorstr="#f35587", GradientType=1 );
+  box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.14);
+  border: 1px solid rgb(231, 231, 231);
+  cursor: pointer;
+}
+.container-primary .container_body .change-location:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+}
+.container-primary .container_body .change-location .container-section {
+  height: 90%;
+  width: 90%;
+  margin-left: 5%;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 5px solid rgba(247, 84, 9, 0.897);
+}
+.container-primary .container_body .change-location .container-section .logo-titulo {
+  height: 100%;
+  width: 30%;
+  display: flex;
+}
+.container-primary .container_body .change-location .container-section .logo-titulo .span-logo-titulo {
+  align-self: center;
+  width: 100%;
+  align-items: center;
+  font-size: 48px;
+  color: rgba(247, 84, 9, 0.897);
+}
+.container-primary .container_body .change-location .container-section .container-titulo {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.container-primary .container_body .change-location .container-section .container-titulo .text {
+  font-family: rgba(247, 84, 9, 0.897);
+  width: 100%;
+  height: 90%;
+  padding: 1px 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.container-primary .container_body .change-location .container-section .container-titulo .text .container-change-location {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 1000px 0;
+}
+.container-primary .container_body .change-location .container-section .container-titulo .text .container-change-location .transfer {
+  display: flex;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  width: 130%;
+  border: 3px solid rgba(247, 84, 9, 0.897);
+  flex-direction: row;
+  align-items: flex-start;
+  background-color: rgb(253, 253, 253);
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+.container-primary .container_body .change-location .container-section .container-titulo .text .container-change-location .transfer .info {
+  width: 93%;
+  font-size: 11px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.container-primary .container_body .change-location .container-section .container-titulo .text .container-change-location .transfer .desplegar {
+  width: 7%;
+}
+.container-primary .container_body .change-location .container-section .container-titulo .sector {
+  font-family: "Lato", Arial, sans-serif;
+  padding-right: 10px;
+  padding-top: 15px;
+  align-self: flex-end;
+  color: rgb(116, 116, 116);
+}
+.container-primary .container_body .change-location .button_plus {
+  margin-left: 5px;
+  background-color: rgba(247, 84, 9, 0.897);
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 100%;
+  padding: 10px 15px;
+  position: relative;
+  margin-left: 8%;
+  margin-top: 90%;
+}
+.container-primary .container_body .change-location .button_plus:hover {
+  background-color: rgba(247, 84, 9, 0.897);
   font-size: 17px;
 }
 
 .display-none {
   display: none;
+}
+
+.selected {
+  background-color: rgba(14, 157, 167, 0.231372549);
+  color: rgb(7, 4, 189);
+}
+
+.table_swat2 tbody tr th {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=Titulo.css.map */

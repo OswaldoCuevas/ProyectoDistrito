@@ -2,6 +2,9 @@ import * as Document from "./Document.js";
 import * as _User from "./User.js";
 import * as _Title from "./Title.js";
 import * as _Investment from "./Investment.js";
+import * as _TransferTitle from "./TransferTitle.js";
+import * as _TransferWater from "./TransferWater.js";
+import * as _Location from "./Location.js";
 class listDocument{
     Elements = [];
   
@@ -24,8 +27,6 @@ class listDocument{
         }
     }
 }
-
-
 class User{
    Users = [];
    setUser(Control_Num,Full_Name,Email,Password_User,RFC,CURP,Type_User,Phone_Number){
@@ -57,7 +58,6 @@ class User{
     }
    }
 }
-
 class Title{
     Titles = [];
     setTitles(Title_Id,User_Id,Location_Id,Full_Name,Tenant,Title_Number,Water_Supply,Initial_Date,Validity,Extend,Cologne,Plot,Longitude,Latitude){
@@ -84,7 +84,7 @@ class Investment{
     }
     getInvestmentSpecific(id){
         for(const Investment of this.Investments){
-            if(Investment.getInvestment_Id() == id){
+            if(Investment.getInvestments_Id() == id){
                 return Investment;
             }
         }
@@ -96,7 +96,70 @@ class Investment{
         }
     }
 }
+class TransferTitle{
+    TransferTitles = [];
+    setTransferTitle(Transfer_Date,Title_Id,Transfers_Id,namePrevious,nameNew,idPrevious,idNew,Title_Number,Actual ){
+    this.TransferTitles.push(new _TransferTitle.transferTitle(Transfer_Date,Title_Id,Transfers_Id,namePrevious,nameNew,idPrevious,idNew,Title_Number,Actual ) )
+    }
+    getTransferTitle(id){
+        for(const TransferTitle of this.TransferTitles){
+            if(TransferTitle.getTransfers_Id() == id){
+                return TransferTitle;
+            }
+        }
+        return 0;
+    }
+    showTransferTitles(){
+        for(const TransferTitle of this.TransferTitles){
+           console.log(TransferTitle.getnameNew());
+        }
+    }
+} 
+class TransferWater{
+    TransferWaters = [];
 
-export {listDocument,User,Title,Investment};
+    setTransferWater(Transfers_Id,Date_Start,Date_End,Amount,SetTitleNumber,GetTitleNumber,SetTitleId,GetTitleId,SetName,GetName,SetControl_Num,GetControl_Num){
+    this.TransferWaters.push(new _TransferWater.transferWater(Transfers_Id,Date_Start,Date_End,Amount,SetTitleNumber,GetTitleNumber,SetTitleId,GetTitleId,SetName,GetName,SetControl_Num,GetControl_Num));
+   
+   } 
+   getTransferWater(id){
+    for(const TransferWater of this.TransferWaters){
+        if(TransferWater.getTransfers_Id() == id){
+            return TransferWater;
+        }
+    }
+    return 0;
+}
+showTransferWaters(){
+    for(const TransferWater of this.TransferWaters){
+       console.log(TransferWater.getTransfers_Id());
+    }
+}
+}
+class Location{
+    Locations = [];
+
+    setLocation(Change_Id,Title_Id,Change_Date,Plot1,Cologne1,Longitude1,Latitude1,Plot2,Cologne2,Longitude2,Latitude2){
+    this.Locations.push(new _Location.location(Change_Id,Title_Id,Change_Date,Plot1,Cologne1,Longitude1,Latitude1,Plot2,Cologne2,Longitude2,Latitude2));
+   
+   } 
+   getLocation(id){
+    for(const Location of this.Locations){
+        if(Location.getChange_Id() == id){
+            return Location;
+        }
+    }
+    return 0;
+}
+showLocations(){
+    for(const Location of this.Locations){
+       console.log(Location.getChange_Id());
+    }
+}
+}
+
+
+
+export {listDocument,User,Title,Investment,TransferTitle,TransferWater,Location};
 
 

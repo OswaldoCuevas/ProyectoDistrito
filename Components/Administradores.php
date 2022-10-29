@@ -369,7 +369,7 @@ function alertDrop(user){
 </script>
 <div class="container-tables">
 		<div class="tables-user " >
-            <h2 class=" title-tables-user" id="titulosConcesion">Padrón de usuarios</h2>
+            <h2 class=" title-tables-user" id="titulosConcesion">Administradores</h2>
             <input type="search" class="input_search" placeholder="Buscar usuario ...">
             <div class="scroll-tables-user ">
             <table class="table table-hover " style=" margin-top: 10px;">

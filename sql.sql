@@ -8,6 +8,7 @@ Create table Users(                 Control_Num         INT             PRIMARY 
                                     CURP                VARCHAR(200)                                         NULL,
                                     Type_User           VARCHAR(30)                                         NULL,
                                     INE                 VARCHAR(15)                                         NULL,
+                                    Activo				BOOLEAN										    NULL DEFAULT 1,
                                     INDEX                               Index_user_name(Full_Name)
                     );
 
@@ -24,17 +25,18 @@ Create table Updates(               Update_Id           INT             PRIMARY 
                      );
 
 Create table Transfers_Thousands(   Transfers_Id        INT             PRIMARY KEY  AUTO_INCREMENT     NOT NULL,
-                                    SetUser             INT                                             NOT NULL,
-                                    GetUser             INT                                             NOT NULL,
-                                    Transfer_Validity   INT                                             NOT NULL,
-                                    Transfer_Date       DATE                                            NOT NULL,
-                                    Amount              INT                                             NOT NULL,
-                                    INDEX                               Index_SetUser(SetUser),
-                                    INDEX                               Index_getUser(GetUser),
-                                    FOREIGN KEY                         (SetUser)
-                                    REFERENCES                          Users(Control_Num),
-                                    FOREIGN KEY                         (GetUser)
-                                    REFERENCES                          Users(Control_Num)
+                                    SetTitle            INT                                             NOT NULL,
+                                    GetTitle            INT                                             NOT NULL,
+                                    Date_Start          DATE                                            NOT NULL,
+                                    Date_End            DATE                                            NOT NULL,
+									Amount           	INT                                             NOT NULL,
+                                    Active				BOOLEAN										    NULL DEFAULT 1,
+                                    INDEX                               Index_SetTitle(SetTitle),
+                                    INDEX                               Index_getTitle(GetTitle),
+                                    FOREIGN KEY                         (SetTitle)
+                                    REFERENCES                          Titles(Title_Id),
+                                    FOREIGN KEY                         (GetTitle)
+                                    REFERENCES                          Titles(Title_Id)
                                 );
 Create Table Titles(                Title_Id            INT             PRIMARY KEY AUTO_INCREMENT      NOT NULL,
                                     User_Id             INT                                             NOT NULL,
@@ -73,6 +75,7 @@ Create Table Investments(           Investments_Id      INT             PRIMARY 
                                     System_             VARCHAR(100)                                        NULL,
                                     Hectare             INT                                                 NULL,
                                     Investments_Date    INT                                                NULL,
+                                    Active				BOOLEAN										    NULL DEFAULT 1,
                                     INDEX                               Index_Location_Id(Location_Id),
                                     INDEX                               Index_User_Id(User_Id),
                                     FOREIGN KEY                         (Location_Id) 
@@ -86,6 +89,7 @@ Create Table Transfers_Title(       Transfers_Id        INT             PRIMARY 
                                     New_User            INT                                             NOT NULL,
                                     Title_Id            INT                                             NOT NULL,
                                     Transfer_Date       DATE                                            NOT NULL,
+                                    Active				BOOLEAN										    NULL DEFAULT 1,
                                     INDEX                               Index_Previous_User(Previous_User),
                                     INDEX                               Index_New_User(New_User),
                                     INDEX                               Index_Title_Id(Title_Id),
@@ -102,6 +106,7 @@ Create Table Change_Location (      Change_Id           INT             PRIMARY 
                                     Previous_Location   INT                                             NOT NULL,
                                     New_Location        INT                                             NOT NULL,
                                     Change_Date         Date                                                NULL,
+                                    Active				BOOLEAN										    NULL DEFAULT 1,
                                     INDEX                               Index_Title_Id(Title_Id),
                                     INDEX                               Index_Previous_Location(Previous_Location),
                                     INDEX                               Index_New_Location(New_Location),
@@ -225,9 +230,9 @@ create view view_titles_update as select            titles.Title_Id,
                                                     from titles,users,location_title 
                                                         where titles.Title_Id = location_title.Title_Id
                                                         AND   titles.User_Id = users.Control_Num
-                                                        AND titles.Activo = 1
+                                                        AND titles.Active = 1
                                                         AND location_title.Active = 1
-                                                        AND users.Active = 1;
+                                                        AND users.Activo = 1;
 Create view view_investments as  SELECT 
                                                     users.Control_Num,
                                                     investments.Investments_Id,
@@ -253,3 +258,40 @@ create view inversiones as SELECT * FROM investments,users
                             where  investments.User_Id = users.Control_Num 
                             AND investments.Active = 1
                             AND users.Activo = 1;
+
+create view View_Transfer_Title as SELECT t.Transfer_Date, u1.Full_Name as namePrevious,u2.Full_Name as nameNew,title.Title_Number FROM transfers_title t
+inner join users u1 on t.Previous_User=u1.Control_Num
+inner join users u2 on t.New_User=u2.Control_Num
+inner join titles title on t.Title_Id = title.Title_Id;
+
+create view View_Transfer_Title as SELECT  
+			t.Transfer_Date, 
+            t.Actual,
+			t.Title_Id,
+            t.Transfers_Id,
+            u1.Full_Name as namePrevious,
+            u2.Full_Name as nameNew,
+            u1.Control_Num as idPrevious,
+            u2.Control_Num as idNew,
+            title.Title_Number FROM transfers_title t
+inner join users u1 on t.Previous_User=u1.Control_Num
+inner join users u2 on t.New_User=u2.Control_Num
+inner join titles title on t.Title_Id = title.Title_Id 
+where t.Active = 1;
+
+create view view_change_location as SELECT 
+	   c.Change_Id,
+       c.Title_Id,
+       c.Change_Date,
+	   l1.Plot as Plot1,
+	   l1.Cologne as Cologne1,
+       l1.Longitude as Longitude1,
+       l1.Latitude as Latitude1,
+       l2.Plot as Plot2,
+	   l2.Cologne as Cologne2,
+       l2.Longitude as Longitude2,
+       l2.Latitude as Latitude2
+       FROM change_location c
+INNER JOIN location_title l1 on c.Previous_Location = l1.Location_Id
+INNER JOIN location_title l2 on c.New_Location = l2.Location_Id
+where c.Active = 1;

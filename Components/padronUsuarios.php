@@ -115,7 +115,7 @@ function buscar(data){
             }
             $(".load_users").html(html);
             $(".button_show").click(function() {
-                $(".dashboard-content").load("components/Usuario.php",{"user_id":$(this).attr("id")});
+                $(".dashboard-content").load("components/Usuario.php",{"user_id":$(this).attr("id"),"previous":"padronUsuarios"});
             });
             $(".button_show_update").click(function(){
               const $user = getUser($(this).attr("id").toString())
@@ -249,42 +249,42 @@ function CRUDUser(data){
 function alertRegister(){
     const user =jsonInfo();
     const $msg=`
-    <table class="table">
-  <tbody>
-    <tr>
-      <th scope="row">Nombre</th>
-      <td>${user.Full_Name  == null ?"Sin registrar":user.Full_Name }</td>
-    </tr>
-    <tr>
-      <th scope="row">Sector</th>
-      <td>${user.Type_User == null ?"Sin registrar":user.Type_User}</td>
-    </tr>
-    <tr>
-    <tr>
-      <th scope="row">Phone_Number</th>
-      <td>${user.Phone_Number == null ?"Sin registrar":user.Phone_Number}</td>
-    </tr>
-      <th scope="row">RFC</th>
-      <td>${user.RFC == null ?"Sin registrar":user.RFC } </td>
-    </tr>
-    <tr>
-      <th scope="row">Curp</th>
-      <td>${user.CURP == null ?"Sin registrar":user.CURP}</td>
-    </tr>
-    <tr>
-      <th scope="row">Correo</th>
-      <td>${user.Email == null ?"Sin registrar":user.Email}</td>
-    </tr>
-    <tr>
-      <th scope="row">Contraseña</th>
-      <td>${user.Password_User == null ?"Sin registrar":user.Password_User }</td>
-    </tr>
-   
-  </tbody>
-</table>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">Nombre</th>
+            <td>${user.Full_Name  == null ?"Sin registrar":user.Full_Name }</td>
+          </tr>
+          <tr>
+            <th scope="row">Sector</th>
+            <td>${user.Type_User == null ?"Sin registrar":user.Type_User}</td>
+          </tr>
+          <tr>
+          <tr>
+            <th scope="row">Phone_Number</th>
+            <td>${user.Phone_Number == null ?"Sin registrar":user.Phone_Number}</td>
+          </tr>
+            <th scope="row">RFC</th>
+            <td>${user.RFC == null ?"Sin registrar":user.RFC } </td>
+          </tr>
+          <tr>
+            <th scope="row">Curp</th>
+            <td>${user.CURP == null ?"Sin registrar":user.CURP}</td>
+          </tr>
+          <tr>
+            <th scope="row">Correo</th>
+            <td>${user.Email == null ?"Sin registrar":user.Email}</td>
+          </tr>
+          <tr>
+            <th scope="row">Contraseña</th>
+            <td>${user.Password_User == null ?"Sin registrar":user.Password_User }</td>
+          </tr>
+        
+        </tbody>
+      </table>
     `;
     Swal.fire({
-                    title: `Registrando Nuevo usuario:`,
+                    title: `Registrando nuevo usuario:`,
                     html: $msg,
                     showDenyButton: true,
                     confirmButtonText: 'Confirmar',

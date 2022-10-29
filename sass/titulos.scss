@@ -48,7 +48,7 @@ $toogle_dashboard:#0e9ca7;
             outline: none;
             border-radius: 5px;
             border-bottom: 2px solid #343a4050;
-            transition: all 0.2s;
+            
             padding-left: 10px;
             padding-right: 10px;
             &:focus{
@@ -157,7 +157,7 @@ $toogle_dashboard:#0e9ca7;
         position: absolute;
         left: 93%;
         color: #066de2;
-        transition: all 0.2s;
+        
         ;
         
     }
@@ -170,7 +170,7 @@ $toogle_dashboard:#0e9ca7;
     border-bottom-width: 0.1px;
     border-bottom-style:solid;
     border-bottom-color: rgb(219, 219, 219);
-    transition: all 0.2s;
+    
     text-align: center;
 }
 .user_img i{
@@ -212,8 +212,9 @@ $toogle_dashboard:#0e9ca7;
 }
 .container-tables{
     height: 100%;
-    width: 70%;
+    width: 80%;
     align-items: center;
+
     
 }
 .tables-user{
@@ -224,7 +225,7 @@ $toogle_dashboard:#0e9ca7;
     border-bottom-right-radius: 30px;
     padding: 30px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    transition: all 0.2s;
+    
  &:hover{
   
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -346,3 +347,33 @@ $toogle_dashboard:#0e9ca7;
         }
     }
 }
+
+.salida_por_derecha{
+    animation:salidaDerechaCarousel 1.5s linear;
+    animation-play-state: running;
+    animation-fill-mode: forwards;
+}
+.entrada_por_derecha{
+    animation:entradaDerechaCarousel 10.5s linear;
+    animation-play-state: running;
+    animation-fill-mode: forwards;
+}
+@keyframes salidaDerechaCarousel{ 
+    from {
+        transform: translate(0);
+    }
+    to{
+        transform: translate(2700px);
+        position: absolute;   
+    }
+    }
+    @keyframes entradaDerechaCarousel{ 
+        from {
+            transform: translate(1700px);
+            display: block;
+        }
+        to{
+            transform: translate(0); 
+        }
+        }
+        

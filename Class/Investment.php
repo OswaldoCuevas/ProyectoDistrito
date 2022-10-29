@@ -9,15 +9,17 @@ class Investment extends Conexion{
         
         }
     public function updateInvestment($Investments_Id,$User_Id, $Cologne,$Plot,$System_,$Hectare,$Investments_Date){
-        $Encabezado = "User_Id = '$User_Id'  ";
-        $Encabezado .= $Cologne         == "Sin registrar" ? "" : ", Cologne = '$Cologne'";
-        $Encabezado .= $Plot            == "Sin registrar" ? "" : ", Plot = '$Plot'";
-        $Encabezado .= $System_            == "Sin registrar" ? "" : ", System_ = '$System_'";
-        $Encabezado .= $Hectare            == "Sin registrar" ? "" : ", Hectare = '$Hectare'";
-        $Encabezado .= $Investments_Date == "Sin registrar" ? "" : ", Investments_Date = '$Investments_Date'";
+        $Encabezado  = "User_Id = '$User_Id'  ";
+        $Encabezado .= $Cologne             == "Sin registrar" ? ", Cologne          = null" : ", Cologne           = '$Cologne'";
+        $Encabezado .= $Plot                == "Sin registrar" ? ", Plot             = null" : ", Plot              = '$Plot'";
+        $Encabezado .= $System_             == "Sin registrar" ? ", System_          = null" : ", System_           = '$System_'";
+        $Encabezado .= $Hectare             == "Sin registrar" ? ", Hectare          = null" : ", Hectare           = '$Hectare'";
+        $Encabezado .= $Investments_Date    == "Sin registrar" ? ", Investments_Date = null" : ", Investments_Date  = '$Investments_Date'";
         $cons ="UPDATE investments SET  $Encabezado WHERE (Investments_Id = '$Investments_Id');";
+        echo $cons;
         $this -> sistema -> query($cons);
-        }    
+        }
+         
     public function addUserWithId($id_user){
     $this -> sistema -> query("INSERT INTO investments (User_Id) VALUES ('$id_user');");
         $id_=mysqli_query($this -> sistema,"SELECT LAST_INSERT_ID();");
@@ -32,10 +34,13 @@ class Investment extends Conexion{
 
     }
     public function jsonInvestments($busqueda){
-        $consulta ="SELECT * FROM view_investments 
+        $consulta ="SELECT * FROM inversiones 
                     where Cologne       like '%$busqueda%'
                     or    Plot          like '%$busqueda%'
                     or    Full_Name     like '%$busqueda%';";
         return  json_encode($this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC));
+      }
+      public function dropInvestment($Investments_Id){
+        $this -> sistema -> query("UPDATE investments SET Active = '0' WHERE (Investments_Id = '$Investments_Id');");
       }
 }

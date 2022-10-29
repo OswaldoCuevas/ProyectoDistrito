@@ -13,7 +13,7 @@ $numTitles = count($Titles);
 <link rel="stylesheet" href="css/Usuario.css">
 <script type="module" >
    import * as link from "./Modules/links.js";
-    link.section("padronUsuarios","");
+    link.section("<?php echo $_POST['previous']?>","");
        
 </script>
 <div class="container-tables">
@@ -66,8 +66,11 @@ $numTitles = count($Titles);
                             <h6 class="col-12 inf"><span>No. de títulos </span> </h6><h6 class="col-12" ><span ><?php echo $numTitles ?></span> </h6>
                         </div>
                         <div class="col-6">
-                            <h6 class="col-12 inf"><span>RFC: </span></h6><h6 class="col-12"><span ><?php echo $User["RFC"] == null ?"Sin registrar":$User['RFC']?></span> </h6>
+                            <h6 class="col-12 inf"><span>RFC </span></h6><h6 class="col-12"><span ><?php echo $User["RFC"] == null ?"Sin registrar":$User['RFC']?></span> </h6>
                             <h6 class="col-12 inf"><span>Sector </span></h6> <h6 class="col-12"><span ><?php echo $User["Type_User"] == null ?"Sin registrar":$User['Type_User']?></span> </h6>
+                        </div>
+                        <div class="col-6">
+                            <h6 class="col-12 inf"><span>No.Control </span></h6><h6 class="col-12"><span ><?php echo $User["Control_Num"] == null ?"Sin registrar":$User['Control_Num']?></span> </h6>
                         </div>
                     </div>
                 </div>
