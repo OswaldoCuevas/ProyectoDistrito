@@ -1,6 +1,9 @@
 <?php
 require ('conexion.php');
 require('../Class/Users.php');
+require ('validityAdmin.php');
+
+
 $Users = new Users();
 if(isset($_POST['user']) && isset($_POST['type'])){
     $Users -> addUserWithNameAndType($_POST['user'],$_POST['type']);

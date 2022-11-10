@@ -405,6 +405,12 @@ lottie-player {
   font-size: 100px;
   color: #1EA7C9;
 }
+.Actualizaciones .Hoja_Actualizar .actualizar_body .actualizar_body_actual .container_update .user_previous .class_img_user .span-type-update, .Actualizaciones .Hoja_Actualizar .actualizar_body .actualizar_body_actual .container_update .user_new .class_img_user .span-type-update {
+  color: #1EA7C9;
+  position: absolute;
+  top: 10px;
+  margin-left: 25%;
+}
 .Actualizaciones .Hoja_Actualizar .actualizar_body .actualizar_body_actual .container_update .user_previous .class_info_user, .Actualizaciones .Hoja_Actualizar .actualizar_body .actualizar_body_actual .container_update .user_new .class_info_user {
   display: flex;
   flex-direction: column;

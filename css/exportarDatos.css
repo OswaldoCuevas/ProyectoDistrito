@@ -42,7 +42,8 @@
   border-radius: 10px;
   overflow-y: auto;
 }
-.container-principal .principal_body .buttons button {
+.container-principal .principal_body .buttons a {
+  text-decoration: none;
   width: 80%;
   align-self: center;
   border: none;
@@ -54,7 +55,7 @@
   color: #fff;
   transition: all 0.3s;
 }
-.container-principal .principal_body .buttons button:hover {
+.container-principal .principal_body .buttons a:hover {
   background-color: rgba(14, 157, 167, 0.9058823529);
   font-size: 18px;
   width: 85%;

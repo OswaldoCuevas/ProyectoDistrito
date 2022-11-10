@@ -9660,7 +9660,7 @@ body {
   font-size: 16px;
   line-height: 1.8;
   font-weight: normal;
-  background: #f8f9fd;
+  background: rgba(181, 181, 184, 0.8901960784);
   color: gray;
 }
 
@@ -9737,7 +9737,7 @@ h1, h2, h3, h4, h5,
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#f75959", endColorstr="#f35587", GradientType=1 );
   color: #fff;
 }
-.text-wrap .text h2 {
+.text-wrap .text h1, .text-wrap .text h2 {
   font-weight: 900;
   color: #fff;
 }

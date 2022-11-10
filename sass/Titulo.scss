@@ -7,6 +7,7 @@ $color-titulo:rgba(247, 84, 9, 0.897);
 $color-vigencia-well:rgba(0, 172, 23, 0.897);
 $color-vigencia-bad:rgba(218, 0, 0, 0.897);
 @mixin box-shadow-primary(){
+    background-color: #fff;
     box-shadow: 0px 10px 34px -15px rgba(0,0,0,0.14);
     border:1px solid rgb(231, 231, 231);
     cursor: pointer;
@@ -43,6 +44,7 @@ $color-vigencia-bad:rgba(218, 0, 0, 0.897);
     height: 100%;
     display: flexbox;
     overflow-y: auto;
+    
  
     .container_header{
         width: 100%;

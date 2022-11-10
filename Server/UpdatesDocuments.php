@@ -1,6 +1,7 @@
 <?php
 require ('../Server/conexion.php');
-  require ('../Class/Document.php');
+require ('../Class/Document.php');
+require ('validityAdmin.php');
   
    $Title_Number=$_POST["Title_Number"];
    $User=$_POST["User"];

@@ -3,8 +3,9 @@ class Investment extends Conexion{
     public function __construct(){
         parent::Conexion();
     }
-    public function getInvestmentSpecific($User,$Cologne,$Plot,$Investments_Date){
-        $consulta ="SELECT * FROM view_investments where Full_Name='$User' AND Cologne LIKE '%$Cologne%' AND Plot LIKE '%$Plot%' AND Investments_Date='$Investments_Date';";
+    public function getInvestmentSpecific($User,$Cologne,$Plot,$Investments_Date,$System_,$Hectare){
+        $consulta ="SELECT * FROM view_investments where Full_Name='$User' AND Cologne = '$Cologne' AND System_ = '$System_' AND Hectare = '$Hectare' AND Plot = '$Plot' AND Investments_Date='$Investments_Date';";
+        
         return  mysqli_num_rows(mysqli_query($this -> sistema,$consulta)) <= 0 ? 0 : json_encode($this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC));
         
         }

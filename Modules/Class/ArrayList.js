@@ -57,6 +57,9 @@ class User{
         return User;
     }
    }
+   vacio(){
+        this.Users = [];
+    }
 }
 class Title{
     Titles = [];
@@ -76,6 +79,9 @@ class Title{
            console.log(Title.getTitle_Number());
         }
     }
+    vacio(){
+        this.Titles = [];
+    }
 }
 class Investment{
     Investments = [];  
@@ -94,6 +100,9 @@ class Investment{
         for(const Investment of this.Investments){
            console.log(Investment.getFull_Name());
         }
+    }
+    vacio(){
+        this.Investments = [];
     }
 }
 class TransferTitle{

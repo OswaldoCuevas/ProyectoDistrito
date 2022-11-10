@@ -1,6 +1,8 @@
 <?php
     require ('conexion.php');
     require('../Class/Users.php');
+    require ('validityAdmin.php');
+
 if (isset($_POST['Operation'])){
   
     switch ($_POST['Operation']){

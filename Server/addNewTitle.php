@@ -1,4 +1,5 @@
 <?php
+require ('validityAdmin.php');
 require ('conexion.php');
 require('../Class/Title.php');
 

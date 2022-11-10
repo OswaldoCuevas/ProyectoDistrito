@@ -3,13 +3,18 @@ $height_user:550px;
 $width_user_table:400px;
 $height_user_table:300px;
 $toogle_dashboard:#0e9ca7;
+.primary-container{
+    display: flex;
+    width: 100%;
+    margin-left: 5%;
+}
 .user_info{
     height: $height_user;
     width: $width_user;
     border-radius: 30px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     transition: width 0.2s;
-
+    background-color: #fff;
 }
 .user_info:hover{
     height: $height_user+10;
@@ -84,10 +89,19 @@ $toogle_dashboard:#0e9ca7;
 }
 .user_description{
     padding: 10px;
-    width: auto;
+    width: 98%;
+    margin-left: 1%;
     text-align: center;
     h5{
+        width: 100%;
         font-weight:bold;
+    }
+    .user-info{
+        width: 100%;
+        display: flex;
+        .info{
+            width: 50%;
+        }
     }
 }
 .container-tables{
@@ -100,7 +114,7 @@ $toogle_dashboard:#0e9ca7;
     width: 98%;
     height: $height_user;
     max-height: $height_user;
-    background-color: rgb(253, 250, 250);
+    background-color: #fff;
     border-top-left-radius:30px ;
     border-bottom-right-radius: 30px;
     padding: 30px;
@@ -127,7 +141,7 @@ $toogle_dashboard:#0e9ca7;
 }
 .title-tables-user{
     padding: 0 150px 0 150px;
-    background-color: rgb(253, 250, 250);
+    background-color: #fff;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px ;
     transition: width 0.3s;
@@ -137,3 +151,19 @@ $toogle_dashboard:#0e9ca7;
     font-weight:bold;
 }
 
+.show-info-user{
+    border:none;
+    background-color: transparent !important;
+    cursor: text !important;
+    width: 100%;
+    font-weight: bold;
+}
+.show-info-user-sub{
+    border:none;
+    background-color: transparent !important;
+    cursor: text !important;
+    width: 100%;
+    color: black;
+    text-align: center;
+    
+}

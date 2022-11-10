@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Distrin066</title>
+  	<title>Distrito066</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="shortcut icon" href="img/logo.png" />
@@ -20,7 +20,7 @@
 					<div class="wrap d-md-flex">
 						<div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
 							<div class="text w-100">
-								<h2>Distrito 066 <i class="fa-solid fa-droplet"> </i></h2>
+								<h2 >Distrito 066 <i class="fa-solid fa-droplet"> </i></h2>
 								<p>Iniciando sesión como administrador</p>
 							</div>
 			      		</div>
@@ -43,7 +43,7 @@
 									<span id="span-password"></span>
 								</div>
 								<div class="form-group">
-									<button type="submit" id="Enviar" class="form-control btn btn-primary submit px-3">Enviar</button>
+									<button type="submit" id="Enviar" class="form-control btn btn-primary submit px-3">Acceder</button>
 								</div>
 								<div class="form-group d-md-flex">
 									<div class="w-50 text-left">
@@ -64,58 +64,7 @@
 		</div>
 	</section>
 
-	<script type="module">
-		$("#span-control-num").hide();
-		$("#span-password").hide();
-		$("#Enviar").on('click', function(e) {
-			Enviar();
-		})
-
-		
-		$(document).on('keydown','input',function(){
-			setTimeout(() => {
-			$("#control_num").	val(caraterSpecial(	$("#control_num").val()	));
-			$("#password").		val(caraterSpecial(	$("#password").val()	));
-			},30);
-		});
-		function Enviar(){
-			const id 		= 	$("#control_num").val();
-			const password 	= 	$("#password").val();
-			const data 		=	{"Email":id,"Password":password};
-			$.ajax({ // crea la tabla con los valores obtenidos de la basede datos
-        
-				url : `Server/login.php`,
-				data : data,
-				type : 'POST',
-				beforeSend: function () {
-				},
-				success: Response => {
-		
-					switch (Response){
-					case "1": location.href ="menu.php";break;
-					case "2":
-						$("#span-control-num").show();
-						$("#span-password").hide();
-						$("#span-control-num").html(`Usuario no encontrado`); 
-						$("#span-password").html("");
-					break;
-					case "3":
-						$("#span-password").html(`Contraseña incorrecta`);
-						$("#span-control-num").html("")
-						$("#span-password").show();
-						$("#span-control-num").hide();
-					break;
-					}
-				}
-			});	
-		}
-
-		function caraterSpecial(expersion){
-			let expresionNew = expersion.replace(/[^a-zA-Z0-9$+=?@_. ]/i, "")
-			return expresionNew == expersion ? expresionNew:caraterSpecial(expresionNew);	
-		}
-
-	</script>
+	<script type="module" src="js\index.js"></script>
 
 	</body>
 </html>

@@ -1,5 +1,5 @@
 $toogle_dashboard:#0e9ca7;
-$height_div_principal:500px;
+$height_div_principal:550px;
 $heigth_document:90px;
 @mixin bordes() {
 
@@ -26,6 +26,7 @@ $heigth_document:90px;
     width: 90%;
     height: $height_div_principal;
     border-radius: 10px;
+    background-color: #fff;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     h1{
         font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -138,4 +139,10 @@ $heigth_document:90px;
    }
       
     }
+}
+.download{
+  font-size: 14px;
+  padding-right: 2px;
+  margin-right: 4px;
+  border-right: 1px solid #b3b3b3;
 }

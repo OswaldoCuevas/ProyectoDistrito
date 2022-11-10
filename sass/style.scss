@@ -21,7 +21,7 @@ body{
 	font-size: 16px;
 	line-height: 1.8;
 	font-weight: normal;
-	background: #f8f9fd;
+	background: #b5b5b8e3;
 	color: lighten($black,50%);
 }
 a {
@@ -86,7 +86,7 @@ h1, h2, h3, h4, h5,
 	@include gradient-background();
 	color: $white;
 	.text{
-		h2{
+		h1,h2{
 			font-weight: 900;
 			color: $white;
 		}

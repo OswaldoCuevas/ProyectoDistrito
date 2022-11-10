@@ -2,6 +2,8 @@
 $busqueda = $_GET['busqueda'];
 require ('conexion.php');
 require('../Class/Title.php');
+require ('validityAdmin.php');
+
 $Title = new Title();
 $registros = $Title -> searchTitles($busqueda);
 if(is_array($registros)){

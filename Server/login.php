@@ -1,6 +1,7 @@
 <?php
     require ('conexion.php');
     require('../Class/Users.php');
+
     $User = new Users();
     $response = $User-> loginAdmin($_POST['Email'],$_POST['Password']);
  

@@ -1,7 +1,11 @@
 <?php
-$user = $_GET['user'];
+
+
+
+require ('validityAdmin.php');
 require ('conexion.php');
 require('../Class/Users.php');
+$user = $_GET['user'];
 $Users = new Users();
 $registros = $Users -> getUserForName($user);
 if(is_array($registros)){

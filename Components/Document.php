@@ -1,6 +1,7 @@
 <?php 
 require ('../Server/conexion.php');
 include("../Class/Document.php");
+require ('../Server/validityAdmin.php');
 $id=$_POST['id'];
 $Document = new Document();
 $Document_Specific = $Document -> getDocument($id);

@@ -1,7 +1,8 @@
 .archivos_actualizacion {
   width: 90%;
-  height: 500px;
+  height: 550px;
   border-radius: 10px;
+  background-color: #fff;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .archivos_actualizacion h1 {
@@ -23,7 +24,7 @@
 }
 .archivos_actualizacion .contenido_actualizacion {
   width: 100%;
-  height: 500px;
+  height: 550px;
   text-align: center;
 }
 .archivos_actualizacion .contenido_actualizacion div {
@@ -103,6 +104,13 @@
 .archivos_actualizacion .contenido_actualizacion .archivos_titulos {
   border-bottom-right-radius: 10px;
   height: 100%;
+}
+
+.download {
+  font-size: 14px;
+  padding-right: 2px;
+  margin-right: 4px;
+  border-right: 1px solid #b3b3b3;
 }
 
 /*# sourceMappingURL=actualizaciones.css.map */

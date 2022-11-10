@@ -80,14 +80,19 @@ function selected_elements_array(){
          $(`#${element.getId_Info()}`).removeClass('selected').addClass('selected');
     }
  }
- const updateInfoDocument = (Id_Info,Value,Encabezado) =>{ //actualiza la información de documentos info  en la base de datos
-     const data = { 'Id_Info' : Id_Info, 'Value' : Value, 'Encabezado' : Encabezado };
+ const updateInfoDocument = (Id_Info,Value,Encabezado,id) =>{ //actualiza la información de documentos info  en la base de datos
+     const data = { 'Id_Info' : Id_Info, 'Value' : `'${Value}'`, 'Encabezado' : Encabezado };
      $.ajax({
          url : `${link.Server}update_document.php`,
          data : data,
          type : 'POST',
+         success: response => {
+            $(id).val(Value);
+            lottiesSuccessActives ();
+         },
      });                               
  }
+ 
  const setUser = (user) =>{ //actualiza la información de documentos info  en la base de datos
      const data = { 'user' : user };
      $.ajax({
@@ -139,17 +144,20 @@ function selected_elements_array(){
     const  input_RFC                        = $("#input_RFC")                    .val();
     const  input_Correo                     = $("#input_correo")                 .val();
     const  input_CURP                       = $("#input_CURP")                   .val();
-
+    
+ 
      // transfersTitle()
      const Iguales_Telefono          = input_telefono_update     == input_telefono      ? true:false;
      const Iguales_RFC               = input_RFC_update          == input_RFC           ? true:false;
-     const Iguales_Correo            = input_Correo_update       ==input_Correo         ? true:false;
-     const Iguales_CURP              = input_CURP_update         ==input_CURP           ? true:false;
+     const Iguales_Correo            = input_Correo_update       == input_Correo         ? true:false;
+     const Iguales_CURP              = input_CURP_update         == input_CURP           ? true:false;
 
+     const array_document_info = ArrayListTitles.getArrayElements();
+     const Id_Info = array_document_info[indexCarousel].Id_Info;
      var html=``;
 Iguales_CURP
    
-     if(!Iguales_Telefono){
+     if(!Iguales_Telefono && input_telefono_update != "Sin registrar"){
          html += `<table class="table" style="margin-top:10px">
              <thead class="thead-dark">
                  <tr>
@@ -168,7 +176,7 @@ Iguales_CURP
              </tbody>
          </table> `;
      }
-     if(!Iguales_RFC){
+     if(!Iguales_RFC && input_RFC_update != "Sin registrar" ){
          html += `<table class="table" style="margin-top:10px">
              <thead class="thead-dark">
                  <tr>
@@ -187,7 +195,7 @@ Iguales_CURP
              </tbody>
          </table> `;
      }
-     if(!Iguales_Correo){
+     if(!Iguales_Correo &&input_Correo_update != "Sin registrar"){
          html += `<table class="table" style="margin-top:10px">
              <thead class="thead-dark">
                  <tr>
@@ -206,7 +214,7 @@ Iguales_CURP
              </tbody>
          </table> `;
      }
-     if(!Iguales_CURP){
+     if(!Iguales_CURP && input_CURP_update != "Sin registrar"){
          html += `<table class="table" style="margin-top:10px">
              <thead class="thead-dark">
                  <tr>
@@ -233,28 +241,45 @@ Iguales_CURP
                  confirmButtonText: 'Confirmar',
                  denyButtonText: `Cancelar`,
              }).then((result) => {
+                
                  if(result.isConfirmed){
-      
-    
-  
      if(!Iguales_Telefono){
-   
-     $("#input_telefono").val($("#input_telefono_update").val());
-         UpdateInfoUser('Phone_Number',input_telefono_update )
+        if(input_telefono_update == "Sin registrar"){
+            updateInfoDocument(Id_Info,input_telefono,"Phone_Number","#input_telefono_update")
+        }else{
+            $("#input_telefono").val($("#input_telefono_update").val());
+            UpdateInfoUser('Phone_Number',input_telefono_update )
+        }
+        
+        
+        
      }
-     if(!Iguales_RFC){
-      $("#input_RFC").val($("#input_RFC_update").val());
-         UpdateInfoUser('RFC',input_RFC_update)
-     }
-     if(!Iguales_Correo){
-  
-      $("#input_correo").val( $("#input_correo_update").val());
-         UpdateInfoUser('Email',input_Correo_update)
-     }
-     if(!Iguales_CURP){
+     if(!Iguales_RFC ){
+        if(input_RFC_update == "Sin registrar"){
+            updateInfoDocument(Id_Info,input_RFC,"RFC","#input_RFC_update")
+        }else{
+            $("#input_RFC").val($("#input_RFC_update").val());
+            UpdateInfoUser('RFC',input_RFC_update)
+        }
       
-         $("#input_CURP").val($("#input_CURP_update").val());
-         UpdateInfoUser('CURP',input_CURP_update)
+     }
+     if(!Iguales_Correo ){
+        if(input_Correo_update == "Sin registrar"){
+            updateInfoDocument(Id_Info,input_Correo,"Email","#input_Correo_update")
+        }else{
+            $("#input_correo").val( $("#input_correo_update").val());
+            UpdateInfoUser('Email',input_Correo_update)
+        }
+      
+     }
+     if(!Iguales_CURP ){
+      if( input_CURP_update == "Sin registrar"){
+        updateInfoDocument(Id_Info,input_CURP,"CURP","#input_CURP_update")
+      }else{
+        $("#input_CURP").val($("#input_CURP_update").val());
+        UpdateInfoUser('CURP',input_CURP_update)
+      }
+      
      }  
                      
                  }
@@ -262,33 +287,6 @@ Iguales_CURP
      
  }
  
- function transfersTitle(){
-     const data = { 'Title_Number'   :   $("#input_titulo_update").val(), 
-                    'Control_Num'    :   classTitle.getUser_Id() };
-    $.ajax({
-         url : `${link.Server}TransferTitleWithDocument.php`,
-         data : data,
-         type : 'POST',
-         success: data => {lottiesSuccessActives ();}
-     });
- }
- function ChangeLocation(){
-     const Longitude      = $("#input_longitud_update") .val();
-     const Latitude       = $("#input_latitud_update")  .val();
-     const Cologne        = $("#input_colonia_update")  .val();
-     const Plot           = $("#input_lote_update")     .val();
-     const data = {  'Title_Id'      :   classTitle.getTitle_Id(),
-                     'Cologne'       :   Cologne             ,
-                     'Plot'          :   Plot                ,
-                     'Longitude'     :   Longitude           ,
-                     'Latitude'      :   Latitude};  
-    $.ajax({
-         url : `${link.Server}ChangeUbicationWithDocument.php`,
-         data : data,
-         type : 'POST',
-         success: data => {lottiesSuccessActives ();}
-     });
- }
  const UpdateInfoUser = (Encabezado,value) =>{
     
 
@@ -305,109 +303,8 @@ Iguales_CURP
      
      
  }
- const addNewTitle = (user_id, title_number, water_supply, initial_date, validity, extend, cologne, plot, longitude, latitude,tenant) => {
-     const data = { 
-                     'user_id'       :   user_id        ,       'title_number'  :   title_number     ,
-                     'water_supply'  :   water_supply   ,       'initial_date'  :   initial_date     ,
-                     'validity'      :   validity       ,       'extend'        :   extend           ,
-                     'cologne'       :   cologne        ,       'plot'          :   plot             ,
-                     'longitude'     :   longitude      ,       'latitude'      :   latitude         ,
-                     'tenant'        :   tenant
-     };
-     return $.ajax({
-         url : `${link.Server}addNewTitle.php`,
-         data : data,
-         type : 'POST',
-         success : data => {
-             $("#input_nombre")       .val($("#input_nombre_update")          .val());
-             $("#input_titulo")       .val($("#input_titulo_update")          .val());
-             $("#input_arrendatario") .val($("#input_arrendatario_update")    .val());
-             $("#input_sector")       .val($("#input_sector_update")          .val());
-             $("#input_colonia")      .val($("#input_colonia_update")         .val());
-             $("#input_lote")         .val($("#input_lote_update")            .val());
-             $("#input_vigencia")     .val($("#input_vigencia_update")        .val());
-             $("#input_inicio")       .val($("#input_inicio_update")          .val());
-             $("#input_dotacion")     .val($("#input_dotacion_update")        .val());
-             $("#input_longitud")     .val($("#input_longitud_update")        .val());
-             $("#input_latitud")      .val($("#input_latitud_update")         .val());
-             $("#prorroga")           .val($("#prorroga_update")              .val()); 
-             lottiesSuccessActives ();
-   
-         }
-         });
-     
- }
- const switRegisterTitle = title =>{
-     
-     const $msg=`
-     <table class="table">
-         <tbody>
-             <tr>
-                 <th scope="row">Título</th>
-                 <td>    ${$("#input_titulo_update")   .val()}</td>
-             </tr>
-             <tr>
-                 <th scope="row">Usuario</th>
-                 <td>    ${ $("#input_nombre_update")   .val()}</td>
-             </tr>
-             <tr>
-                 <th scope="row">Arrendatario</th>
-                 <td>    ${$("#input_arrendatario_update").val()}</td>
-             </tr>
-             <tr>
-                 <th scope="row">Colonia</th>
-                 <td>    ${$("#input_colonia_update")  .val()}</td>
-             </tr>
-             <tr>
-                 <th scope="row">Lote</th>
-                 <td>    ${$("#input_lote_update")     .val()}</td>
-             </tr>
-             <tr>
-                 <th scope="row">Vigencia</th>
-                 <td>    ${$("#input_vigencia_update") .val()}</td>
-             </tr>
-                 <th scope="row">Inicio</th>
-                 <td>    ${$("#input_inicio_update")   .val()}</td>
-             </tr>
-             <tr>
-                 <th scope="row">Dotación</th>
-                 <td>    ${$("#input_dotacion_update") .val()}</td>
-             </tr>
-             <tr>
-                 <th scope="row">Longitud</th>
-                 <td>    ${$("#input_longitud_update") .val()}</td>
-             </tr>
-             <tr>
-                 <th scope="row">Latitud</th>
-                 <td>    ${$("#input_latitud_update")  .val()}</td>
-             </tr>
-             <tr>
-                 <th scope="row">Prorroga</th>
-                 <td>    ${$("#prorroga_update")       .val()}</td>
-             </tr>
-         </tbody>
-     </table>
-     `;
-     Swal.fire({
-                 title: `Se registrará el título:`,
-                 html: $msg,
-                 showDenyButton: true,
-                 confirmButtonText: 'Confirmar',
-                 denyButtonText: `Cancelar`,
-             }).then((result) => {
-                 if(result.isConfirmed){
+ 
 
-                     addNewTitle(classTitle.getUser_Id()                 ,     $("#input_titulo_update")     .val(),
-                                 $("#input_dotacion_update")     .val()  ,     $("#input_inicio_update")     .val(),
-                                 $("#input_vigencia_update")     .val()  ,     $("#prorroga_update")         .val(), 
-                                 $("#input_colonia_update")      .val()  ,     $("#input_lote_update")       .val(), 
-                                 $("#input_longitud_update")     .val()  ,     $("#input_latitud_update")    .val(),
-                                 $("#input_arrendatario_update") .val()
-                                 );
-                     Swal.fire('Título registrado con exito!', '', 'success')
-                 }
-             });
- }
  const addTitles = id =>{ // manda a añadir a los usuarios y añae vista a los usuarios
      $(".sin_seleccionar").hide();
                          $(`#${id}`).toggleClass("selected");
@@ -553,8 +450,7 @@ Iguales_CURP
         `; 
      
         $(".actualizar_body_actual").append(html);
-        setTimeout(() => {title_update_document  ({'Id_Info':id});
-                          title_update           ({'User':title});
+        setTimeout(() => {title_update_document  ({'Id_Info':id},{'User':title});
                           $(".class_info_user").scroll(function() {
                             const valor = $(".class_info_user").scrollTop();
                              $(".class_info_user").scrollTop(valor);
@@ -619,7 +515,7 @@ Iguales_CURP
          $("#num_total").html(`${indexCarousel+1} de ${ArrayListTitles.getArrayElements().length}`);   
      }
  }
- const title_update_document = data => {// toma los valores que se encontraron en documentos y los muestra en el carousel
+ const title_update_document = (data,data2) => {// toma los valores que se encontraron en documentos y los muestra en el carousel
       $.ajax({
          
          url : `${link.Server}consult_update_user.php`,
@@ -628,9 +524,9 @@ Iguales_CURP
          beforeSend: function () {
              
          },
-         success: data => {
+         success: response => {
       
-             var json = JSON.parse(data)
+             var json = JSON.parse(response)
              
              const Phone_Number             =    json[0].Phone_Number      == null ? "Sin registrar":json[0].Phone_Number;
              const User                     =    json[0].User              == null ? "Sin registrar":json[0].User;
@@ -644,6 +540,7 @@ Iguales_CURP
              $("#input_RFC_update")          .val(RFC);
              $("#input_correo_update")       .val(Email);
              $("#input_CURP_update")         .val(CURP);
+             title_update           (data2)
          },   
          error : function(jqXHR, status, error) {
              alert('Disculpe, existió un problema');
@@ -664,7 +561,7 @@ Iguales_CURP
                 var json = JSON.parse(data)
              
                 const Phone_Number             =    json[0].Phone_Number      == null ? "Sin registrar":json[0].Phone_Number;
-                const Full_Name                =    json[0].Full_Name              == null ? "Sin registrar":json[0].Full_Name;
+                const Full_Name                =    json[0].Full_Name         == null ? "Sin registrar":json[0].Full_Name;
                 const RFC                      =    json[0].RFC               == null ? "Sin registrar":json[0].RFC;
                 const Email                    =    json[0].Email             == null ? "Sin registrar":json[0].Email;
                 const CURP                     =    json[0].CURP              == null ? "Sin registrar":json[0].CURP;
@@ -680,7 +577,7 @@ Iguales_CURP
                
            
              }
-             lottiesSuccessActives ();
+             lottiesSuccessActives ( )
 
              
          },   
@@ -765,7 +662,7 @@ Iguales_CURP
          }).then((result) => {
          /* Read more about isConfirmed, isDenied below */
          if (result.isConfirmed) {
-            
+            $("#input_nombre")   .val($("#input_nombre_update")   .val());
              setUser(user_name)
              Swal.fire('Usuario registrado con exito!', '', 'success')
          } else if (result.isDenied) {
@@ -813,6 +710,7 @@ Iguales_CURP
                  confirmButtonText: 'Guardar',
                  cancelButtonText: 'Regresar',
                  denyButtonText: `Cancelar`,
+                 width: '700px',
              }).then((result) => {
                             
                  if (result.isConfirmed) {
@@ -821,8 +719,8 @@ Iguales_CURP
                          const Id_Info = array_document_info[indexCarousel].Id_Info;
                          const Value = $("#input_search_user").val();
 
-                         updateInfoDocument(Id_Info,`'${Value}'`,"User");
-                         $("#input_nombre_update").val(Value);
+                         updateInfoDocument(Id_Info,Value,"User","#input_nombre_update");
+                         $("#input_nombre").val(Value)
                          lottiesSuccessActives ();
 
                          Swal.fire('Guardado!', '', 'success')

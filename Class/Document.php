@@ -32,7 +32,6 @@
         }
         return "Analizado y Guardado";
       }
-
       public function editInfoDocument($Id_Info,$Value,$Encabezado){
         $consulta = "UPDATE document_info SET $Encabezado = $Value WHERE (Info_Id = '$Id_Info');";
         mysqli_query($this -> sistema  ,$consulta);
@@ -43,7 +42,6 @@
         $consulta ="SELECT * FROM document_type_titles where Document_Id='$id';";
         return $this -> sistema -> query($consulta) -> num_rows < 1 ? 0 : $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
       }
-
       public function getTitleSpecific($Info_Id){
         $consulta ="SELECT * FROM document_type_titles where Info_Id=$Info_Id;";
         return  json_encode($this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC));
@@ -56,11 +54,9 @@
         $consulta ="SELECT * FROM  document_type_investments where Info_Id=$Info_Id;";
         return  json_encode($this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC));
       }
-
       public function getTitlesEspcific($search){
         return $this -> sistema -> query("SELECT * FROM document_info where Program = '$search';") -> fetch_all(MYSQLI_ASSOC);
       }
-
       public function ShowUpdatesTitle($Document_Id,$User,$Cologne,$Plot,$Title_Number,$Initial_Date,$Water_Supply,$Longitude,$Latitude,$Validity,$Extend){
               
            $User            =        $User          != "" ? "LIKE '%$User%'":"IS NULL";
@@ -86,7 +82,7 @@
             AND Latitude        $Latitude
             AND validity        $Validity
             AND Extend          $Extend
-      ;";
+        ;";
       
                return  $this -> sistema -> query($cons) -> fetch_all(MYSQLI_ASSOC);
       
@@ -109,11 +105,11 @@
          AND System_              $System_
          AND Hectare              $Hectare
          AND Investments_Date     $Investments_Date
-   ;";
+        ;";
    
             return  $this -> sistema -> query($cons) -> fetch_all(MYSQLI_ASSOC);
    
-   }
+      }
       public function ShowUpdatesUser($Document_Id,$Full_Name,$Phone_Number,$Email,$RFC,$CURP){
               
         $User               =        $Full_Name     != "" ? "LIKE '%$Full_Name%'":"IS NULL";
@@ -131,15 +127,11 @@
          AND RFC           $RFC
          AND CURP          $CURP
          ;
-   ;";
+        ;";
 
             return  $this -> sistema -> query($cons) -> fetch_all(MYSQLI_ASSOC);
    
-   }
-      public function setUsers(){
-
       }
-
       public function getUsers($id){
         $consulta ="SELECT * FROM document_users where Document_Id='$id';";
         return $this -> sistema -> query($consulta) -> num_rows < 1 ? 0 : $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
@@ -151,27 +143,22 @@
         (user 
         LIKE '%$buscar%'
         );";
-      return $this -> sistema -> query($consulta) -> num_rows < 1 ? 0 : $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
-    }
-    public function searchInvestments($id,$buscar){
-      $consulta ="SELECT * FROM document_type_investments 
-      WHERE Document_Id='$id'
-      AND
-      (user 
-      LIKE '%$buscar%'
-      );";
-    return $this -> sistema -> query($consulta) -> num_rows < 1 ? 0 : $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
-  }
-      public function serInvestments(){
-        
+        return $this -> sistema -> query($consulta) -> num_rows < 1 ? 0 : $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
       }
-
+      public function searchInvestments($id,$buscar){
+        $consulta ="SELECT * FROM document_type_investments 
+        WHERE Document_Id='$id'
+        AND
+        (user 
+        LIKE '%$buscar%'
+        );";
+        return $this -> sistema -> query($consulta) -> num_rows < 1 ? 0 : $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
+      }
       public function getInvestments($id){
         $consulta ="SELECT * FROM document_type_investments where Document_Id='$id';";
         return $this -> sistema -> query($consulta) -> num_rows < 1 ? 0 : $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
     
       }
-
       public function setDocument($name, $type, $year ){
         mysqli_query($this -> sistema,"INSERT INTO Documents(Document_Name,Document_Type,Document_Year) 
         VALUES ('$name','$type',$year);");
@@ -180,12 +167,10 @@
         return $id['LAST_INSERT_ID()'];  
       
       }
-
       public function getDocument($id){
         
         return $this -> sistema -> query("SELECT * FROM documents where Document_Id = '$id';") -> fetch_all(MYSQLI_ASSOC);
       }
-
       public function getDocumentTitles(){
         return $this -> sistema -> query("SELECT * FROM documents where Document_Type = 'Títulos' AND Active=1") -> fetch_all(MYSQLI_ASSOC);
       }

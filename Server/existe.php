@@ -2,6 +2,8 @@
 require ('conexion.php');
 require('../Class/Users.php');
 require('../Class/Title.php');
+require ('validityAdmin.php');
+
 $Users = new Users();
 $Title = new Title();
 if(isset($_POST['value']) && isset($_POST['type'])){

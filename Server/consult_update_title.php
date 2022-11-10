@@ -2,6 +2,8 @@
 include("conexion.php");
 include("../Class/Document.php");
 include("../Class/Title.php");
+require ('validityAdmin.php');
+
 $Document = new Document();
 $Title = new Title();
 

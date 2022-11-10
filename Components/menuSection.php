@@ -1,3 +1,4 @@
+<?php require ('../Server/validityAdmin.php'); ?>
 <link rel="stylesheet" href="css/menuSection.css">
 <script type="module">
  $(".option").click(function(){

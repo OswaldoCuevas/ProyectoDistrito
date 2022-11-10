@@ -14,7 +14,7 @@
         case'System_':        return  100;  break;                                                                  
         case'RFC' :           return  200;  break;                                
         case'CURP' :          return  200;  break;                                                             
-        case'INE'  :          return   15;  break;                                     
+        case'INE'  :          return   200;  break;                                     
         case'Phone_Number' :  return  200;  break;                                  
         case'Tenant' :        return  400;  break;  
         case'Email' :         return  200;  break; 
@@ -144,7 +144,7 @@
       }else if($Encabezado != ""){
         return showError(1,$Encabezado,$indiceColumna);
       }else {
-        return showError(2);
+        return showError(2,"",$indiceColumna);
       }
   
     }
@@ -233,7 +233,7 @@ list($año, $mes, $dia) = explode('-', $date);
     switch ($num){
       case 1:return "Error: No se puede leer el encabezado: ($Encabezado) columna($indiceColumna). No corresponde al formato de la tabla ".
                     ' <a href="#"type="button" class="btn btn-sm btn-outline-danger">Ver formato</a>';break;
-      case 2:return "Error: No puede dejar encabezados vacios ni insertar información fuera de la tabla ".
+      case 2:return "Error: No puede dejar encabezados vacios ni insertar información fuera de la tabla (Columna número: $indiceColumna )".
                     '<a href="#"type="button" class="btn btn-sm btn-outline-danger">Ver formato</a>';break;
       case 3:return "Error: la expresión ($expresion) en Fila($indiceFila) y Columna($Encabezado) no es valida favor de revisar el formato".
                     ' <a href="#"type="button" class="btn btn-sm btn-outline-danger">Ver formato</a>';break;

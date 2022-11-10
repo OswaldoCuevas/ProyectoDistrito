@@ -1,6 +1,8 @@
 <?php
    require ('../Server/conexion.php');
 	require('../Class/Document.php');
+   require ('validityAdmin.php');
+
    $Document = $_FILES["file"]["tmp_name"]; 
    $tamanio = $_FILES["file"]["size"];
    $type    = $_FILES["file"]["type"];

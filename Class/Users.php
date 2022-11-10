@@ -7,7 +7,6 @@ class Users extends Conexion{
 
     public function getUserForName($name){
         $consulta ="SELECT * FROM Padron_de_Usuarios where Full_Name like '%$name%';";
-
         return $this -> sistema -> query($consulta) -> num_rows < 1 ? 0 : $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
     }
     public function getUser($Control_Num){
@@ -64,7 +63,7 @@ class Users extends Conexion{
             }
         
         public function jsonUsers($busqueda){
-            return  json_encode($this -> sistema -> query("SELECT * FROM Padron_de_Usuarios where Full_Name like '%$busqueda%';") -> fetch_all(MYSQLI_ASSOC));
+            return  json_encode($this -> sistema -> query("SELECT * FROM Padron_de_Usuarios where Full_Name like '%$busqueda%' OR Type_User like '%$busqueda%';") -> fetch_all(MYSQLI_ASSOC));
         }
         public function jsonAdmins($busqueda){
             return  json_encode($this -> sistema -> query("SELECT * FROM Administradores where Full_Name like '%$busqueda%';") -> fetch_all(MYSQLI_ASSOC));

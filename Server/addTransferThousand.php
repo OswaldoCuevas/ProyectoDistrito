@@ -2,6 +2,7 @@
 include ('../Server/conexion.php') ;
 include ('../Class/Title.php') ;
 include ('../Functions/FunctionDocuments.php') ;
+require ('validityAdmin.php');
 
 $Title_= new Title();
 $SetTitle = $_POST['SetTitleId'];

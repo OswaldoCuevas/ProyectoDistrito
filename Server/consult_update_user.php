@@ -2,6 +2,8 @@
 include("conexion.php");
 include("../Class/Document.php");
 include("../Class/Users.php");
+require ('validityAdmin.php');
+
 $Document = new Document();
 $User = new Users();
 

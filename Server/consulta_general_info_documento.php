@@ -1,6 +1,8 @@
 <?php
 	require ('conexion.php');
 	require('../Class/Document.php');
+	require ('validityAdmin.php');
+
 	$buscar=$_POST['buscar'];
 
 	if(isset($_POST['buscar']) && $_POST['type'] && isset($_POST['id']))	{

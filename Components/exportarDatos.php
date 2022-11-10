@@ -1,13 +1,6 @@
+<?php require ('../Server/validityAdmin.php'); ?>
 <link rel="stylesheet" href="css/exportarDatos.css">
-<script type="module">
-$(".getDocument").click(function(){
-const Document = $(this).attr("id");
-  $('<form action="Server/GenerarExcel.php" method="post"><input type="hidden" name="Document" value="'+Document+'" /></form>')
-    .appendTo('body').submit();
-
-
-});
-</script>
+<div class="cargar_archivo"></div>
 <div class="container-principal">
     <div class="principal_header">
        <div class="text">
@@ -18,13 +11,12 @@ const Document = $(this).attr("id");
     </div>
     <div class="principal_body">
      <div class="buttons">
-        <button class="getDocument" id="Padron de usuarios"> <b>Padrón de usuarios</b> </button>
-        <button class="getDocument" id="Usuarios privados"> <b>Usuarios Privados</b></button>
-        <button class="getDocument" id="Usuarios sociales"> <b>Usuarios Sociales</b></button>
-        <button class="getDocument" id="Titulos"> <b>Titulos de concesión</b></button>
-        <button class="getDocument" id="Inversiones"> <b>Inversiones</b></button>
-        <button class="getDocument" id="Usuarios"> <b>Usuarios</b></button>
-
+        <a target="_blank" href="Server/GenerarExcel.php?Document=Padron de usuarios" class="getDocument" id=""> <b>Padrón de usuarios</b> </a>
+        <a target="_blank" href="Server/GenerarExcel.php?Document=Usuarios privados" class="getDocument" id=""> <b>Usuarios Privados</b></a>
+        <a target="_blank" href="Server/GenerarExcel.php?Document=Usuarios sociales" class="getDocument" id=""> <b>Usuarios Sociales</b></a>
+        <a target="_blank" href="Server/GenerarExcel.php?Document=Titulos" class="getDocument" id=""> <b>Titulos de concesión</b></a>
+        <a target="_blank" href="Server/GenerarExcel.php?Document=Inversiones" class="getDocument" id=""> <b>Inversiones</b></a>
+        <a target="_blank" href="Server/GenerarExcel.php?Document=Usuarios" class="getDocument" id=""> <b>Usuarios</b></a>
      </div>
         
     </div>

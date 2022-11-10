@@ -722,13 +722,12 @@
            `; 
         
            $(".actualizar_body_actual").append(html);
-           setTimeout(() => {title_update_document  ({'Id_Info':id});
-                             title_update           ({'title':title});
-                             $(".class_info_user").scroll(function() {
-                               const valor = $(".class_info_user").scrollTop();
-                                $(".class_info_user").scrollTop(valor);
-                             });
-                                      },1520)
+        setTimeout(() => {title_update_document  ({'Id_Info':id},{'title':title});
+                          $(".class_info_user").scroll(function() {
+                            const valor = $(".class_info_user").scrollTop();
+                             $(".class_info_user").scrollTop(valor);
+                          });
+                                   },1580)
            
           
            
@@ -788,7 +787,7 @@
             $("#num_total").html(`${indexCarousel+1} de ${ArrayListTitles.getArrayElements().length}`);   
         }
     }
-    const title_update_document = data => {// toma los valores que se encontraron en documentos y los muestra en el carousel
+    const title_update_document = (data,data2) => {// toma los valores que se encontraron en documentos y los muestra en el carousel
         $.ajax({
             
             url : `${link.Server}consult_update_title.php`,
@@ -824,6 +823,8 @@
                 $("#input_longitud_update").val(Longitude);
                 $("#input_latitud_update").val(Latitude);
                 $("#prorroga_update").val(Extend);
+
+                title_update(data2)
             },   
             error : function(jqXHR, status, error) {
                 alert('Disculpe, existió un problema');
@@ -1039,6 +1040,7 @@
                     confirmButtonText: 'Guardar',
                     cancelButtonText: 'Regresar',
                     denyButtonText: `Cancelar`,
+                    width: '700px',
                 }).then((result) => {
                                
                     if (result.isConfirmed) {

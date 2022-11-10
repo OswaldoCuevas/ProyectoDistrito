@@ -1,6 +1,8 @@
 <?php
 require ('conexion.php');
 require('../Class/Investment.php');
+require ('validityAdmin.php');
+
 $Investment = new Investment();
 if(isset($_POST['Investments_Id']) ){
     $Investments_Id   =   $_POST['Investments_Id'];

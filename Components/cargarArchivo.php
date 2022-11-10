@@ -1,3 +1,4 @@
+<?php require ('../Server/validityAdmin.php'); ?>
 <link rel="stylesheet" href="css/CargarArchivo.css">
 <script src="js/cargarArchivo.js" type="module"></script>
 <div class=" drop-area ">

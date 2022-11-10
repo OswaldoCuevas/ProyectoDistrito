@@ -542,8 +542,9 @@ function selected_elements_array(){
                      <div class="user_previous">
                          <div class="class_img_user">
                              <div class="circulo">
-                                 <span><i class="fa-solid fa-question"></i></span>
+                                <span><i class="fa-solid fa-users"></i></span>
                              </div>
+                             
                          </div>
                          <div  id="form_user"  class="class_info_user">
                          
@@ -685,21 +686,22 @@ function selected_elements_array(){
              var json = JSON.parse(data)
              
             
-             const User                     =    json[0].User              == null ? "Sin registrar":json[0].User;
-             const Cologne                    =    json[0].Cologne               == null ? "Sin registrar":json[0].Cologne;
-             const Plot                     = json[0].Plot == null ? "Sin registrar":json[0].Plot;
-             const System_ = json[0].System_ == null ? "Sin registrar":json[0].System_;
-             const Hectare                      =    json[0].Hectare               == null ? "Sin registrar":json[0].Hectare;
-             const Investments_Date                      =    json[0].Investments_Date               == null ? "Sin registrar":json[0].Investments_Date;
+             const User                    =    json[0].User              == null ? "Sin registrar":json[0].User;
+             const Cologne                 =    json[0].Cologne           == null ? "Sin registrar":json[0].Cologne;
+             const Plot                    =    json[0].Plot              == null ? "Sin registrar":json[0].Plot;
+             const System_                 =    json[0].System_           == null ? "Sin registrar":json[0].System_;
+             const Hectare                 =    json[0].Hectare           == null ? "Sin registrar":json[0].Hectare;
+             const Investments_Date        =    json[0].Investments_Date  == null ? "Sin registrar":json[0].Investments_Date;
 
 
              $("#input_nombre_update")       .val(User);
-             $("#input_colonia_update")     .val(Cologne);
-             $("#input_lote_update")          .val(Plot);
-             $("#input_hectarea_update")       .val(Hectare);
-             $("#input_sistema_update")         .val(System_);
-             $("#input_año_update")         .val(Investments_Date);
-             title_update           ({'User':User,'Cologne':Cologne,'Plot':Plot,"Investments_Date":Investments_Date});
+             $("#input_colonia_update")      .val(Cologne);
+             $("#input_lote_update")         .val(Plot);
+             $("#input_hectarea_update")     .val(Hectare);
+             $("#input_sistema_update")      .val(System_);
+             $("#input_año_update")          .val(Investments_Date);
+
+             title_update           ({'User':User,'Cologne':Cologne,'Plot':Plot,"Investments_Date":Investments_Date,'System_':System_,'Hectare':Hectare});
          },   
          error : function(jqXHR, status, error) {
              alert('Disculpe, existió un problema');
@@ -716,7 +718,6 @@ function selected_elements_array(){
              
          },
          success: data => {
-            
              if(data!=0){
                 var json = JSON.parse(data)
              
@@ -874,6 +875,7 @@ function selected_elements_array(){
                  confirmButtonText: 'Guardar',
                  cancelButtonText: 'Regresar',
                  denyButtonText: `Cancelar`,
+                 width: '700px',
              }).then((result) => {
                             
                  if (result.isConfirmed) {

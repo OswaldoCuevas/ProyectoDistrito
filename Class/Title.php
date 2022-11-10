@@ -5,8 +5,8 @@
             parent::Conexion();
         }
       public function getTitleSpecific($Title_Number){
-      $consulta ="SELECT * FROM view_titles_update where Title_Number='$Title_Number';";
-      return  mysqli_num_rows(mysqli_query($this -> sistema,$consulta)) <= 0 ? 0 : json_encode($this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC));
+        $consulta ="SELECT * FROM view_titles_update where Title_Number='$Title_Number';";
+        return  mysqli_num_rows(mysqli_query($this -> sistema,$consulta)) <= 0 ? 0 : json_encode($this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC));
       }
       public function getTitle($Title_Id){
         $consulta ="SELECT * FROM view_titles_update where Title_Id='$Title_Id';";
@@ -14,8 +14,8 @@
         
       }
       public function updateTitle($Title_Id, $Encabezado, $Value){
-      $Value = $Value == "Sin registrar" ? "NULL" : "'$Value'";
-      $this -> sistema -> query("UPDATE titles SET $Encabezado = $Value WHERE (Title_Id = '$Title_Id');");
+        $Value = $Value == "Sin registrar" ? "NULL" : "'$Value'";
+        $this -> sistema -> query("UPDATE titles SET $Encabezado = $Value WHERE (Title_Id = '$Title_Id');");
       }
       public function existe($title){
         $consulta = "SELECT * FROM view_titles_update where Title_Number like '%$title%';";
@@ -127,8 +127,8 @@
         $change = "INSERT INTO change_location ( Title_Id, Previous_Location, New_Location,Change_Date) VALUES ('$Title_Id', '$Location_Id', '$new_location_ID','$Change_Date');";
         $this -> sistema -> query($change);
       } 
-      public function changeLocation($Title_Id, $Encabezado, $Value){
-        $this -> sistema -> query("UPDATE location_title SET $Encabezado = $Value WHERE (Location_Id = '$Title_Id');");
+      public function changeLocation($Location_Id, $Encabezado, $Value){
+        $this -> sistema -> query("UPDATE location_title SET $Encabezado = $Value WHERE (Location_Id = '$Location_Id');");
       }
       public function getTitles(){
         $consulta ="SELECT * FROM view_titles_update;";
@@ -177,10 +177,10 @@
       }
       public function dropTransferThousand($Transfers_Id){
         $this -> sistema -> query("UPDATE transfers_thousands SET Active = '0' WHERE (Transfers_Id = '$Transfers_Id');");
-    }
-    public function dropChangeLocation($Change_Id){
-      $this -> sistema -> query("UPDATE change_location SET Active = '0' WHERE (Change_Id = '$Change_Id');");
-  }
+      }
+      public function dropChangeLocation($Change_Id){
+        $this -> sistema -> query("UPDATE change_location SET Active = '0' WHERE (Change_Id = '$Change_Id');");
+      }
       public function transfer_thousand($SetTitle, $GetTitle, $Date_Start, $Date_End, $Amount){
         $query = "  INSERT INTO transfers_thousands(SetTitle, GetTitle,Date_Start, Date_End, Amount) 
                     VALUES ('$SetTitle', '$GetTitle', '$Date_Start', '$Date_End', '$Amount');";

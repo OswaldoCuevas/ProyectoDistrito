@@ -14,7 +14,9 @@ if (!isset($_SESSION['Control_Num'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport">
-    <title>Document</title>
+    <link rel="shortcut icon" href="img/logo.png" />
+    <title>Distrito066</title>
+    
    
 </head>
 <script src=".\node_modules\jquery\dist\jquery.min.js"></script>
@@ -23,6 +25,11 @@ if (!isset($_SESSION['Control_Num'])) {
 <script src=".\node_modules\@lottiefiles\lottie-player\dist\lottie-player.js"></script>
 <link rel="stylesheet" href=".\node_modules\bootstrap\dist\css\bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="./node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>	
+<style>
+    .dashboard-content{
+        background-color: #F6FAF9;
+    }
+</style>
 <body>
 <div class='dashboard dashboard-compact'>
     <div class="dashboard-nav">
@@ -78,7 +85,26 @@ if (!isset($_SESSION['Control_Num'])) {
 <script  type="module" src="js/menu.js"></script>
 <script type="text/javascript">
     $('#<?php echo $section;?>').removeClass("").addClass("active");
-    $(".dashboard-content").load("components/<?php echo $section;?>.php");
+    <?php 
+     if( isset($_GET['user'])){
+        ?>
+        $(".dashboard-content").load("components/<?php echo $section;?>.php",{'user':'<?php echo $_GET['user'];?>'});
+        <?php
+     }else{
+        ?>
+        $(".dashboard-content").load("components/<?php echo $section;?>.php");
+        <?php
+     }
+    ?>
+    function caraterSpecial(expersion){
+        let expresionNew = expersion.replace(/[^a-zA-Z0-9$+=?@_., ]/i, "")
+        return expresionNew == expersion ? expresionNew:caraterSpecial(expresionNew);	
+	}
+    $(document).on('keydown','input',function(){
+        setTimeout(() => {
+            $(this).val(caraterSpecial($(this).val()))
+        },30);
+    });
 </script>
 
 </html>
