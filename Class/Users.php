@@ -196,6 +196,30 @@ public function dropAdmin($Control_Num){
             }
         
     }
+    public function loginUser($id,$password){
+        
+
+        $consulta="SELECT * FROM Padron_de_Usuarios 
+                   WHERE (Email = '$id' AND Email IS NOT NULL) 
+                   OR    (Control_Num = '$id' AND Control_Num IS NOT NULL);";
+        if(mysqli_num_rows(mysqli_query($this -> sistema,$consulta)) > 0){
+      
+            $consulta="SELECT * FROM Padron_de_Usuarios 
+                       WHERE Password_User = SHA('$password') 
+                       AND    Password_User IS NOT NULL
+                       AND  Control_Num = '$id';
+                        ;";
+           if(mysqli_num_rows(mysqli_query($this -> sistema,$consulta)) > 0){
+           return $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);
+           } else{
+           return "3";
+           }
+
+        }else{
+            return "2";
+        }
+    
+}
     public function getPadronDeUsuarios(){
         $consulta ="SELECT * FROM consult_Padron;";
         return  $this -> sistema -> query($consulta) -> fetch_all(MYSQLI_ASSOC);

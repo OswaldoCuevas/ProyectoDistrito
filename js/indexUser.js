@@ -17,15 +17,15 @@ $("#span-control-num").hide();
 			const data 		=	{"Email":id,"Password":password};
 			$.ajax({ // crea la tabla con los valores obtenidos de la basede datos
         
-				url : `../Server/login.php`,
+				url : `../Server/loginUser.php`,
 				data : data,
 				type : 'POST',
 				beforeSend: function () {
 				},
 				success: Response => {
-		
 					switch (Response){
-					case "1": location.href ="../menu.php";break;
+                       
+					case "1": location.href ="user.php";break;
 					case "2":
 						$("#span-control-num").show();
 						$("#span-password").hide();

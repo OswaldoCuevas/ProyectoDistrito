@@ -1,3 +1,7 @@
+@import 'bootstrap/bootstrap';
+@import 'bootstrap/variables';
+@import 'bootstrap/mixins';
+::-webkit-scrollbar {display: none;}
 $width_user:350px;
 $height_user:550px;
 $width_user_table:400px;
@@ -7,6 +11,15 @@ $toogle_dashboard:#0e9ca7;
     display: flex;
     width: 100%;
     margin-left: 5%;
+    @include media-breakpoint-down(md){
+        display: flex;
+        width: 100%;
+        margin-left: 5%;
+        flex-direction: column-reverse;
+        justify-items: center;
+        align-items: center;
+		
+	}
 }
 .user_info{
     height: $height_user;
@@ -15,48 +28,19 @@ $toogle_dashboard:#0e9ca7;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     transition: width 0.2s;
     background-color: #fff;
+    @include media-breakpoint-down(md){
+        height: $height_user;
+        width: 80%;
+        border-radius: 30px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        transition: width 0.2s;
+        background-color: #fff;
+        margin-bottom: 20px;
+    }
+
 }
-.user_info:hover{
-    height: $height_user+10;
-    width: $width_user+10;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    .user_img{
-        height:($width_user*0.5)+50+10;
-        width: ($width_user)-40+10;
-        margin-left: 20px;
-        border-bottom-width: 0.1px;
-        border-bottom-style:solid;
-        border-bottom-color: rgb(219, 219, 219);
-    }
-    .correo-trabajador-div{
-    
-        width: ($width_user)-40+10;
-       
-    }
-    .user_img span{
-        font-size:180px;
-      
-     
-    }
-    .user_img .option-edit-user span{
-        font-size:33px;
-        position: absolute;
-        left: 93%;
-        color: #066de2;
-        transition: all 0.2s;
-        ;
-        
-    }
-}
-.user_img{
-    height:($width_user*0.5)+50;
-    width: ($width_user)-40;
-    margin-left: 20px;
-    border-bottom-width: 0.1px;
-    border-bottom-style:solid;
-    border-bottom-color: rgb(219, 219, 219);
-    transition: all 0.2s;
-    text-align: center;
+.user_info:hover{ 
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;   
 }
 .user_img span{
     font-size:170px;
@@ -72,10 +56,7 @@ $toogle_dashboard:#0e9ca7;
     
     color: #066de2;
     transition: width 0.3s;
-    &:hover{
-        font-size:35px;
-        
-    }
+    
     
 }
 .correo-trabajador-div{
@@ -95,20 +76,36 @@ $toogle_dashboard:#0e9ca7;
     h5{
         width: 100%;
         font-weight:bold;
+        display: flex;
+        justify-content: center;
+        overflow-y: none;
+        overflow-x: scroll;
+        max-height: 20px;
     }
     .user-info{
         width: 100%;
         display: flex;
         .info{
             width: 50%;
+            h6{
+                overflow-y: none;
+                overflow-x: scroll;
+                height: 20px;
+                max-height: 20px;
+            }
         }
+       
     }
 }
 .container-tables{
     height: 100%;
     width: 70%;
     align-items: center;
-    
+    @include media-breakpoint-down(md){
+        height: 100%;
+        width: 98%;
+        align-items: center; 
+    }
 }
 .tables-user{
     width: 98%;

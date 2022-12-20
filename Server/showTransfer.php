@@ -2,7 +2,7 @@
 include ('../Server/conexion.php') ;
 include ('../Class/Title.php') ;
 include ('../Functions/FunctionDocuments.php') ;
-require ('validityAdmin.php');
+
 
 $Title_Id = $_POST['Title_Id'];
 $type = $_POST['type'];

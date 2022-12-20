@@ -232,13 +232,13 @@ list($año, $mes, $dia) = explode('-', $date);
  function showError($num,$Encabezado="",$indiceColumna="",$indiceFila="",$expresion="",$numCaracteres=""){
     switch ($num){
       case 1:return "Error: No se puede leer el encabezado: ($Encabezado) columna($indiceColumna). No corresponde al formato de la tabla ".
-                    ' <a href="#"type="button" class="btn btn-sm btn-outline-danger">Ver formato</a>';break;
+                    ' <a target="_blank" href="Components/Formatos.php" type="button" class="btn btn-sm btn-outline-danger">Ver formato</a>';break;
       case 2:return "Error: No puede dejar encabezados vacios ni insertar información fuera de la tabla (Columna número: $indiceColumna )".
-                    '<a href="#"type="button" class="btn btn-sm btn-outline-danger">Ver formato</a>';break;
+                    '<a target="_blank" href="Components/Formatos.php" type="button" class="btn btn-sm btn-outline-danger">Ver formato</a>';break;
       case 3:return "Error: la expresión ($expresion) en Fila($indiceFila) y Columna($Encabezado) no es valida favor de revisar el formato".
-                    ' <a href="#"type="button" class="btn btn-sm btn-outline-danger">Ver formato</a>';break;
+                    '<a target="_blank" href="Components/Formatos.php" type="button" class="btn btn-sm btn-outline-danger">Ver formato</a>';break;
       case 4:return "Error: El encabezado (<b>$Encabezado</b>) se ha repetido".
-                    ' <a href="#"type="button" class="btn btn-sm btn-outline-danger">Ver formato</a>';break;
+                    ' <a target="_blank" href="Components/Formatos.php" type="button" class="btn btn-sm btn-outline-danger">Ver formato</a>';break;
       case 5:return "Error: Fila($indiceFila) Columna($Encabezado) la expresión: ($expresion) puede tener $numCaracteres números de caracteres por máximo";break;
                   }
   }

@@ -1,8 +1,8 @@
-import * as link from "../Modules/links.js";
-    import * as User from "../Modules/Class/User.js";
-    import * as _Title from "../Modules/Class/Title.js";
-    import * as _transferWater from "../Modules/Class/TransferWater.js";
-    import * as _Arraylist from "../Modules/Class/ArrayList.js";
+
+    import * as User from "../../Modules/Class/User.js";
+    import * as _Title from "../../Modules/Class/Title.js";
+    import * as _transferWater from "../../Modules/Class/TransferWater.js";
+    import * as _Arraylist from "../../Modules/Class/ArrayList.js";
 
 $(document).ready(function() {  
     var ArrayListTransferTitle  = new _Arraylist.TransferTitle();
@@ -13,7 +13,15 @@ $(document).ready(function() {
     var TransferWater           = new _transferWater.transferWater();
     var año                     = "2022-10-29";
     
-    link.section($("#previous").val(),"");
+    section($("#previous").val(),"");
+    function section (name,text) {
+        const $text=` 
+        <a href="user.php?" class="menu-previous"> <i class="fa-solid fa-arrow-left"></i></a>
+        <span class="text_section"><b>${text}</b> </span>
+        `;
+        $("#toglee").hide();
+        $(".section").html($text);
+    }
     setTransferTitle()
     $("#button-transfer-thousand").on('click', function(e) {
         switchAlertSearchTitle()               
@@ -26,7 +34,7 @@ $(document).ready(function() {
     function setlocation(){
         $.ajax({
         
-            url : `${link.Server}showTransfer.php`,
+            url : `../Server/showTransfer.php`,
             data : {"Title_Id":$("#Title_Id").val(),'type':'location'},
             type : 'POST',
             assynchronous : true,
@@ -64,7 +72,7 @@ $(document).ready(function() {
                                         </div>
                                         <div class="desplegar ">
                                                 <span class="mostrar-ocultar" id="${Change_Id}"><i class="fa-solid fa-chevron-down"></i></span>
-                                                <span id="${Change_Id}" class="text-location${Change_Id} drop-location display-none"><i class="fa-solid fa-trash"></i></span>
+                                              
                                         </div>
                                     </div>`
                     }
@@ -96,7 +104,7 @@ $(document).ready(function() {
     function setTransferThousand(){
         $.ajax({
         
-        url : `${link.Server}showTransfer.php`,
+        url : `../Server/showTransfer.php`,
         data : {"Title_Id":$("#Title_Id").val(),'type':'thousand'},
         type : 'POST',
         assynchronous : true,
@@ -135,7 +143,7 @@ $(document).ready(function() {
                                     </div>
                                     <div class="desplegar ">
                                             <span class="mostrar-ocultar" id="${Transfers_Id}"><i class="fa-solid fa-chevron-down"></i></span>
-                                            <span id="${Transfers_Id}" class="text-trasnfer-thousand${Transfers_Id} drop-transfer-thousand display-none"><i class="fa-solid fa-trash"></i></span>
+                                           
                                     </div>
                                 </div>`
                 }
@@ -167,7 +175,7 @@ $(document).ready(function() {
     function setTransferTitle(){
         $.ajax({
         
-            url : `${link.Server}showTransfer.php`,
+            url : `../Server/showTransfer.php`,
             data : {"Title_Id":$("#Title_Id").val(),'type':'title'},
             type : 'POST',
             assynchronous : true,
@@ -201,7 +209,7 @@ $(document).ready(function() {
                         </div>
                         <div class="desplegar">
                                 <span class="mostrar-ocultar" id="${Transfers_Id}"><i class="fa-solid fa-chevron-down"></i></span>
-                                <span id="${Transfers_Id}" class="text-trasnfer-${Transfers_Id} drop-transfer-title display-none"><i class="fa-solid fa-trash"></i></span>
+
                         </div>
                     </div> 
                     `;
@@ -327,7 +335,7 @@ $(document).ready(function() {
                         'Transfer_Date':año
          };
        $.ajax({
-            url : `${link.Server}addTransferTitle.php`,
+            url : `../Server/addTransferTitle.php`,
             data : data,
             type : 'POST',
             success: data => {
@@ -338,7 +346,7 @@ $(document).ready(function() {
     }
     function transfersThousand(){
        $.ajax({
-            url : `${link.Server}addTransferThousand.php`,
+            url : `../Server/addTransferThousand.php`,
             data : jsonTransferThousand(),
             type : 'POST',
             success: data => {
@@ -645,7 +653,7 @@ $(document).ready(function() {
     }
     function addNewUbicaction(ubication){
         $.ajax({
-            url : `${link.Server}changeUbicationTitle.php`,
+            url : `../Server/changeUbicationTitle.php`,
             data : ubication,
             type : 'POST',
             success: data => {
@@ -698,10 +706,8 @@ $(document).ready(function() {
                     confirmButtonText: 'Confirmar',
                     denyButtonText: `Cancelar`,
                 }).then((result) => {
-                    if(result.isConfirmed){
-                        dropChange(transfer)
-                    }
-                   
+                    
+                    dropChange(transfer)
                 });
     }
     const formatDate = date =>{
@@ -873,7 +879,7 @@ $(document).ready(function() {
     function dropTransferTitle(TransferTitle){
         const data = { 'Transfers_Id'   :  TransferTitle.getTransfers_Id()};
        $.ajax({
-            url : `${link.Server}dropTransferTitle.php`,
+            url : `../Server/dropTransferTitle.php`,
             data : data,
             type : 'POST',
             success: data => {
@@ -885,7 +891,7 @@ $(document).ready(function() {
     function dropChange(TransferTitle){
         const data = { 'Change_Id'   :  TransferTitle.getChange_Id()};
        $.ajax({
-            url : `${link.Server}dropChangeLocation.php`,
+            url : `../Server/dropChangeLocation.php`,
             data : data,
             type : 'POST',
             success: data => {
@@ -897,7 +903,7 @@ $(document).ready(function() {
     function dropTransferThousand(id){
         const data = { 'Transfers_Id'   :  id};
         $.ajax({
-            url : `${link.Server}dropTransferThousand.php`,
+            url : `../Server/dropTransferThousand.php`,
             data : data,
             type : 'POST',
             success: data => {

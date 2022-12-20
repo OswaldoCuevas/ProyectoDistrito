@@ -102,6 +102,7 @@ $(document).ready(function () {
                 
                 html+=`
                 <tr class="users-tr" id='element_${Control_Num}'>
+                            <td class="td_activo"><div class="center">${activo}</div></td>
                             <td>${Control_Num}</td>
                             <td>${Full_Name}</td>
                             <td>${Type_User}</td>

@@ -3,20 +3,19 @@
 include '../Server/conexion.php';
 include '../Class/Users.php';
 include '../Functions\FunctionDocuments.php';
-require ('../Server/validityAdmin.php');
-$user_id = $_POST["user_id"];
+require ('../Server/validityUser.php');
+$user_id = $_SESSION['Control_Num'];
 $_User= new Users();
 $User = $_User -> getUser($user_id);
 $Titles = $_User -> getTitlesUser($user_id);
 $numTitles = count($Titles);
 
 ?>
-<link rel="stylesheet" href="css/Usuario.css">
+<link rel="stylesheet" href="../css/Usuario.css">
 <script type="module" >
-   import * as link from "./Modules/links.js";
-    link.section("<?php echo $_POST['previous']?>","");
+   import * as link from "../Modules/links.js";
     $(".button-show").on('click',function() {
-        $(".dashboard-content").load("components/Titulo.php",{"Title_Id":$(this).attr("id"),"previous":"<?php echo $_POST['previous'].'&user='.$user_id?>"});
+        $(".dashboard-content").load("Titulo.php",{"Title_Id":$(this).attr("id"),"previous":"titulos"});
     })  
 </script>
 <div class="primary-container">

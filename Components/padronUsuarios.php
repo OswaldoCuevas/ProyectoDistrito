@@ -13,6 +13,7 @@
             <table class="table table-hover " style=" margin-top: 10px; font-size:12px;">
                 <thead class="thead-dark">
                     <tr>  
+                      <th scope="col"> Activo             </th>
                       <th scope="col"> No.control             </th>
                       <th scope="col"> Usuario                </th>
                       <th scope="col"> Sector                 </th>

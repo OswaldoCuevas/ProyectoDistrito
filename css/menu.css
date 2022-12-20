@@ -495,7 +495,59 @@ h1, .h1 {
   padding-top: 100px;
   overflow-y: auto;
 }
+.conten-salir{
+  position: absolute;
+  top:13%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  text-decoration: none;
+  padding-left: 40px;
+}
+.cerrar-sesion-content{
+ 
+ background-color: #7e0f0f;
+  z-index: 10;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 40px;
+  cursor: pointer;
+  text-decoration: none;
 
+  
+}
+.cerrar-sesion-content .text {
+  color: white;
+  justify-self:end;
+  font-family: 'Lato',Arial, sans-serif;
+  font-size: 17px;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  text-decoration: none;
+  transition: all 0.25s ease-in-out;
+}
+.cerrar-sesion-content .icon{
+  color: white;
+  align-self: flex-end;
+  font-size: 17px;
+  width: 20px;
+ 
+}
+.cerrar-sesion-content:hover .text{
+  color: white;
+  overflow: hidden;
+  width: 150px;
+  height: 25px;
+  justify-self:end;
+  padding-right: 20px;
+  font-family: 'Lato',Arial, sans-serif;
+  font-size: 17px;
+  display: block;
+  
+}
 
 @media (min-width: 992px) {
   .dashboard-app {
